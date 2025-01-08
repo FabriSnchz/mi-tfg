@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+/* Utilizar para responsive:
+    - Unidades relativas
+    - Grid
+    - En imagenes, max-width: 100% o srcset
+    - Tipografía y escalabilidad
+    - Evitar elementos fijos */
+:root{
+  color-scheme: light dark; // Indica que el color de fondo y texto se adaptará al modo claro y oscuro del sistema
+  margin: 0;
+  padding: 0;
+}
