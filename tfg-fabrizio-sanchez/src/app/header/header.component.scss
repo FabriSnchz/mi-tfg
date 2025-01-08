@@ -1,0 +1,74 @@
+// TODO: Añadir media queries para que se adapte a pantallas más pequeñas
+.main-header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  font-size: 1em;
+  padding: 0.7em;
+}
+// .main-header2
+.nav-item {
+  padding: 0 1%;
+}
+.main-header2 > nav > ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+.main-header2 > nav > ul > li {
+  display: inline-block;
+  padding: 0 5%;
+}
+.logo-container {
+  display: flex;
+  justify-content: flex-start;
+}
+.login-container{
+  display: flex;
+  justify-content: flex-end;
+  // padding: 1em;
+}
+.login-button {
+  justify-content: flex-end;
+}
+.login-button, .logo-button {
+  display: flex;
+  background: none;
+  border: none;
+  // padding: 0.5em 1em;
+}
+.levelupzonelogo-img, .login-img {
+  max-width: 15%;
+  height: auto;
+  // padding: 0.5em 1em;
+}
+.login-img:hover, .levelupzonelogo-img:hover {
+  cursor: pointer;
+}
+// TODO: Si hay muchos hover, los puedo agrupar abajo a todos
+
+
+// COLORES
+.main-header {
+  background-color: #6a115e;
+}
+.main-header2 {
+  background-color: aquamarine;
+}
+.nav-item {
+  background-color: #d82f70;
+}
+.main-header2 > nav > ul {
+  background-color: #f9ff51;
+}
+.main-header2 > nav > ul > li {
+  background-color: #4c24cf;
+}
+.login-container, .logo-container {
+  background-color: #51ff6e;
+}
+.login-button, .logo-button {
+  background-color: #ff5151;
+}
+.levelupzonelogo-img, .login-img {
+  background-color: #4686a6;
+}

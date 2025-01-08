@@ -4,8 +4,8 @@
     - En imagenes, max-width: 100% o srcset
     - Tipografía y escalabilidad
     - Evitar elementos fijos */
-:root{
-  color-scheme: light dark; // Indica que el color de fondo y texto se adaptará al modo claro y oscuro del sistema
+*{ // Parece que si uso :root, hay elementos a los que no les afecta
+  // color-scheme: light dark; // Indica que el color de fondo y texto se adaptará al modo claro y oscuro del sistema
   margin: 0;
   padding: 0;
 }
