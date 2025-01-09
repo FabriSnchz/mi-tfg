@@ -5,6 +5,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { MiInventarioComponent } from './mi-inventario/mi-inventario.component';
 import { JuegosComponent } from './juegos/juegos.component';
 import { ContactoComponent } from './contacto/contacto.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
