@@ -6,11 +6,12 @@ import { MiInventarioComponent } from './mi-inventario/mi-inventario.component';
 import { JuegosComponent } from './juegos/juegos.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { RouterOutlet } from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, InicioComponent, MiInventarioComponent, JuegosComponent, ContactoComponent],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, InicioComponent, MiInventarioComponent, JuegosComponent, ContactoComponent, PageNotFoundComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
