@@ -1,11 +1,15 @@
 // TODO: Añadir media queries para que se adapte a pantallas más pequeñas
+// TODO: Pasar a SCSS
 .main-header {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   font-size: 1em;
   padding: 0.7em;
 }
-// .main-header2
+.main-header2 {
+  display: grid;
+  align-items: center;
+}
 .nav-item {
   padding: 0 1%;
 }
@@ -25,7 +29,6 @@
 .login-container{
   display: flex;
   justify-content: flex-end;
-  // padding: 1em;
 }
 .login-button {
   justify-content: flex-end;
