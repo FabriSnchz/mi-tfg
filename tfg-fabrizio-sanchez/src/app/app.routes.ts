@@ -6,10 +6,10 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 export const routes: Routes = [
-  // { path: '', redirectTo: '/inicio', pathMatch: 'full' }, Tipo de enrutamiento pathmath: 'full' redirige a la ruta especificada en el path
-  {path: 'inicio', component: InicioComponent},
-  {path: 'mi-inventario', component: MiInventarioComponent},
-  {path: 'juegos', component: JuegosComponent},
-  {path: 'contacto', component: ContactoComponent},
-  {path: '**', component: PageNotFoundComponent},
+  { path: '', redirectTo: '/inicio', pathMatch: 'full', title: 'Inicio'},
+  {path: 'inicio', component: InicioComponent, title: 'Inicio'},
+  {path: 'mi-inventario', component: MiInventarioComponent, title: 'Mi Inventario'},
+  {path: 'juegos', component: JuegosComponent, title: 'Juegos'},
+  {path: 'contacto', component: ContactoComponent, title: 'Contacto'},
+  {path: '**', component: PageNotFoundComponent, title: 'Page Not Found'},
 ];
