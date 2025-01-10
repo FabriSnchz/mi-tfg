@@ -1,0 +1,139 @@
+main {
+  margin: 2% 2%;
+
+  .title {
+    font-size: 2em;
+  }
+
+  .filter-button,
+  .search-container {
+    display: inline;
+  }
+}
+
+// TODO: Cambiar a SCSS
+
+$primary-color: #ccc;
+$secondary-color: #f0f0f0;
+$btn-color: #000;
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2em;
+  margin: 2em;
+
+  .main-table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 1000px;
+    border: 3px solid purple;
+
+    th, td {
+      border: 1px solid $primary-color;
+      padding: 0.8em;
+      text-align: center;
+    }
+
+    th {
+      background-color: $secondary-color;
+    }
+
+    /* Estilo para el <td> con enlaces */
+    .action-links {
+      display: flex;
+      justify-content: space-between;
+      gap: 1em; /* espacio entre los enlaces */
+    }
+
+    .action-links a {
+      text-decoration: none;
+      color: $btn-color;
+      font-weight: bold;
+      padding: 0.3em;
+      border: 1px solid $btn-color;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .action-links a:hover {
+      background-color: $secondary-color;
+    }
+  }
+
+  .separator {
+    width: 2px;
+    background-color: $btn-color;
+    height: 100px;
+  }
+
+  .logo-table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100px;
+
+    th, td {
+      padding: 0.8em;
+      text-align: center;
+    }
+
+    .delete-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+
+      img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+}
+
+// TODO: Cambiar a medidas relativas
+
+//COLORES
+main {
+  background-color: #2a87d4a2;
+}
+article {
+  background-color: #c02ad4a2;
+}
+figure {
+  background-color: #382ad4a2;
+}
+p {
+  background-color: #d42a54a2;
+}
+.filter-container {
+  background-color: #682ad4a2;
+}
+.search-container {
+  background-color: #2ad4cba2;
+}
+table {
+background-color: #d48a2aa2;
+}
+thead th:nth-child(1) {
+  background-color: #3bd42aa2;
+}
+.line {
+  background-color: #000;
+}
+
+// thead th:nth-child(1) {
+//   width: 20%;
+// }
+// thead th:nth-child(2) {
+//   width: 10%;
+// }
+// thead th:nth-child(3) {
+//   width: 10%;
+// }
+// thead th:nth-child(4) {
+//   width: 20%;
+// }
+// thead th:nth-child(4) {
+//   width: 10%;
+// }
