@@ -1,0 +1,29 @@
+// Variables
+$footer-bg-color: #222;
+$footer-text-color: #fff;
+$link-color: #0fbcf9;
+$link-hover-decoration: underline;
+
+// Estilos
+footer {
+  color: $footer-text-color;
+  text-align: center;
+  padding: 1rem 0;
+  background-color: $footer-bg-color;
+
+  a {
+    color: $link-color;
+    text-decoration: none;
+    margin: 0 10px;
+
+    &:hover {
+      text-decoration: $link-hover-decoration;
+    }
+  }
+}
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+}
+

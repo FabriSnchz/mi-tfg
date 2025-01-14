@@ -1,0 +1,24 @@
+/* Utilizar para responsive:
+    - Unidades relativas
+    - Grid
+    - En imagenes, max-width: 100% o srcset
+    - Tipografía y escalabilidad
+    - Evitar elementos fijos */
+*{ // Parece que si uso :root, hay elementos a los que no les afecta
+  // color-scheme: light dark; // Indica que el color de fondo y texto se adaptará al modo claro y oscuro del sistema
+  margin: 0;
+  padding: 0;
+}
+/* Color principal: #1FD9F2
+  Color secundario: #62E102
+*/
+html, body {
+  // font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  background-color: #f0f0f0;
+  // color: #333;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}

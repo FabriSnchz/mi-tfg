@@ -1,0 +1,74 @@
+<main>
+  <article>
+    <p class="title">Inventario de ...</p>
+    <br>
+    <button class="filter-button">Filtrar</button>
+    <div class="search-container">
+      <input type="text" placeholder="Buscar...">
+      <button>Buscar</button>
+    </div>
+  </article>
+
+  <div class="container">
+    <table class="main-table">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Género</th>
+          <th scope="col">Lanzamiento</th>
+          <th scope="col">Imagenes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ana</td>
+          <td>25</td>
+          <td>Madrid</td>
+          <td class="action-links">
+            <a href="">Ver</a>
+            <a href="">Agregar</a>
+        </tr>
+        <tr>
+          <td>Juan</td>
+          <td>30</td>
+          <td>Barcelona</td>
+          <td class="action-links">
+            <a href="">Ver</a>
+            <a href="">Agregar</a>
+        </tr>
+        <tr>
+          <td>Maria</td>
+          <td>28</td>
+          <td>Valencia</td>
+          <td class="action-links">
+            <a href="">Ver</a>
+            <a href="">Agregar</a>
+        </tr>
+      </tbody>
+    </table>
+    <div class="separator"></div>
+    <!-- Segunda tabla con logotipo de papelera -->
+    <table class="logo-table">
+      <thead>
+        <tr>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <button class="delete-btn" onclick="alert('¡Elemento eliminado!')">
+              <img src="/images/trash.svg" alt="Eliminar" width="30" height="30">
+              <!-- todo: inyectar el .svg en HTML cuando lo tenga que manipular con JS y SCSS -->
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+
+
+

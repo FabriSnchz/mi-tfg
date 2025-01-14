@@ -1,0 +1,36 @@
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+article {
+  text-align: center;
+}
+figure {
+  margin: 2.5%;
+  img {
+    display: block;
+    margin: 2.5% auto;
+    max-width: 100%;
+  }
+}
+
+
+//COLORES
+main {
+  background-color: #c47b2881;
+}
+article {
+  background-color: #28c44a81;
+}
+figure {
+  background-color: #c4289581;
+}
+figure img {
+  background-color: #6128c481;
+}
+p {
+  background-color: #2838c499;
+}
