@@ -2,6 +2,8 @@ export interface Juego {
   id: number;
   name: string;
   genre: string;
-  release: Date;
+  releaseDate: Date;
   photo: string;
+  platform: string[];
+  isMultiplayer: boolean;
 }
