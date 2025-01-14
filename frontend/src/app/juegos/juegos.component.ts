@@ -20,8 +20,4 @@ export class JuegosComponent implements OnInit {
       this.juegos = juegos;
     });
   }
-
-  // agregarAlInventario(juego: Juego): void {
-  //   this.inventarioService.agregarJuego(juego);
-  // }
 }
