@@ -5,5 +5,5 @@ export interface Juego {
   releaseDate: Date;
   photo: string;
   platform: string[];
-  isMultiplayer: boolean;
+  multiplayer: boolean;
 }
