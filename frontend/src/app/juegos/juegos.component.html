@@ -23,6 +23,18 @@
   </div>
 
   <div class="grid">
+
+    <ul>
+        @for (juego of juegos; track $index) {
+        <div class="square">
+          {{ juego.photo }}
+          <!-- <button class="add-button" (click)="agregarAlInventario(juego)">Agregar</button> -->
+          <button class="view-button">Ver</button>
+        </div>
+        }
+    </ul>
+
+
       <div class="square">
           <img src="images/gamepng.png" alt="Imagen 1" class="square-image">
           <button class="add-button">Agregar</button>

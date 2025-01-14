@@ -1,12 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Juego } from '../juegos';
+import { JuegosService } from '../juegos.service';
+import { CommonModule } from '@angular/common';
+import { InventarioService } from '../inventario.service';
 
 @Component({
     selector: 'app-juegos',
     standalone: true,
-    imports: [],
+    imports: [CommonModule],
     templateUrl: './juegos.component.html',
     styleUrl: './juegos.component.scss'
 })
-export class JuegosComponent {
+export class JuegosComponent implements OnInit {
+  juegos: Juego[] = [];
+  constructor(private juegosService: JuegosService, private inventarioService: InventarioService) {}
 
+  ngOnInit(): void {
+    this.juegosService.getJuegos().subscribe(juegos => {
+      this.juegos = juegos;
+    });
+  }
+
+  // agregarAlInventario(juego: Juego): void {
+  //   this.inventarioService.agregarJuego(juego);
+  // }
 }

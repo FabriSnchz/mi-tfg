@@ -20,30 +20,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Ana</td>
-          <td>25</td>
-          <td>Madrid</td>
+        @for (juego of inventario; track $index) {
+          <tr>
+          <td>{{ juego.name }}</td>
+          <td>{{ juego.genre }}</td>
+          <td>{{ juego.releaseDate }}</td>
+          <td>{{ juego.photo }}</td>
           <td class="action-links">
             <a href="">Ver</a>
             <a href="">Agregar</a>
-        </tr>
-        <tr>
-          <td>Juan</td>
-          <td>30</td>
-          <td>Barcelona</td>
-          <td class="action-links">
-            <a href="">Ver</a>
-            <a href="">Agregar</a>
-        </tr>
-        <tr>
-          <td>Maria</td>
-          <td>28</td>
-          <td>Valencia</td>
-          <td class="action-links">
-            <a href="">Ver</a>
-            <a href="">Agregar</a>
-        </tr>
+          </tr>
+        }
       </tbody>
     </table>
     <div class="separator"></div>
