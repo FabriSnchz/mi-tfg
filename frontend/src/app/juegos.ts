@@ -3,7 +3,7 @@ export interface Juego {
   name: string;
   genre: string;
   releaseDate: Date;
-  photo: string;
   platform: string[];
   multiplayer: boolean;
+  photo: string;
 }
