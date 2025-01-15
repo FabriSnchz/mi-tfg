@@ -1,10 +1,8 @@
 main {
   margin: 2% 2%;
-
   .title {
     font-size: 2em;
   }
-
   .filter-button,
   .search-container {
     display: inline;
@@ -12,6 +10,59 @@ main {
 }
 
 // TODO: Cambiar a SCSS
+
+.filter-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.filter-container {
+  position: relative;
+}
+.filter-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.filter-button:hover {
+  background-color: #218838;
+}
+.arrow {
+  font-size: 18px;
+}
+.dropdown {
+  display: none;
+  // position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 150px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.dropdown ul {
+  list-style: none;
+  padding: 10px 0;
+}
+.dropdown ul li {
+  padding: 8px 20px;
+  cursor: pointer;
+}
+.dropdown ul li:hover {
+  background-color: #f4f4f4;
+}
+.filter-container:hover .dropdown {
+  display: block;
+}
 
 $primary-color: #ccc;
 $secondary-color: #f0f0f0;

@@ -1,71 +1,41 @@
 <main>
-<p class="title">Inventario de ...</p>
-<br>
-<div class="container">
-  <div class="filter-section">
+  <p class="title">Inventario de ...</p>
+  <br>
+  <div class="container">
+    <article class="filter-section">
       <div class="filter-container">
-          <button class="filter-button">
-              Filtrar
-              <span class="arrow">&#x2193;</span>
-          </button>
+        <button class="filter-button">Filtrar<span class="arrow">&#x2193;</span></button>
           <div class="dropdown">
-              <ul>
-                  <li>Opción 1</li>
-                  <li>Opción 2</li>
-                  <li>Opción 3</li>
-              </ul>
+            <ul>
+                <li>Opción 1</li>
+                <li>Opción 2</li>
+                <li>Opción 3</li>
+            </ul>
           </div>
-      </div>
-      <div class="search-container">
-        <input type="text" id="search" class="search-input" placeholder="Buscar...">
-        <button class="search-button">Buscar</button>
-    </div>
-  </div>
+        </div>
+        <div class="search-container">
+          <input type="text" id="search" class="search-input" placeholder="Buscar...">
+          <button class="search-button">Buscar</button>
+        </div>
+    </article>
 
   <div class="grid">
 
-    <ul>
         @for (juego of juegos; track $index) {
         <div class="square">
-          {{ juego.photo }}
+          <img src="{{juego.photo}}" alt="Imagen 1" class="square-image">
+          <p>{{juego.name}}</p>
           <!-- <button class="add-button" (click)="agregarAlInventario(juego)">Agregar</button> -->
           <button class="view-button">Ver</button>
         </div>
         }
-    </ul>
 
-
-      <div class="square">
-          <img src="images/gamepng.png" alt="Imagen 1" class="square-image">
-          <button class="add-button">Agregar</button>
-          <button class="view-button">Ver</button>
-      </div>
-      <div class="square">
-          <img src="images/gamepng.png" alt="Imagen 2" class="square-image">
-          <button class="add-button">Agregar</button>
-          <button class="view-button">Ver</button>
-      </div>
-      <div class="square">
-          <img src="images/gamepng.png" alt="Imagen 3" class="square-image">
-          <button class="add-button">Agregar</button>
-          <button class="view-button">Ver</button>
-      </div>
-      <div class="square">
-          <img src="images/gamepng.png" alt="Imagen 4" class="square-image">
-          <button class="add-button">Agregar</button>
-          <button class="view-button">Ver</button>
-      </div>
-      <div class="square">
-        <img src="images/gamepng.png" alt="Imagen 5" class="square-image">
-        <button class="add-button">Agregar</button>
-        <button class="view-button">Ver</button>
-    </div>
   </div>
 
   <div class="pagination">
       <button class="prev-page">← Anterior</button>
       <span class="page-info">Página 1 de 5</span>
       <button class="next-page">Siguiente →</button>
+    </div>
   </div>
-</div>
 </main>

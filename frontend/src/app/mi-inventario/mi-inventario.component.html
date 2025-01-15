@@ -1,11 +1,20 @@
 <main>
-  <article>
-    <p class="title">Inventario de ...</p>
-    <br>
-    <button class="filter-button">Filtrar</button>
+  <p class="title">Inventario de ...</p>
+  <br>
+  <article class="filter-section">
+    <div class="filter-container">
+      <button class="filter-button">Filtrar</button>
+      <div class="dropdown">
+        <ul>
+            <li>Opción 1</li>
+            <li>Opción 2</li>
+            <li>Opción 3</li>
+        </ul>
+      </div>
+    </div>
     <div class="search-container">
-      <input type="text" placeholder="Buscar...">
-      <button>Buscar</button>
+      <input type="text" id="search" class="search-input" placeholder="Buscar...">
+      <button class="search-button">Buscar</button>
     </div>
   </article>
 
@@ -16,6 +25,8 @@
           <th scope="col">Nombre</th>
           <th scope="col">Género</th>
           <th scope="col">Lanzamiento</th>
+          <th scope="col">Plataformas</th>
+          <th scope="col">Multijugador</th>
           <th scope="col">Imagenes</th>
         </tr>
       </thead>
@@ -25,7 +36,13 @@
           <td>{{ juego.name }}</td>
           <td>{{ juego.genre }}</td>
           <td>{{ juego.releaseDate }}</td>
-          <td>{{ juego.photo }}</td>
+          <td>{{ juego.platform }}</td>
+          @if (juego.multiplayer === true) {
+            <td>Sí</td>
+          } @else {
+            <td>No</td>
+          }
+          <td><img style="height: 10px;" src="{{ juego.photo }}" alt=""></td>
           <td class="action-links">
             <a href="">Ver</a>
             <a href="">Agregar</a>
@@ -35,22 +52,25 @@
     </table>
     <div class="separator"></div>
     <!-- Segunda tabla con logotipo de papelera -->
+
     <table class="logo-table">
       <thead>
         <tr>
-          <th>Acción</th>
+          <th><br></th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>
-            <button class="delete-btn" onclick="alert('¡Elemento eliminado!')">
-              <img src="/images/trash.svg" alt="Eliminar" width="30" height="30">
-              <!-- todo: inyectar el .svg en HTML cuando lo tenga que manipular con JS y SCSS -->
-            </button>
-          </td>
-        </tr>
-      </tbody>
+      @for (juego of inventario; track $index) {
+        <tbody>
+          <tr>
+            <td>
+              <button class="delete-btn" onclick="alert('¡Elemento eliminado!')">
+                <img src="/images/trash.svg" alt="Eliminar" width="30" height="30">
+                <!-- todo: inyectar el .svg en HTML cuando lo tenga que manipular con JS y SCSS -->
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      }
     </table>
   </div>
 

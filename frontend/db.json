@@ -4,8 +4,8 @@
       "id": 1,
       "name": "Juego Aventura",
       "genre": "Aventura",
-      "releaseDate": "2023-06-01T00:00:00Z",
-      "photo": "https://example.com/photo1.jpg",
+      "releaseDate": "2023-06-01",
+      "photo": "https://im.ziffdavisinternational.com/ign_es/screenshot/default/cover-gradius34ps2_wkde.jpg",
       "platform": ["PC", "PlayStation 5"],
       "multiplayer": false
     },
@@ -13,8 +13,8 @@
       "id": 2,
       "name": "Juego de Acción",
       "genre": "Acción",
-      "releaseDate": "2024-01-15T00:00:00Z",
-      "photo": "https://example.com/photo2.jpg",
+      "releaseDate": "2024-01-15",
+      "photo": "https://im.ziffdavisinternational.com/ign_es/screenshot/default/ico-japan-cover-front_xs8v.jpg",
       "platform": ["Xbox", "PC"],
       "multiplayer": true
     },
@@ -22,8 +22,8 @@
       "id": 3,
       "name": "Juego Deportivo",
       "genre": "Deportes",
-      "releaseDate": "2022-11-23T00:00:00Z",
-      "photo": "https://example.com/photo3.jpg",
+      "releaseDate": "2022-11-23",
+      "photo": "https://im.ziffdavisinternational.com/ign_es/screenshot/default/free-shipping-custom-poster-nice-bedroom-decor-fas_9w8p.jpg",
       "platform": ["Nintendo Switch", "PlayStation 4"],
       "multiplayer": true
     }
