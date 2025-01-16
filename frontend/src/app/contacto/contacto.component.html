@@ -1,29 +1,78 @@
 <div class="container">
-  <div class="contact-section">
-      <!-- Columna izquierda -->
-      <div class="contact-info">
-          <h1>Contacto</h1>
-          <p>Si tienes alguna pregunta o inquietud, no dudes en ponerte en contacto con nosotros.</p>
-
-          <h2>Teléfono</h2>
-          <p>+34 123 456 789</p>
-
-          <h2>Correo</h2>
-          <p>contactoejemplo.com</p>
-      </div>
-
-      <!-- Columna derecha -->
-      <div class="contact-form">
-          <div class="form-container">
-              <h3>Introduce tu información de contacto</h3>
-              <form action="#" method="POST">
-                  <input type="text" name="nombre" placeholder="Nombre" required>
-                  <input type="text" name="apellidos" placeholder="Apellidos" required>
-                  <input type="email" name="email" placeholder="Correo electrónico" required>
-                  <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
-                  <button type="submit">Enviar</button>
-              </form>
-          </div>
-      </div>
-  </div>
+  <section class="contact-section">
+    <article class="contact-info">
+      <header>
+        <h1>Contacto</h1>
+        <p>Estamos aquí para escucharte</p>
+      </header>
+      <section>
+        <h2>Teléfono</h2>
+        <p>+34 123 456 789</p>
+      </section>
+      <section>
+        <h2>Correo</h2>
+        <p>contactoejemplo.com</p>
+      </section>
+      </article>
+  </section>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+  <section class="contact-section">
+    <!-- Columna izquierda -->
+    <article class="contact-info">
+      <header>
+        <h1>Contacto</h1>
+        <p>Si tienes alguna pregunta o inquietud, no dudes en ponerte en contacto con nosotros.</p>
+      </header>
+
+      <section>
+        <h2>Teléfono</h2>
+        <p>+34 123 456 789</p>
+      </section>
+
+      <section>
+        <h2>Correo</h2>
+        <p>contactoejemplo.com</p>
+      </section>
+    </article>
+
+    <!-- Columna derecha -->
+    <article class="contact-form">
+      <div class="form-container">
+        <header class="header-form">
+          <h3>Introduce tu información de contacto</h3>
+        </header>
+        <form action="#" method="POST" >
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+
+          <label for="apellidos">Apellidos</label>
+          <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" required>
+
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+
+          <label for="mensaje">Tu mensaje</label>
+          <textarea id="mensaje" name="mensaje" placeholder="Tu mensaje" required></textarea>
+
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+
+    </article>
+  </section>
+</div>
+

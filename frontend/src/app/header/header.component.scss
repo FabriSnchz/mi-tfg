@@ -6,19 +6,19 @@
   font-size: 1em;
   padding: 0.7em;
 }
-.main-header2 {
+.nav-header {
   display: grid;
   align-items: center;
 }
 .nav-item {
   padding: 0 1%;
 }
-.main-header2 > nav > ul {
+.nav-header > nav > ul {
   display: flex;
   justify-content: space-around;
   list-style: none;
 }
-.main-header2 > nav > ul > li {
+.nav-header > nav > ul > li {
   display: inline-block;
   padding: 0 5%;
 }
@@ -54,16 +54,16 @@
 .main-header {
   background-color: #6a115e;
 }
-.main-header2 {
+.nav-header {
   background-color: aquamarine;
 }
 .nav-item {
   background-color: #d82f70;
 }
-.main-header2 > nav > ul {
+.nav-header > nav > ul {
   background-color: #f9ff51;
 }
-.main-header2 > nav > ul > li {
+.nav-header > nav > ul > li {
   background-color: #4c24cf;
 }
 .login-container, .logo-container {

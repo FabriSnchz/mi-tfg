@@ -22,3 +22,21 @@ html, body {
   padding: 0;
   height: 100%;
 }
+
+.background {
+  // background-image: url('/images/background2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  min-height: 100vh; /* Asegura que cubra todo el viewport */
+}
+
+@font-face {
+  font-family: 'Humanoid';
+  src: url('../public/fonts/Humanoid.ttf');
+}
+@font-face {
+  font-family: 'Invasion2000';
+  src: url('../public/fonts/Invasion2000.ttf');
+}
