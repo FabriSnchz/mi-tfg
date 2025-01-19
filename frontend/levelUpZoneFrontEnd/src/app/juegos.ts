@@ -1,9 +1,9 @@
 export interface Juego {
   id: number;
-  name: string;
-  genre: string;
-  releaseDate: Date;
-  platform: string[];
-  multiplayer: boolean;
-  photo: string;
+  nombre: string;
+  genero: string;
+  fecha_lanzamiento: Date;
+  plataformas: string[];
+  multijugador: boolean;
+  foto: string;
 }

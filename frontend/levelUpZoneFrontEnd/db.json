@@ -26,6 +26,69 @@
       "photo": "https://im.ziffdavisinternational.com/ign_es/screenshot/default/free-shipping-custom-poster-nice-bedroom-decor-fas_9w8p.jpg",
       "platform": ["Nintendo Switch", "PlayStation 4"],
       "multiplayer": true
+    },
+    {
+      "id": 4,
+      "name": "Juego RPG",
+      "genre": "Rol",
+      "releaseDate": "2021-09-15",
+      "photo": "https://im.ziffdavisinternational.com/ign_es/screenshot/default/rpg-cover-design_8wn9.jpg",
+      "platform": ["PC", "Xbox", "PlayStation 5"],
+      "multiplayer": false
+    },
+    {
+      "id": 5,
+      "name": "Juego de Terror",
+      "genre": "Terror",
+      "releaseDate": "2020-10-31",
+      "photo": "https://im.ziffdavisinternational.com/ign_es/screenshot/default/horror-game-cover_hy7m.jpg",
+      "platform": ["PlayStation 4", "PlayStation 5"],
+      "multiplayer": false
+    },
+    {
+      "id": 6,
+      "name": "Juego de Carreras",
+      "genre": "Carreras",
+      "releaseDate": "2023-03-12",
+      "photo": "https://im.ziffdavisinternational.com/ign_es/screenshot/default/racing-game-cover_ek93.jpg",
+      "platform": ["Nintendo Switch", "Xbox"],
+      "multiplayer": true
+    },
+    {
+      "id": 7,
+      "name": "Juego de Estrategia",
+      "genre": "Estrategia",
+      "releaseDate": "2022-07-10",
+      "photo": "https://im.ziffdavisinternational.com/ign_es/screenshot/default/strategy-game-cover_vtu7.jpg",
+      "platform": ["PC"],
+      "multiplayer": true
+    },
+    {
+      "id": 8,
+      "name": "Juego Indie",
+      "genre": "Indie",
+      "releaseDate": "2023-08-20",
+      "photo": "https://im.ziffdavisinternational.com/ign_es/screenshot/default/indie-game-cover_kl2j.jpg",
+      "platform": ["PC", "Nintendo Switch"],
+      "multiplayer": false
+    },
+    {
+      "id": 9,
+      "name": "Juego de Puzzle",
+      "genre": "Puzzle",
+      "releaseDate": "2021-04-05",
+      "photo": "https://im.ziffdavisinternational.com/ign_es/screenshot/default/puzzle-game-cover_rf8p.jpg",
+      "platform": ["Mobile", "PC"],
+      "multiplayer": false
+    },
+    {
+      "id": 10,
+      "name": "Juego de Ciencia Ficción",
+      "genre": "Ciencia Ficción",
+      "releaseDate": "2023-12-01",
+      "photo": "https://im.ziffdavisinternational.com/ign_es/screenshot/default/sci-fi-game-cover_rtp9.jpg",
+      "platform": ["PC", "PlayStation 5", "Xbox"],
+      "multiplayer": true
     }
   ]
 }
