@@ -33,16 +33,16 @@
       <tbody>
         @for (juego of inventario; track $index) {
           <tr>
-          <td>{{ juego.name }}</td>
-          <td>{{ juego.genre }}</td>
-          <td>{{ juego.releaseDate }}</td>
-          <td>{{ juego.platform }}</td>
-          @if (juego.multiplayer === true) {
+          <td>{{ juego.nombre }}</td>
+          <td>{{ juego.genero }}</td>
+          <td>{{ juego.fecha_lanzamiento }}</td>
+          <td>{{ juego.plataformas }}</td>
+          @if (juego.multijugador === true) {
             <td>Sí</td>
           } @else {
             <td>No</td>
           }
-          <td><img style="height: 10px;" src="{{ juego.photo }}" alt=""></td>
+          <td><img style="height: 10px;" src="{{ juego.foto }}" alt=""></td>
           <td class="action-links">
             <a href="">Ver</a>
             <a href="">Agregar</a>

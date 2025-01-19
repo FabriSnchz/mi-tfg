@@ -7,7 +7,7 @@ import { Observable } from "rxjs";
   providedIn: 'root'
 })
 export class JuegosService {
-  private apiUrl = 'http://localhost:3000/games';  // URL de la API
+  private apiUrl = 'http://localhost:8080/juegos';  // URL de la API
   constructor(private http: HttpClient) { }
   getJuegos(): Observable<Juego[]> {
     return this.http.get<Juego[]>(this.apiUrl);
