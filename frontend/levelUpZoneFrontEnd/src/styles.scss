@@ -4,6 +4,7 @@
     - En imagenes, max-width: 100% o srcset
     - Tipografía y escalabilidad
     - Evitar elementos fijos */
+
 *{ // Parece que si uso :root, hay elementos a los que no les afecta
   // color-scheme: light dark; // Indica que el color de fondo y texto se adaptará al modo claro y oscuro del sistema
   margin: 0;
@@ -11,16 +12,18 @@
 }
 /* Color principal: #1FD9F2
   Color secundario: #62E102
+  Color de letra negra: #333;
+  Color de letra blanca: #eeeeee;
 */
 html, body {
-  // font-family: 'Roboto', sans-serif;
+  font-family: 'Varela Round', 'Roboto', sans-serif;
   font-size: 16px;
   background-color: #f0f0f0;
-  // color: #333;
   line-height: 1.5;
   margin: 0;
   padding: 0;
-  height: 100%;
+  // height: 100%;
+  background: radial-gradient(circle farthest-corner at top, #526d9e, #2c0954);
 }
 
 .background {
@@ -32,6 +35,30 @@ html, body {
   min-height: 100vh; /* Asegura que cubra todo el viewport */
 }
 
+
+
+
+@font-face {
+  font-family: 'Backto1982';
+  src: url('../public/fonts/Backto1982.ttf');
+}
+@font-face {
+  font-family: 'DancingDonuts';
+  src: url('../public/fonts/DancingDonutsNF.ttf');
+}
+@font-face {
+  font-family: 'Flashback';
+  src: url('../public/fonts/Flashback.ttf');
+}
+@font-face {
+  font-family: 'Goffik';
+  src: url('../public/fonts/Goffik-S.ttf');
+}
+@font-face {
+  font-family: 'HangTheDJ';
+  src: url('../public/fonts/HangTheDJ.ttf');
+}
+
 @font-face {
   font-family: 'Humanoid';
   src: url('../public/fonts/Humanoid.ttf');
@@ -40,3 +67,16 @@ html, body {
   font-family: 'Invasion2000';
   src: url('../public/fonts/Invasion2000.ttf');
 }
+@font-face {
+  font-family: 'Invited';
+  src: url('../public/fonts/Invited.ttf');
+}
+@font-face {
+  font-family: 'Varela Round';
+  src: url('../public/fonts/VarelaRound-Regular.ttf');
+}
+@font-face {
+  font-family: 'VelvendaChill';
+  src: url('../public/fonts/VelvendaChill.ttf');
+}
+

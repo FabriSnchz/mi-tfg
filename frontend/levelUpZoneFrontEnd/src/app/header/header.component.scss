@@ -1,26 +1,42 @@
 // TODO: Añadir media queries para que se adapte a pantallas más pequeñas
 // TODO: Pasar a SCSS
+
+* {
+  color: #eeeeee;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+}
 .main-header {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: space-between;
+  // display: grid;
+  // grid-template-columns: repeat(3, 1fr);
   font-size: 1em;
   padding: 0.7em;
 }
 .nav-header {
-  display: grid;
-  align-items: center;
+  display: flex;
+  justify-content: center;
+  // display: grid;
+  // align-items: center;
 }
 .nav-item {
   padding: 0 1%;
 }
 .nav-header > nav > ul {
   display: flex;
-  justify-content: space-around;
-  list-style: none;
+  gap: 1em;
+  // justify-content: space-around;
+  // list-style: none;
+  align-items: center;
 }
 .nav-header > nav > ul > li {
   display: inline-block;
-  padding: 0 5%;
+  // padding: 0 5%; //TODO: hacer que tenga margen y que también aumente el ul
+}
+.nav-header > nav > ul > li > a {
+  text-decoration: none;
+  color: white;
+  white-space: nowrap;
 }
 .logo-container {
   display: flex;
@@ -34,47 +50,57 @@
   justify-content: flex-end;
 }
 .login-button, .logo-button {
-  display: flex;
-  background: none;
-  border: none;
+    display: flex;
+    // background: none;
+    // border: none;
   // padding: 0.2em;
 }
 .levelupzonelogo-img, .login-img {
-  max-width: 15%;
+  max-width: 12.5%;
   height: auto;
   // padding: 0.2em;
 }
 .login-img:hover, .levelupzonelogo-img:hover {
   cursor: pointer;
 }
+.levelupzonelogo-img2{
+  max-width: 4.2em;
+  display: block; /* Evita el espacio en línea */
+  margin: 0 auto;
+  // height: auto;
+  // padding: 0.2em;
+}
 // TODO: Si hay muchos hover, los puedo agrupar abajo a todos
 
 
-// COLORES
-.main-header {
-  background-color: #6a115e;
-}
-.nav-header {
-  background-color: aquamarine;
-}
-.nav-item {
-  background-color: #d82f70;
-}
-.nav-header > nav > ul {
-  background-color: #f9ff51;
-}
-.nav-header > nav > ul > li {
-  background-color: #4c24cf;
-}
-.login-container, .logo-container {
-  background-color: #51ff6e;
-}
-.login-button, .logo-button {
-  background-color: #ff5151;
-}
-.levelupzonelogo-img, .login-img {
-  background-color: #4686a6;
-}
+// // COLORES
+// .main-header {
+//   background-color: #6a115e;
+// }
+// .nav-header {
+//   background-color: aquamarine;
+// }
+// .nav-item {
+//   background-color: #d82f70;
+// }
+// .nav-header > nav > ul {
+//   background-color: #f9ff51;
+// }
+// .nav-header > nav > ul > li {
+//   background-color: #4c24cf;
+// }
+// .login-container, .logo-container {
+//   background-color: #51ff6e;
+// }
+// .login-button, .logo-button {
+//   background-color: #ff5151;
+// }
+// .levelupzonelogo-img, .login-img {
+//   background-color: #4686a6;
+// }
+// .levelupzonelogo-img2{
+//   background-color: #a64646;
+// }
 
 
 

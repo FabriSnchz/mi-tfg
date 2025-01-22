@@ -26,9 +26,25 @@
           <img src="{{juego.foto}}" alt="Imagen 1" class="square-image">
           <p>{{juego.nombre}}</p>
           <!-- <button class="add-button" (click)="agregarAlInventario(juego)">Agregar</button> -->
-          <button class="view-button">Ver</button>
+          <button class="view-button" (click)="openPopup(juego)">Ver</button>
         </div>
         }
+
+        <!-- Pop-up -->
+    <div *ngIf="isPopupVisible" class="popup-overlay" (click)="closePopup()">
+      <div class="popup-content" (click)="$event.stopPropagation()">
+        <button class="popup-close" (click)="closePopup()">&times;</button>
+        <img [src]="selectedJuego?.foto" alt="Imagen del juego" class="popup-image">
+        <div class="popup-text">
+          <h2>{{ selectedJuego?.nombre }}</h2>
+          <p>{{selectedJuego?.fecha_lanzamiento}}</p>
+          <p>{{selectedJuego?.genero}}</p>
+          <p>{{selectedJuego?.multijugador}}</p>
+          <p>{{selectedJuego?.plataformas}}</p>
+          <button (click)="closePopup()">Cerrar</button>
+        </div>
+      </div>
+    </div>
 
   </div>
 

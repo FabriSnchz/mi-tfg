@@ -13,6 +13,8 @@ import { InventarioService } from '../inventario.service';
 })
 export class JuegosComponent implements OnInit {
   juegos: Juego[] = [];
+  isPopupVisible: boolean = false;
+  selectedJuego: Juego | null = null;
   constructor(private juegosService: JuegosService, private inventarioService: InventarioService) {}
 
   ngOnInit(): void {
@@ -20,4 +22,21 @@ export class JuegosComponent implements OnInit {
       this.juegos = juegos;
     });
   }
+
+  openPopup(juego: Juego): void {
+    this.selectedJuego = juego;
+    this.isPopupVisible = true;
+  }
+
+  closePopup(): void {
+    this.isPopupVisible = false;
+    this.selectedJuego = null;
+  }
+
+  trackByFn(index: number): number {
+    return index; // Útil para optimizar la renderización de listas
+  }
+
+
 }
+

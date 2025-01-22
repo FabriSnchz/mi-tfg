@@ -21,11 +21,6 @@ public class JuegoController {
 		this.juegoRepository = juegoRepository;
 	}
 	
-	@GetMapping("/hola")
-	public String holaMundo() {
-		return "hola";
-	}
-	
 	@GetMapping
 	public ResponseEntity<Object> asd(){
 		return ResponseEntity.ok().body(juegoRepository.findAll());

@@ -14,29 +14,36 @@ figure {
     display: block;
     margin: 2.5% auto;
     max-width: 100%;
+    width: 100px;
   }
 }
 .title {
-  // font-size: 10rem;
+  font-size: 10rem;
   margin: 1rem;
-  font-family: 'Invasion2000' , 'HumanoidStraight', 'Humanoid';
+  font-family: 'HangTheDJ','VelvendaChill','Invited','Goffik','Flashback','DancingDonuts','Backto1982','Invasion2000' , 'HumanoidStraight', 'Humanoid';
   letter-spacing: 1rem;
+  // color: #57ef2d;
+  background: linear-gradient(to right, #57ef2d, #b7ffa3);
+      -webkit-background-clip: text; /* Para navegadores basados en WebKit */
+      -webkit-text-fill-color: transparent;
+  // text-shadow: 0 0 10px rgba(63, 255, 45, 0.8), 0 0 20px rgba(102, 255, 140, 0.6), 0 0 30px rgba(69, 174, 106, 0.4);
+
   // font-size: 500%;
 }
 
-//COLORES
-main {
-  // background-color: #c47b2881;
-}
-article {
-  background-color: #28c44a81;
-}
-figure {
-  background-color: #c4289581;
-}
-figure img {
-  background-color: #6128c481;
-}
-p {
-  background-color: #2838c499;
-}
+// //COLORES
+// main {
+//   // background-color: #c47b2881;
+// }
+// article {
+//   background-color: #28c44a81;
+// }
+// figure {
+//   background-color: #c4289581;
+// }
+// figure img {
+//   background-color: #6128c481;
+// }
+// p {
+//   background-color: #2838c499;
+// }

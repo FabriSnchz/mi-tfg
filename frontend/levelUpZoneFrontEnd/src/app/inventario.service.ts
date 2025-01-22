@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class InventarioService {
-  private apiUrl = 'http://localhost:3000/games';
+  private apiUrl = 'http://localhost:8080/juegos';
   constructor(private http: HttpClient) { }
   getJuegos(): Observable<Juego[]> {
     return this.http.get<Juego[]>(this.apiUrl);

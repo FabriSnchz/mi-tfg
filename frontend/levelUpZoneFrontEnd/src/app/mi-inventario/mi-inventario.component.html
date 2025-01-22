@@ -33,23 +33,40 @@
       <tbody>
         @for (juego of inventario; track $index) {
           <tr>
-          <td>{{ juego.nombre }}</td>
-          <td>{{ juego.genero }}</td>
-          <td>{{ juego.fecha_lanzamiento }}</td>
-          <td>{{ juego.plataformas }}</td>
+          <td>{{juego.nombre}}</td>
+          <td>{{juego.genero}}</td>
+          <td>{{juego.fecha_lanzamiento}}</td>
+          <td>{{juego.plataformas}}</td>
           @if (juego.multijugador === true) {
             <td>Sí</td>
           } @else {
             <td>No</td>
           }
           <td><img style="height: 10px;" src="{{ juego.foto }}" alt=""></td>
-          <td class="action-links">
-            <a href="">Ver</a>
-            <a href="">Agregar</a>
+
           </tr>
         }
       </tbody>
     </table>
+
+    <table class="logo-table">
+      <thead>
+        <tr>
+          <th><br></th>
+        </tr>
+      </thead>
+      @for (juego of inventario; track $index) {
+        <tbody>
+          <tr>
+              <td class="action-links">
+                <a href="">Ver</a>
+                <a href="">Agregar</a>
+              </td>
+          </tr>
+        </tbody>
+      }
+    </table>
+
     <div class="separator"></div>
     <!-- Segunda tabla con logotipo de papelera -->
 
