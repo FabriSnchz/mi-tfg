@@ -1,37 +1,72 @@
-/* Utilizar para responsive:
-    - Unidades relativas
-    - Grid
-    - En imagenes, max-width: 100% o srcset
-    - Tipografía y escalabilidad
-    - Evitar elementos fijos */
+/*
+Utilizar para responsive:
+  - Unidades relativas
+  - Grid
+  - En imagenes, max-width: 100% o srcset
+  - Tipografía y escalabilidad
+  - Evitar elementos fijos
+*/
+/*
+  Color principal: #1FD9F2
+  Color secundario: #62E102
+  Color de letra negra: #333;
+  Color de letra blanca: #eeeeee;
+*/
+
+:root {
+  --color-principal: #1FD9F2;
+  --color-secundario: #62E102;
+  --color-letra-negra: #333;
+  --color-letra-blanca: #F5F5F5;
+  --color-blanco-general: #E8E8E8;
+}
 
 *{ // Parece que si uso :root, hay elementos a los que no les afecta
   // color-scheme: light dark; // Indica que el color de fondo y texto se adaptará al modo claro y oscuro del sistema
   margin: 0;
   padding: 0;
 }
-/* Color principal: #1FD9F2
-  Color secundario: #62E102
-  Color de letra negra: #333;
-  Color de letra blanca: #eeeeee;
-*/
+
 html, body {
   font-family: 'Varela Round', 'Roboto', sans-serif;
   font-size: 16px;
   background-color: #f0f0f0;
   line-height: 1.5;
-  margin: 0;
-  padding: 0;
-  // height: 100%;
-  background: radial-gradient(circle farthest-corner at top, #526d9e, #2c0954);
+  // background: radial-gradient(circle farthest-corner at top, #526d9e, #2c0954);
+  background: radial-gradient(circle farthest-corner at top, #2855b0, #41059c);
 }
 
+// .light-effect {
+//   position: absolute;
+//   top: 10%;
+//   left: 50%;
+//   width: 300px;
+//   height: 300px;
+//   background: rgba(255, 255, 255, 0.3);
+//   border-radius: 50%;
+//   box-shadow: 0 0 60px rgba(255, 255, 255, 0.6);
+//   animation: shine 3s infinite alternate;
+//   transform: translate(-50%, -50%);
+// }
+
+@keyframes shine {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 1;
+  }
+}
+
+// FONDO DE PÁGINA (IMAGEN)
 .background {
-  // background-image: url('/images/background2.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100%;
-  width: 100%;
+//   // background-image: url('/images/background2.jpg');
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   height: 100%;
+//   width: 100%;
   min-height: 100vh; /* Asegura que cubra todo el viewport */
 }
 
@@ -58,7 +93,6 @@ html, body {
   font-family: 'HangTheDJ';
   src: url('../public/fonts/HangTheDJ.ttf');
 }
-
 @font-face {
   font-family: 'Humanoid';
   src: url('../public/fonts/Humanoid.ttf');
@@ -79,4 +113,7 @@ html, body {
   font-family: 'VelvendaChill';
   src: url('../public/fonts/VelvendaChill.ttf');
 }
-
+@font-face {
+  font-family: 'Myfont';
+  src: url('../public/fonts/Myfont-Regular.ttf');
+}

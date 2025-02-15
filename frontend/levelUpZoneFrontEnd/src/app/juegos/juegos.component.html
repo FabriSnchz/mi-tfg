@@ -2,7 +2,7 @@
   <p class="title">Inventario de ...</p>
   <br>
   <div class="container">
-    <article class="filter-section">
+    <!-- <article class="filter-section">
       <div class="filter-container">
         <button class="filter-button">Filtrar<span class="arrow">&#x2193;</span></button>
           <div class="dropdown">
@@ -17,9 +17,9 @@
           <input type="text" id="search" class="search-input" placeholder="Buscar...">
           <button class="search-button">Buscar</button>
         </div>
-    </article>
+    </article> -->
 
-  <div class="grid">
+    <div class="grid">
 
         @for (juego of juegos; track $index) {
         <div class="square">
@@ -29,29 +29,31 @@
           <button class="view-button" (click)="openPopup(juego)">Ver</button>
         </div>
         }
-
         <!-- Pop-up -->
-    <div *ngIf="isPopupVisible" class="popup-overlay" (click)="closePopup()">
-      <div class="popup-content" (click)="$event.stopPropagation()">
-        <button class="popup-close" (click)="closePopup()">&times;</button>
-        <img [src]="selectedJuego?.foto" alt="Imagen del juego" class="popup-image">
-        <div class="popup-text">
-          <h2>{{ selectedJuego?.nombre }}</h2>
-          <p>{{selectedJuego?.fecha_lanzamiento}}</p>
-          <p>{{selectedJuego?.genero}}</p>
-          <p>{{selectedJuego?.multijugador}}</p>
-          <p>{{selectedJuego?.plataformas}}</p>
-          <button (click)="closePopup()">Cerrar</button>
-        </div>
-      </div>
+        @if (isPopupVisible) {
+          <div class="popup-overlay" (click)="closePopup()">
+            <div class="popup-content" (click)="$event.stopPropagation()">
+              <button class="popup-close" (click)="closePopup()">&times;</button>
+              <img [src]="selectedJuego?.foto" alt="Imagen del juego" class="popup-image">
+              <div class="popup-text">
+                <h2>{{selectedJuego?.nombre}}</h2>
+                <p><b>Fecha de lanzamiento: </b>{{selectedJuego?.fecha_lanzamiento}}</p>
+                <p><b>Género: </b>{{selectedJuego?.genero}}</p>
+                <p><b>multijugador: </b>{{selectedJuego?.multijugador}}</p>
+                <p><b>Plataformas: </b>{{selectedJuego?.plataformas}}</p>
+                <!-- <button (click)="closePopup()">Cerrar</button> -->
+              </div>
+            </div>
+          </div>
+        }
+
+
     </div>
 
-  </div>
-
-  <div class="pagination">
+    <!-- <div class="pagination">
       <button class="prev-page">← Anterior</button>
       <span class="page-info">Página 1 de 5</span>
       <button class="next-page">Siguiente →</button>
-    </div>
+    </div> -->
   </div>
 </main>

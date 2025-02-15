@@ -1,48 +1,75 @@
 // TODO: Añadir media queries para que se adapte a pantallas más pequeñas
-// TODO: Pasar a SCSS
+// TODO: Pasar a SCSS [x]
+// TODO: Si hay muchos hover, los puedo agrupar abajo a todos
+// TODOS: Abajo de todo.
+
 
 * {
-  color: #eeeeee;
+  z-index: 1;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
 }
-.main-header {
-  display: flex;
-  justify-content: space-between;
-  // display: grid;
-  // grid-template-columns: repeat(3, 1fr);
+header {
+  // DEJO EL DISPLAY FLEX POR SI ACASO DEBO DE REGRESAR A USARLO
+  // display: flex;
+  // justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   font-size: 1em;
   padding: 0.7em;
+  div {
+    a {
+      div {
+        .logo {
+          font-family: 'Myfont';
+          font-size: 1.75rem;
+          // font-size: 2.75rem; // TODO: Con este tamaño puedo escribir algo debajo del título
+          margin-right: 0.5rem;
+        }
+        span {
+          font-family: 'Flashback';
+          color: var(--color-letra-blanca);
+          text-shadow:
+            0 0 5px var(--color-secundario),
+            0 0 10px var(--color-secundario),
+            0 0 20px var(--color-secundario),
+            0 0 40px var(--color-secundario),
+            0 0 80px var(--color-secundario);
+          // animation: flicker 2s infinite;
+        }
+      }
+    }
+  }
 }
 .nav-header {
   display: flex;
   justify-content: center;
   // display: grid;
-  // align-items: center;
-}
-.nav-item {
-  padding: 0 1%;
-}
-.nav-header > nav > ul {
-  display: flex;
-  gap: 1em;
-  // justify-content: space-around;
-  // list-style: none;
   align-items: center;
-}
-.nav-header > nav > ul > li {
-  display: inline-block;
-  // padding: 0 5%; //TODO: hacer que tenga margen y que también aumente el ul
-}
-.nav-header > nav > ul > li > a {
-  text-decoration: none;
-  color: white;
-  white-space: nowrap;
+  .nav-item {
+    padding: 0 1%;
+  }
+  nav {
+    ul {
+      display: flex;
+      gap: 1em;
+      // align-items: center;
+      li {
+        display: inline-block;
+        // padding: 0 5%; //TODO: hacer que tenga margen y que también aumente el ul
+        a {
+          text-decoration: none;
+          color: var(--color-letra-blanca);
+          white-space: nowrap;
+        }
+      }
+    }
+  }
 }
 .logo-container {
   display: flex;
   justify-content: flex-start;
 }
-.login-container{
+.login-container {
   display: flex;
   justify-content: flex-end;
 }
@@ -50,31 +77,17 @@
   justify-content: flex-end;
 }
 .login-button, .logo-button {
-    display: flex;
-    // background: none;
-    // border: none;
+  display: flex;
   // padding: 0.2em;
 }
-.levelupzonelogo-img, .login-img {
+.login-img, .neon-text {
   max-width: 12.5%;
-  height: auto;
-  // padding: 0.2em;
 }
-.login-img:hover, .levelupzonelogo-img:hover {
+.login-img:hover, .neon-text:hover {
   cursor: pointer;
 }
-.levelupzonelogo-img2{
-  max-width: 4.2em;
-  display: block; /* Evita el espacio en línea */
-  margin: 0 auto;
-  // height: auto;
-  // padding: 0.2em;
-}
-// TODO: Si hay muchos hover, los puedo agrupar abajo a todos
-
-
-// // COLORES
-// .main-header {
+// COLORES
+// header {
 //   background-color: #6a115e;
 // }
 // .nav-header {
@@ -102,9 +115,90 @@
 //   background-color: #a64646;
 // }
 
-
-
 // CUANDO LOS BOTONES ESTÁN ACTIVOS
 .activebutton {
-  background: #bddbfa linear-gradient(to bottom, #bddbfa 5%, #80b5ea 100%);
+  background-color: var(--color-secundario);
+  color: var(--color-letra-blanca);
+  border-radius: 10rem;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 4px 6px #0000001a;
+  // font-weight: bold; // TODO: ¿Cúal es mejor, con o sin?
+  transition: all 0.3s ease; /* Suavidad al interactuar */
+  // TODO: Revisar
 }
+
+// TEXTO EN NEÓN
+.neon-text {
+  font-size: 1.7rem;
+  display: flex; // Permite manejar letras como bloques individuales
+  font-weight: bold;
+}
+.lowercase {
+  font-size: 1rem;
+  letter-spacing: 0.2rem;
+  margin-top: 0.875rem;
+}
+
+
+
+/* Diferentes letras con animaciones únicas */
+
+span:nth-child(2) {
+  animation: flicker 3s infinite;
+}
+span:nth-child(4) {
+  animation: off 4s infinite;
+}
+span:nth-child(6),
+span:nth-child(8) {
+  animation: flicker 2.5s infinite alternate;
+}
+span:nth-child(11) {
+  animation: off 5s infinite;
+}
+
+/* Animación de parpadeo */
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow:
+      0 0 5px var(--color-secundario),
+      0 0 10px var(--color-secundario),
+      0 0 20px var(--color-secundario),
+      0 0 40px var(--color-secundario),
+      0 0 80px var(--color-secundario);
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+    opacity: 0.3;
+  }
+}
+
+/* Animación de apagado */
+@keyframes off {
+  0%, 80% {
+    text-shadow: none;
+    opacity: 0.2;
+  }
+  81%, 100% {
+    text-shadow:
+      0 0 5px var(--color-secundario),
+      0 0 10px var(--color-secundario),
+      0 0 20px var(--color-secundario),
+      0 0 40px var(--color-secundario),
+      0 0 80px var(--color-secundario);
+    opacity: 1;
+    }
+  }
+
+
+
+
+// OBSOLETO
+// .levelupzonelogo-img2{
+//   max-width: 4.2em;
+//   display: block;
+//   margin: 0 auto;
+//   // height: auto;
+//   // padding: 0.2em;
+// }

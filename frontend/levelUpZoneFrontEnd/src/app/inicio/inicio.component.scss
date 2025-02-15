@@ -1,39 +1,44 @@
+// TODO: Añadir media queries para que se adapte a pantallas más pequeñas
+// TODO: Pasar a SCSS [x]
+// TODO: Si hay muchos hover, los puedo agrupar abajo a todos
+
 main {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
   width: 100%;
-}
-article {
-  text-align: center;
-}
-figure {
-  margin: 2.5%;
-  img {
-    display: block;
-    margin: 2.5% auto;
-    max-width: 100%;
-    width: 100px;
+  article {
+    text-align: center;
+    figure {
+      margin: 2.5%;
+      img {
+        display: block;
+        margin: 2.5% auto;
+        max-width: 100%;
+        width: 100px;
+      }
+    }
   }
 }
-.title {
-  font-size: 10rem;
-  margin: 1rem;
-  font-family: 'HangTheDJ','VelvendaChill','Invited','Goffik','Flashback','DancingDonuts','Backto1982','Invasion2000' , 'HumanoidStraight', 'Humanoid';
-  letter-spacing: 1rem;
-  // color: #57ef2d;
-  background: linear-gradient(to right, #57ef2d, #b7ffa3);
-      -webkit-background-clip: text; /* Para navegadores basados en WebKit */
-      -webkit-text-fill-color: transparent;
-  // text-shadow: 0 0 10px rgba(63, 255, 45, 0.8), 0 0 20px rgba(102, 255, 140, 0.6), 0 0 30px rgba(69, 174, 106, 0.4);
 
-  // font-size: 500%;
-}
+
+// .title {
+//   font-size: 10rem;
+//   margin: 1rem;
+//   letter-spacing: 1rem;
+//   // color: #57ef2d;
+//   background: linear-gradient(to right, #57ef2d, #b7ffa3);
+//       -webkit-background-clip: text; /* Para navegadores basados en WebKit */
+//       -webkit-text-fill-color: transparent;
+//   text-shadow: 0 0 10px rgba(63, 255, 45, 0.8), 0 0 20px rgba(102, 255, 140, 0.6), 0 0 30px rgba(69, 174, 106, 0.4);
+
+//   // font-size: 500%;
+// }
 
 // //COLORES
 // main {
-//   // background-color: #c47b2881;
+  // background-color: #c47b2881;
 // }
 // article {
 //   background-color: #28c44a81;
@@ -47,3 +52,74 @@ figure {
 // p {
 //   background-color: #2838c499;
 // }
+
+// // TEXTO EN NEÓN
+// .neon-text {
+//   font-size: 4rem;
+//   display: flex; /* Permite manejar letras como bloques individuales */
+//   font-weight: bold;
+// }
+
+// .letter {
+//   font-family: 'Flashback';
+//   color: #fff;
+//   text-shadow:
+//     0 0 5px #ff1177,
+//     0 0 10px #ff1177,
+//     0 0 20px #ff1177,
+//     0 0 40px #ff1177,
+//     0 0 80px #ff1177;
+//   animation: flicker 2s infinite;
+// }
+// // --------------------------
+
+// /* Diferentes letras con animaciones únicas */
+
+// .letter:nth-child(2) {
+//   animation: flicker 3s infinite;
+// }
+// .letter:nth-child(4) {
+//   animation: off 4s infinite;
+// }
+// .letter:nth-child(6),
+// .letter:nth-child(8) {
+//   animation: flicker 2.5s infinite alternate;
+// }
+// .letter:nth-child(11) {
+//   animation: off 5s infinite;
+// }
+
+// /* Animación de parpadeo */
+// @keyframes flicker {
+//   0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+//     text-shadow:
+//       0 0 5px #ff1177,
+//       0 0 10px #ff1177,
+//       0 0 20px #ff1177,
+//       0 0 40px #ff1177,
+//       0 0 80px #ff1177;
+//     opacity: 1;
+//   }
+//   20%, 24%, 55% {
+//     text-shadow: none;
+//     opacity: 0.3;
+//   }
+// }
+
+// /* Animación de apagado */
+// @keyframes off {
+//   0%, 80% {
+//     text-shadow: none;
+//     opacity: 0.2;
+//   }
+//   81%, 100% {
+//     text-shadow:
+//       0 0 5px #ff1177,
+//       0 0 10px #ff1177,
+//       0 0 20px #ff1177,
+//       0 0 40px #ff1177,
+//       0 0 80px #ff1177;
+//     opacity: 1;
+//     }
+//   }
+
