@@ -22,7 +22,7 @@ public class JuegoController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<Object> asd(){
+	public ResponseEntity<Object> findAll(){
 		return ResponseEntity.ok().body(juegoRepository.findAll());
 	}
 	

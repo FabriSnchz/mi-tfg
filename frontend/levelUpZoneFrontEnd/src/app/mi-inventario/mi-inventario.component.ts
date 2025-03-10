@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Juego } from '../juegos';
-import { InventarioService } from '../inventario.service';
 import { CommonModule } from '@angular/common';
+import { Coleccion } from '../colecciones';
+import { ColeccionesService } from '../colecciones.service';
 
 @Component({
     selector: 'app-mi-inventario',
@@ -11,12 +11,16 @@ import { CommonModule } from '@angular/common';
     styleUrl: './mi-inventario.component.scss'
 })
 export class MiInventarioComponent implements OnInit {
-  inventario: Juego[] = [];
-  constructor(private inventarioService: InventarioService) {}
+
+  inventario: Coleccion[] = [];
+
+constructor(private coleccioneService: ColeccionesService) {}
 
   ngOnInit(): void {
-    this.inventarioService.getJuegos().subscribe(juegos =>{
-      this.inventario = juegos
+    this.coleccioneService.getColecciones().subscribe(colecciones =>{
+      this.inventario = colecciones
   });
   }
+
+
 }

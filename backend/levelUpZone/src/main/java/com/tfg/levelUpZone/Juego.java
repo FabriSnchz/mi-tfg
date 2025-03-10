@@ -12,6 +12,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -28,12 +30,23 @@ public class Juego {
     private Boolean multijugador;
     private String foto;
     
-    @ElementCollection
-    @CollectionTable(name = "juegos_plataformas", joinColumns = @JoinColumn(name = "id_juego"))
-    @Column(name = "plataforma")
-    private List<String> plataformas;
+//    @ElementCollection
+//    @CollectionTable(name = "juegos_plataformas", joinColumns = @JoinColumn(name = "id_juego"))
+//    @Column(name = "plataforma")
+//    private List<String> plataformas;
     
-    public Juego(Long id, String nombre, String genero, Date fecha_lanzamiento, List<String> plataformas,
+    @ManyToMany(mappedBy = "juegos")
+    private List<Plataforma> plataformas;
+    
+    @ManyToMany
+    @JoinTable(
+        name = "colecciones_juegos",
+        joinColumns = @JoinColumn(name = "id_juego"),
+        inverseJoinColumns = @JoinColumn(name = "id_coleccion")
+    )
+    private List<Coleccion> colecciones;
+    
+    public Juego(Long id, String nombre, String genero, Date fecha_lanzamiento, List<Plataforma> plataformas,
 			Boolean multijugador, String foto) {
 		super();
 		this.id = id;
@@ -81,11 +94,11 @@ public class Juego {
 		this.fecha_lanzamiento = fecha_lanzamiento;
 	}
 
-	public List<String> getPlataformas() {
+	public List<Plataforma> getPlataformas() {
 		return plataformas;
 	}
 
-	public void setPlataformas(List<String> plataformas) {
+	public void setPlataformas(List<Plataforma> plataformas) {
 		this.plataformas = plataformas;
 	}
 
