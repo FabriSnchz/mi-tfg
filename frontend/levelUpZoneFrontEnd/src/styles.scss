@@ -117,3 +117,6 @@ html, body {
   font-family: 'Myfont';
   src: url('../public/fonts/Myfont-Regular.ttf');
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,53 @@
+<div class="grid">
+@for (juego of juegos; track $index) {
+  <div class="square">
+    <mat-card class="example-card" appearance="outlined">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title><p>{{juego.nombre}}</p></mat-card-title>
+      </mat-card-header>
+
+        <!-- <button class="add-button" (click)="agregarAlInventario(juego)">Agregar</button> -->
+        <img src="{{juego.foto}}" alt="Imagen 1" class="square-image">
+        <mat-card-content>
+          <p>
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+            bred for hunting.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button class="view-button" (click)="openPopup(juego)">Ver</button>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  @if (isPopupVisible) {
+    <div class="popup-overlay" (click)="closePopup()">
+      <div class="popup-content" (click)="$event.stopPropagation()">
+        <button class="popup-close" (click)="closePopup()">&times;</button>
+        <img [src]="selectedJuego?.foto" alt="Imagen del juego" class="popup-image">
+        <div class="popup-text">
+          <h2>{{selectedJuego?.nombre}}</h2>
+          <p><b>Fecha de lanzamiento: </b>{{selectedJuego?.fecha_lanzamiento}}</p>
+          <p><b>Género: </b>{{selectedJuego?.genero}}</p>
+          <p><b>multijugador: </b>{{selectedJuego?.multijugador}}</p>
+          <p><b>Plataformas: </b>{{selectedJuego?.plataformas}}</p>
+          <!-- <button (click)="closePopup()">Cerrar</button> -->
+        </div>
+      </div>
+    </div>
+  }
+  }
+
+</div>
+
+
+
+
+
+
+  <!-- Pop-up -->
+
+

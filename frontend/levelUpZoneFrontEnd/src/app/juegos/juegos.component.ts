@@ -11,31 +11,6 @@ import { InventarioService } from '../inventario.service';
     templateUrl: './juegos.component.html',
     styleUrl: './juegos.component.scss'
 })
-export class JuegosComponent implements OnInit {
-  juegos: Juego[] = [];
-  isPopupVisible: boolean = false;
-  selectedJuego: Juego | null = null;
-  constructor(private juegosService: JuegosService, private inventarioService: InventarioService) {}
-
-  ngOnInit(): void {
-    this.juegosService.getJuegos().subscribe(juegos => {
-      this.juegos = juegos;
-    });
-  }
-
-  openPopup(juego: Juego): void {
-    this.selectedJuego = juego;
-    this.isPopupVisible = true;
-  }
-
-  closePopup(): void {
-    this.isPopupVisible = false;
-    this.selectedJuego = null;
-  }
-
-  trackByFn(index: number): number {
-    return index; // Útil para optimizar la renderización de listas
-  }
-
+export class JuegosComponent {
 
 }
