@@ -12,5 +12,24 @@ import { InventarioService } from '../inventario.service';
     styleUrl: './juegos.component.scss'
 })
 export class JuegosComponent {
+  juegos: Juego[] = [];
+  isPopupVisible: boolean = false;
+  selectedJuego: Juego | null = null;
+  constructor(private juegosService: JuegosService, private inventarioService: InventarioService) {}
 
+  ngOnInit(): void {
+    this.juegosService.getJuegos().subscribe(juegos => {
+      this.juegos = juegos;
+    });
+  }
+
+  openPopup(juego: Juego): void {
+    this.selectedJuego = juego;
+    this.isPopupVisible = true;
+  }
+
+  closePopup(): void {
+    this.isPopupVisible = false;
+    this.selectedJuego = null;
+  }
 }
