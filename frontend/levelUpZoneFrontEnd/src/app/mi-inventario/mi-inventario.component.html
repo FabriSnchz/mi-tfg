@@ -19,7 +19,7 @@
   </article> -->
 
   <div class="container">
-    <table class="main-table">
+    <!-- <table class="main-table">
       <thead>
         <tr>
           <th scope="col">Nombre</th>
@@ -32,7 +32,6 @@
       </thead>
       <tbody>
         @for (coleccion of inventario; track $index) {
-          <!-- <tr> -->
           @for (juego of coleccion.juegos; track $index) {
             <tr>
             <td>{{juego.nombre}}</td>
@@ -52,7 +51,6 @@
             <td><img style="height: 10px;" src="{{ juego.foto }}" alt=""></td>
           </tr>
           }
-          <!-- </tr> -->
         }
       </tbody>
     </table>
@@ -78,7 +76,6 @@
     </table>
 
     <div class="separator"></div>
-    <!-- Segunda tabla con logotipo de papelera -->
 
     <table class="logo-table">
       <thead>
@@ -93,14 +90,18 @@
             <td>
               <button class="delete-btn" onclick="alert('¡Elemento eliminado!')">
                 <img src="/images/trash.svg" alt="Eliminar" width="30" height="30">
-                <!-- todo: inyectar el .svg en HTML cuando lo tenga que manipular con JS y SCSS -->
               </button>
             </td>
           </tr>
         </tbody>
       }
     }
-    </table>
-  </div>
+  </table> -->
+
+  <app-table></app-table>
+</div>
+
 
 </main>
+
+<!-- todo: inyectar el .svg en HTML cuando lo tenga que manipular con JS y SCSS -->

@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Coleccion } from '../colecciones';
 import { ColeccionesService } from '../colecciones.service';
+import { TableComponent } from "../table/table.component";
 
 @Component({
     selector: 'app-mi-inventario',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, TableComponent],
     templateUrl: './mi-inventario.component.html',
     styleUrl: './mi-inventario.component.scss'
 })
