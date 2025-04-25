@@ -30,10 +30,45 @@ Utilizar para responsive:
 html, body {
   font-family: 'Varela Round', 'Roboto', sans-serif;
   font-size: 16px;
-  background-color: #f0f0f0;
+  // background-color: #f0f0f0;
   line-height: 1.5;
-  // background: radial-gradient(circle farthest-corner at top, #526d9e, #2c0954);
-  background: radial-gradient(circle farthest-corner at top, #2855b0, #41059c);
+
+
+  background-color: #2196f3; // Base blue color
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px; // Size of each grid cell
+}
+
+// Estilos para el modo claro
+.grid-background {
+  min-height: 100vh; // Para cubrir toda la pantalla
+  background-color: #2196f3; // Azul claro (modo claro)
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+// Estilos para modo oscuro
+.dark-theme .grid-background {
+  min-height: 100vh; // Para cubrir toda la pantalla
+  background-color: #121212;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+
+  color: var(--color-letra-blanca);
+}
+
+.common-div {
+  border-radius: 1em;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 1em;
+  margin: 1em;
+  background-color: var(--color-blanco-general);
 }
 
 // .light-effect {

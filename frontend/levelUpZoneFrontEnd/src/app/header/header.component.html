@@ -34,7 +34,22 @@
     </nav>
   </div>
 
-  <div class="login-container">
-    <a class="login-button"><img class="login-img" src="/images/LoginLogo.png" alt="LoginLogo.png"></a>
+  <div class="third-column">
+    <!-- * Toggle -->
+    <!-- TODO: Colocar iconos de sol y luna 🌞🌙-->
+    <!-- TODO: Colocar tres estilos de backround: predeterminado, claro, oscuro -->
+    <!-- ! Cuando recargo la página, no se mantiene el estilo -->
+    <mat-slide-toggle (change)="toggleTheme()"></mat-slide-toggle>
+    <!-- * Icono de usuario -->
+    <button mat-button [matMenuTriggerFor]="menu" class="login-button"><img class="login-img" src="/images/LoginLogo.png" alt="LoginLogo.png"></button>
+    <mat-menu #menu="matMenu">
+      <a href="" style="color: inherit; text-decoration: none;"><button mat-menu-item>Ver Perfil</button></a>
+      <a href="" style="color: inherit; text-decoration: none;"><button mat-menu-item>Cerrar Sesión</button></a>
+    </mat-menu>
   </div>
-</header>
+
+
+
+
+
+  </header>

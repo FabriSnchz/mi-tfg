@@ -69,18 +69,23 @@ header {
   display: flex;
   justify-content: flex-start;
 }
-.login-container {
+.third-column {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-end; // Alinea a la derecha
+  align-items: center;       // Centra verticalmente los elementos
+  // gap: 9rem;
 }
-.login-button {
-  justify-content: flex-end;
-}
-.login-button, .logo-button {
+.logo-button {
   display: flex;
   // padding: 0.2em;
 }
-.login-img, .neon-text {
+.login-img {
+  width: 3em;
+  height: auto;
+  display: flex;
+}
+
+.neon-text {
   max-width: 12.5%;
 }
 .login-img:hover, .neon-text:hover {
@@ -194,11 +199,50 @@ span:nth-child(11) {
 
 
 
-// OBSOLETO
-// .levelupzonelogo-img2{
-//   max-width: 4.2em;
-//   display: block;
-//   margin: 0 auto;
-//   // height: auto;
-//   // padding: 0.2em;
-// }
+
+
+  .theme-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+  }
+
+  .icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .dark-mode .icon:nth-child(2) {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .dark-mode .icon:nth-child(1) {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+
+  .light-theme .icon:nth-child(1) {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .light-theme .icon:nth-child(2) {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+
+
+
+  /* Puedes personalizar más, por ejemplo, cambiar otros componentes */
+
+
