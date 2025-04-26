@@ -17,24 +17,24 @@
           </p>
         </mat-card-content>
         <mat-card-actions>
-          <button class="view-button" (click)="openPopup(juego)">Ver</button>
+          <button class="view-button" (click)="openDialog(juego)">Ver</button>
           <button mat-button>LIKE</button>
           <button mat-button>SHARE</button>
         </mat-card-actions>
       </mat-card>
     </div>
-  @if (isPopupVisible) {
-    <div class="popup-overlay" (click)="closePopup()">
-      <div class="popup-content" (click)="$event.stopPropagation()">
-        <button class="popup-close" (click)="closePopup()">&times;</button>
-        <img [src]="selectedJuego?.foto" alt="Imagen del juego" class="popup-image">
-        <div class="popup-text">
+  @if (isDialogVisible) {
+    <div class="dialog-overlay" (click)="closeDialog()">
+      <div class="dialog-content" (click)="$event.stopPropagation()">
+        <button class="dialog-close" (click)="closeDialog()">&times;</button>
+        <img [src]="selectedJuego?.foto" alt="Imagen del juego" class="dialog-image">
+        <div class="dialog-text">
           <h2>{{selectedJuego?.nombre}}</h2>
           <p><b>Fecha de lanzamiento: </b>{{selectedJuego?.fecha_lanzamiento}}</p>
           <p><b>Género: </b>{{selectedJuego?.genero}}</p>
           <p><b>multijugador: </b>{{selectedJuego?.multijugador}}</p>
           <p><b>Plataformas: </b>{{selectedJuego?.plataformas}}</p>
-          <!-- <button (click)="closePopup()">Cerrar</button> -->
+          <!-- <button (click)="closeDialog()">Cerrar</button> -->
         </div>
       </div>
     </div>

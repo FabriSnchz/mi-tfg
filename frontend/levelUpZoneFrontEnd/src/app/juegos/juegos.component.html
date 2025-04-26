@@ -13,36 +13,14 @@
     </article> -->asdfasdfafadsfadsf
 
     <div class="grid">
-
-        @for (juego of juegos; track $index) {
+      @for (juego of juegos; track $index) {
         <div class="square">
-          <img src="{{juego.foto}}" alt="Imagen 1" class="square-image">
+          <img src="{{juego.foto}}" alt="{{juego.foto}}" class="square-image">
           <p>{{juego.nombre}}</p>
           <!-- <button class="add-button" (click)="agregarAlInventario(juego)">Agregar</button> -->
-          <button class="view-button" (click)="openPopup(juego)">Ver</button>
+          <button class="view-button" mat-raised-button (click)="openDialog('100ms', '100ms', juego)">Pick one</button>
         </div>
-        }
-        <!-- Pop-up -->
-        @if (isPopupVisible) {
-          <div class="popup-overlay" (click)="closePopup()">
-            <div class="popup-content" (click)="$event.stopPropagation()">
-              <button class="popup-close" (click)="closePopup()">&times;</button>
-              <img [src]="selectedJuego?.foto" alt="Imagen del juego" class="popup-image">
-              <div class="popup-text">
-                <h2>{{selectedJuego?.nombre}}</h2>
-                <p><b>Fecha de lanzamiento: </b>{{selectedJuego?.fecha_lanzamiento}}</p>
-                <p><b>Género: </b>{{selectedJuego?.genero}}</p>
-                <p><b>multijugador: </b>{{selectedJuego?.multijugador}}</p>
-                <p><b>Plataformas: </b>{{selectedJuego?.plataformas}}</p>
-                <!-- <button (click)="closePopup()">Cerrar</button> -->
-              </div>
-            </div>
-          </div>
-        }
-
-
-
-
+      }
     </div>
 
     <!-- <div class="pagination">

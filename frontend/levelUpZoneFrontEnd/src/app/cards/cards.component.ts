@@ -16,7 +16,7 @@ import { InventarioService } from '../inventario.service';
 })
 export class CardsComponent implements OnInit{
   juegos: Juego[] = [];
-  isPopupVisible: boolean = false;
+  isDialogVisible: boolean = false;
   selectedJuego: Juego | null = null;
   constructor(private juegosService: JuegosService, private inventarioService: InventarioService) {}
 
@@ -26,13 +26,13 @@ export class CardsComponent implements OnInit{
     });
   }
 
-  openPopup(juego: Juego): void {
+  openDialog(juego: Juego): void {
     this.selectedJuego = juego;
-    this.isPopupVisible = true;
+    this.isDialogVisible = true;
   }
 
-  closePopup(): void {
-    this.isPopupVisible = false;
+  closeDialog(): void {
+    this.isDialogVisible = false;
     this.selectedJuego = null;
   }
 }
