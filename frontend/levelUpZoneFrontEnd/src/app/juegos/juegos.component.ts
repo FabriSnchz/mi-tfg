@@ -5,19 +5,31 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent,  MatDialogRef,  MatDialogTitle, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @Component({
     selector: 'app-juegos',
     standalone: true,
-    imports: [CommonModule, MatButtonModule],
+    imports: [CommonModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule],
     changeDetection: ChangeDetectionStrategy.OnPush, // Se utiliza para mejorar el rendimiento de la aplicación al evitar la detección de cambios innecesarios.
     templateUrl: './juegos.component.html',
     styleUrl: './juegos.component.scss'
 })
 export class JuegosComponent implements OnInit {
-
+  juegos: Juego[] = [];
+  juegosFiltrados: Juego[] = [];
   readonly dialog = inject(MatDialog);
+  constructor(private readonly juegosService: JuegosService) {}
+
+  ngOnInit(): void {
+    this.juegosService.emitirJuegos(); // Dispara la carga inicial de juegos
+    this.juegosService.juegos$.subscribe(juegos => {
+      this.juegos = juegos;
+      this.juegosFiltrados = juegos; // Inicializa los juegos filtrados con todos los juegos
+    });
+  }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string, juego: Juego): void {
     this.dialog.open(Dialog, {
@@ -29,15 +41,15 @@ export class JuegosComponent implements OnInit {
     });
   }
 
-
-  juegos: Juego[] = [];
-  constructor(private readonly juegosService: JuegosService) {}
-
-  ngOnInit(): void {
-    this.juegosService.emitirJuegos(); // Dispara la carga inicial de juegos
-    this.juegosService.juegos$.subscribe(juegos => {
-      this.juegos = juegos;
-    });
+  filtrarResultado(texto: string) {
+    if (!texto) {
+      this.juegosFiltrados = this.juegos;
+      return;
+    }
+    this.juegosFiltrados = this.juegos.filter(
+      juegosFiltrados =>
+  juegosFiltrados?.nombre.toLowerCase().includes(texto.toLowerCase())
+    );
   }
 }
 

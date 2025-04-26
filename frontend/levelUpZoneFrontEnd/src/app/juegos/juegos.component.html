@@ -2,18 +2,29 @@
 <p class="title">Inventario de ...</p>
   <br>
   <div class="container">
-    <!-- <article class="filter-section">
-      <div class="filter-container">
-        <button class="filter-button">Filtrar<span class="arrow">&#x2193;</span></button>
-          <div class="dropdown">
-@ -17,43 +17,14 @@
-          <input type="text" id="search" class="search-input" placeholder="Buscar...">
-          <button class="search-button">Buscar</button>
+
+
+
+      <article class="filter-section">
+        <div class="filter-container">
+
+          <form (submit)="$event.preventDefault()">
+            <mat-form-field>
+              <mat-label>Buscar por nombre</mat-label>
+              <input matInput #filter>
+            </mat-form-field>
+            <!-- <button mat-button type="button" (click)="filtrarResultado(filter.value)">Buscar</button> -->
+            <button mat-mini-fab type="button" (click)="filtrarResultado(filter.value)">
+              <mat-icon>search</mat-icon>
+            </button>
+          </form>
+
         </div>
-    </article> -->asdfasdfafadsfadsf
+      </article>
+
 
     <div class="grid">
-      @for (juego of juegos; track $index) {
+      @for (juego of juegosFiltrados; track $index) {
         <div class="square">
           <img src="{{juego.foto}}" alt="{{juego.foto}}" class="square-image">
           <p>{{juego.nombre}}</p>
@@ -27,6 +38,6 @@
       <button class="prev-page">← Anterior</button>
       <span class="page-info">Página 1 de 5</span>
       <button class="next-page">Siguiente →</button>
-    </div> -->
+    </div>  -->
   </div>
 </main>
