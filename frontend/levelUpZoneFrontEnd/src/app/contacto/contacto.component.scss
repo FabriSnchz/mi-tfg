@@ -1,5 +1,5 @@
 // TODO: Añadir media queries para que se adapte a pantallas más pequeñas
-// TODO: Pasar a SCSS [X]
+// TODO: Pasar a SCSS []
 // TODO: Si hay muchos hover, los puedo agrupar abajo a todos
 // TODO: Cambiar a medidas relativas
 
@@ -16,37 +16,13 @@
   // grid-template-columns: 1fr 1fr;
   .background-container {
     display: flex;
-    // justify-content: space-between;
+    flex-direction: column;
     justify-content: space-around;
     gap: 2%;
     margin-bottom: 2%;
     padding: 2%;
-
     border-radius: 0.6rem;
-
     background-color: #0000007a;
-    // filter: blur(0.5px);
-    .info-flex {
-      width: 14rem;
-      height: 14rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5%;
-      align-items: center;
-
-      border-radius: 0.6rem;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      border: 2px solid #ccc;
-
-      background-color: #3ABEF9;
-      figure {
-        display: contents; // Hace que el figure desaparezca visualmente como contenedor, pero mantiene su contenido en el flujo del documento
-        img {
-          width: 30%;
-        }
-      }
-    }
   }
   .img-form-container {
     display: grid;
@@ -98,10 +74,91 @@
   }
 }
 
+.contact-grid {
+  -webkit-box-align: start;
+  display: flex;
+  justify-content: space-between;
+  .contact-card {
+    flex-basis: 14rem;
+    // margin: 0 15px 30px;
+    overflow: hidden;
+    // border-radius: 28px; //TODO: Este? o el de abajo?
+    border-radius: 0.6rem;
+    // Los colorinchis
+    .contact-card-content {
+      display: block;
+      padding: 1.875rem 1.25rem;
+      background-color: #121212;
+      // TODO: Cambiar color, muy oscuro
+      overflow: hidden;
+      position: relative;
+    }
+    .contact-card-content:hover,
+    .contact-card-content:hover .contact-item-details,
+    .contact-card-content:hover .contact-item-details h1 a
+    {
+      text-decoration: none;
+      color: #FFF;
+    }
+    .contact-card-content:hover .contact-card-background {
+      -webkit-transform: scale(10);
+      -ms-transform: scale(10);
+      transform: scale(10);
+    }
+  }
+}
+.contact-item-title {
+  min-height: 5.4375rem;
+  margin: 0 0 25px;
+  overflow: hidden;
+  font-weight: bold;
+  color: #FFF;
+  z-index: 2;
+  position: relative;
+}
+.contact-item-info-box {
+  color: #FFF;
+  z-index: 2;
+  position: relative;
+}
+.contact-item-details,
+.contact-item-details h1 a {
+  color: #f9b234;
+  text-decoration: none;
+  -webkit-transition: color .5s ease;
+  -o-transition: color .5s ease;
+  transition: color .5s ease
+}
+.contact-card-background {
+  height: 8rem;
+  width: 8rem;
+  background-color: #f9b234;
+  z-index: 1;
+  position: absolute;
+  top: -75px;
+  right: -75px;
+  border-radius: 50%;
+  -webkit-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
+}
+.contact-card:nth-child(2n) .contact-card-background {
+  background-color: #3ecd5e;
+}
+.contact-card:nth-child(3n) .contact-card-background {
+  background-color: #e44002;
+}
+.contact-card:nth-child(4n) .contact-card-background {
+  background-color: #952aff;
+}
 
-
-
-
+// Por si quiero añadir más cards
+// .contact-card:nth-child(5n) .contact-card-background {
+//   background-color: #cd3e94;
+// }
+// .contact-card:nth-child(6n) .contact-card-background {
+//   background-color: #4c49ea;
+// }
 
 
 // COLORES
@@ -111,6 +168,39 @@
 .info-container {
   // background-color: #b1a938;
 }
-.info-flex {
-  // background-color: #38b152;
+
+
+@media only screen and (max-width: 979px) {
+  .contact-card {
+    -ms-flex-preferred-size: calc(50% - 30px);
+    flex-basis: calc(50% - 30px);
+  }
+  .contact-item-title {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .ag-format-container {
+    width: 96%;
+  }
+
+}
+@media only screen and (max-width: 639px) {
+  .contact-card {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+  }
+  .contact-item-title {
+    min-height: 72px;
+    line-height: 1;
+
+    font-size: 24px;
+  }
+  .contact-card-content {
+    padding: 22px 40px;
+  }
+  .contact-item-info-box {
+    font-size: 16px;
+  }
 }
