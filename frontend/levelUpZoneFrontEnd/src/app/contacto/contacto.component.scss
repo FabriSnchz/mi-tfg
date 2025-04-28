@@ -7,6 +7,8 @@
   box-sizing: border-box;
 }
 
+
+
 .main-container {
   max-width: 85%;
   margin: 0 auto;  // Centrado automático
@@ -14,6 +16,13 @@
   margin-top: 2rem;
   // display: grid;
   // grid-template-columns: 1fr 1fr;
+  .title{
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--color-letra-negra);
+    text-align: center;
+    margin-bottom: 2%;
+  }
   .background-container {
     display: flex;
     flex-direction: column;
@@ -22,7 +31,7 @@
     margin-bottom: 2%;
     padding: 2%;
     border-radius: 0.6rem;
-    background-color: #0000007a;
+    // background-color: #0000007a;
   }
   .img-form-container {
     display: grid;
@@ -32,7 +41,7 @@
       border: 2px solid #ccc;
       padding: 4%;
       border-radius: 0.6rem;
-      box-shadow: 0 2px 10px rgba(2, 1, 1, 0.1);
+      box-shadow: 0 2px 10px #0201011a;
       background-color: #3ABEF9;
       h2 {
         margin-bottom: 4.2%;
@@ -80,15 +89,26 @@
   justify-content: space-between;
   .contact-card {
     flex-basis: 14rem;
-    // margin: 0 15px 30px;
+    margin: 0 0 3rem 0;
+    // TODO: Hacer que todos los margenes sean iguales
     overflow: hidden;
     // border-radius: 28px; //TODO: Este? o el de abajo?
     border-radius: 0.6rem;
+    border: #121212 solid 1px;
+
+    box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
+    -webkit-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
+    -moz-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
     // Los colorinchis
     .contact-card-content {
       display: block;
       padding: 1.875rem 1.25rem;
-      background-color: #121212;
+      background-color: #1e1e1e;
+
+
       // TODO: Cambiar color, muy oscuro
       overflow: hidden;
       position: relative;
@@ -105,6 +125,9 @@
       -ms-transform: scale(10);
       transform: scale(10);
     }
+  }
+  .contact-grid:hover {
+    transform: translateY(-5px);
   }
 }
 .contact-item-title {
