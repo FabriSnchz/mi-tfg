@@ -1,13 +1,14 @@
-import { APP_ID, Component } from '@angular/core';
+import { APP_ID, Component, Inject } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { RouterOutlet } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, RouterOutlet, Router } from '@angular/router';
+import { CommonModule, DOCUMENT } from '@angular/common';
+import { LoadingComponent } from './loading/loading.component';
 
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [RouterOutlet, HeaderComponent, FooterComponent, CommonModule],
+    imports: [RouterOutlet, HeaderComponent, FooterComponent, CommonModule, LoadingComponent],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
     providers: [
@@ -15,17 +16,40 @@ import { CommonModule } from '@angular/common';
     ]
 })
 export class AppComponent {
-  isDarkTheme = false; // Puedes controlar esto con un botón de toggle
   title = 'level-up-zone';
+  isDarkTheme = false;
+  isLoading = true;
 
+ // * Se inyecta el token DOCUMENT para acceder al DOM de forma segura, compatible con SSR y sin depender directamente de 'document'
+  constructor(@Inject(DOCUMENT) private readonly document: Document, private readonly router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        this.isLoading = true;
+      }
+
+      if (
+        event instanceof NavigationEnd ||
+        event instanceof NavigationCancel ||
+        event instanceof NavigationError
+      ) {
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 500); // 1 segundo
+      }
+    });
+  }
+
+  // * Alterna entre los temas claro y oscuro aplicando clases CSS al <body>.
   toggleThemeFromHeader(): void {
     this.isDarkTheme = !this.isDarkTheme;
+    const body = this.document.body;
+
     if (this.isDarkTheme) {
-      document.body.classList.add('dark-mode');
-      document.body.classList.remove('light-theme');
+      body.classList.add('dark-mode');
+      body.classList.remove('light-theme');
     } else {
-      document.body.classList.remove('dark-mode');
-      document.body.classList.add('light-theme');
+      body.classList.remove('dark-mode');
+      body.classList.add('light-theme');
     }
   }
 }

@@ -1,7 +1,17 @@
-<div [ngClass]="isDarkTheme ? 'dark-theme' : 'light-theme'">
-  <div class="grid-background">
-    <app-header (themeToggled)="toggleThemeFromHeader()" (isDarkTheme)="isDarkTheme"></app-header> <!-- aquí escucha -->
-    <router-outlet></router-outlet>
-    <app-footer></app-footer> <!-- aquí escucha -->
+@if (isLoading) {
+  <!-- TODO: Al cargar la página se pierda la animación del header -->
+  <div [ngClass]="isDarkTheme ? 'dark-theme' : 'light-theme'">
+    <div class="grid-background">
+      <app-loading/>
+    </div>
   </div>
-</div>
+}
+@if (!isLoading) {
+  <div [ngClass]="isDarkTheme ? 'dark-theme' : 'light-theme'">
+    <div class="grid-background">
+      <app-header (themeToggled)="toggleThemeFromHeader()" (isDarkTheme)="isDarkTheme"></app-header>
+      <router-outlet></router-outlet>
+      <app-footer></app-footer>
+    </div>
+  </div>
+}

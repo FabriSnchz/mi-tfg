@@ -21,6 +21,10 @@ Utilizar para responsive:
   @include mat.expansion-overrides((
     container-background-color: var(--color-secundario),
     ));
+
+    @include mat.progress-spinner-overrides((
+      active-indicator-color: orange,
+    ));
 }
 
 *{ // Parece que si uso :root, hay elementos a los que no les afecta
