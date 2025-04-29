@@ -38,10 +38,14 @@
     grid-template-columns: 1fr 1fr;
     gap: 2%;
     .form-container {
-      border: 2px solid #ccc;
+      border: #121212 solid 1px;
       padding: 4%;
       border-radius: 0.6rem;
-      box-shadow: 0 2px 10px #0201011a;
+
+      box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
+      -webkit-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
+      -moz-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
+
       background-color: #3ABEF9;
       h2 {
         margin-bottom: 4.2%;
@@ -227,3 +231,15 @@
     font-size: 16px;
   }
 }
+
+mat-expansion-panel {
+  border: #121212 solid 1px;
+}
+
+
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+  box-shadow: 9px 9px 0px 1px rgba(0, 0, 0, 1);
+  -webkit-box-shadow: 9px 9px 0px 1px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
+}
+
