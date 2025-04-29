@@ -126,7 +126,10 @@ header {
   color: var(--color-letra-blanca);
   border-radius: 10rem;
   padding: 0.5rem 1rem;
-  box-shadow: 0 4px 6px #0000001a;
+  // box-shadow: 0 4px 6px #0000001a;
+  box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
+  -webkit-box-shadow: 5px 5px 0px 1px rgba(0,0,0,1);
+  -moz-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
   // font-weight: bold; // TODO: ¿Cúal es mejor, con o sin?
   transition: all 0.3s ease; /* Suavidad al interactuar */
   // TODO: Revisar
