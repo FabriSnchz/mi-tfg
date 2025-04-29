@@ -29,7 +29,16 @@
           <img src="{{juego.foto}}" alt="{{juego.foto}}" class="square-image">
           <p>{{juego.nombre}}</p>
           <!-- <button class="add-button" (click)="agregarAlInventario(juego)">Agregar</button> -->
-          <button class="view-button" mat-raised-button (click)="openDialog('100ms', '100ms', juego)">Pick one</button>
+
+          <div class="button-container">
+            <button mat-icon-button mat-dialog-close>
+              <mat-icon aria-hidden="false" aria-label="Example close icon" fontIcon="star"></mat-icon>
+            </button>
+            <button class="view-button" mat-raised-button (click)="openDialog('100ms', '100ms', juego)">Saber más</button>
+            <button mat-icon-button mat-dialog-close>
+              <mat-icon aria-hidden="false" aria-label="Example close icon" fontIcon="add"></mat-icon>
+            </button>
+          </div>
         </div>
       }
     </div>

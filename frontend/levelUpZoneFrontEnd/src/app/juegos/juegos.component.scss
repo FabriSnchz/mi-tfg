@@ -92,13 +92,18 @@ main {
   gap: 2%;
   margin-bottom: 2%;
   .square {
-    background-color: rgb(0, 0, 0);
-    // border: 2px solid #ccc;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background-color: #2a90c3;
+    border: 2px solid #000000;
+    // box-shadow: 0 5px 15px #0000004d;
+    box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
+    -webkit-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
+    -moz-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
     border-radius: 8px;
     padding: 1.5%;
     text-align: center;
     // position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
     .square-image {
       width: 100%;
       height: 350px;
@@ -119,6 +124,19 @@ main {
       margin: 4% 0 1% 0;
     }
   }
+  .square:hover {
+    transform: translateY(-5px);
+  }
+}
+
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem; /* Espacio entre los botones */
+  // margin-top: 20px; /* Espacio superior */
+
 }
 
 // TODO: Saber como ordenarlo con SCSS
