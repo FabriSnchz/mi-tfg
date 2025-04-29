@@ -1,30 +1,74 @@
-<!-- <div class="background">
-  <main>
+<div class="background">
+  <main style="display: flex; flex-direction: column;">
     <article>
       <figure>
-        <img class="levelupzonelogo-img" src="/images/LevelUpZoneLogoCenter.png" alt="LevelUpZoneLogo"/>
-<div class="neon-text">
-  <span class="letter">L</span>
-  <span class="letter">e</span>
-  <span class="letter">v</span>
-  <span class="letter">e</span>
-  <span class="letter">l</span>
-  <span class="letter"> </span>
-  <span class="letter">U</span>
-  <span class="letter">p</span>
-  <span class="letter"> </span>
-  <span class="letter">Z</span>
-  <span class="letter">o</span>
-  <span class="letter">n</span>
-  <span class="letter">e</span>
+        <img class="levelupzonelogo-img" src="/images/logo_pixel_art.png" alt="LevelUpZoneLogo"/>
+        <div class="levelupzone-title">
+          <h1><i>Level Up</i></h1>
+          <h1><i>Zone</i></h1>
+          <i>Power up your store. Master your collection 👾</i>
+        </div>
+      </figure>
+
+      <p>¡Bienvenido al centro de mando definitivo para tu tienda de videojuegos!</p>
+
+        <p>Organiza, gestiona y potencia tu colección con una plataforma potente e intuitiva, diseñada especialmente para apasionados y profesionales del gaming.
+Controla el inventario, destaca las nuevas incorporaciones y agiliza tus ventas — todo desde un mismo lugar.
+        </p>
+
+        <p>Ya sea que dirijas una tienda boutique o un gran espacio comercial, este panel de control te brindará las herramientas para llevar tu negocio al siguiente nivel.</p>
+
+    </article>
+
+
+<!-- * Carrusel -->
+
+
+<div class="grid">
+  <h1>Últimas noticias</h1>
+  <div class="container">
+      <div class="slides">
+        @for (slide of slides; track $index; let i = $index) {
+          <div id="slide1" [ngClass]="{'active': selectedSlide === i}">
+            <img [src]="slide" alt=""/>
+          </div>
+        }
+      </div>
+
+    <div class="thumbnails">
+      @for (slide of slides; track $index; let i = $index) {
+        <div>
+          <a (click)="selectSlide(i)">
+            <img [src]="slide" alt="news">
+          </a>
+        </div>
+      }
+    </div>
+  </div>
 </div>
 
-        <img src="/images/LevelUpZoneTitle.png" alt="">
-      </figure>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt explicabo nam ratione asperiores! Fuga maxime, nihil reiciendis, eaque pariatur sed aspernatur eligendi consequatur atque, dolor amet necessitatibus assumenda voluptatibus soluta?</p>
-      <div class="cta-button">
-        <button>Botón</button>
-      </div>
-    </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   </main>
-</div> -->
+
+    <!-- Contacto  -->
+
+
+
+
+
+
+
+</div>
