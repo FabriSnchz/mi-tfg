@@ -6,49 +6,51 @@ Utilizar para responsive:
   - Tipografía y escalabilidad
   - Evitar elementos fijos
 */
-/*
-  Color principal: #1FD9F2
-  Color secundario: #62E102
-  Color de letra negra: #333;
-  Color de letra blanca: #eeeeee;
-*/
+
+@use '@angular/material' as mat;
+
 
 :root {
   --color-principal: #1FD9F2;
-  --color-secundario: #62E102;
+  // --color-secundario: #62E102;
+  --color-secundario:  #3ecd5e;
   --color-letra-negra: #333;
   --color-letra-blanca: #F5F5F5;
   --color-blanco-general: #E8E8E8;
+
+  @include mat.expansion-overrides((
+    container-background-color: var(--color-secundario),
+    ));
 }
 
 *{ // Parece que si uso :root, hay elementos a los que no les afecta
   // color-scheme: light dark; // Indica que el color de fondo y texto se adaptará al modo claro y oscuro del sistema
+  // TODO: Saber si usar color-sheme o no
   margin: 0;
   padding: 0;
 }
 
 html, body {
   font-family: 'Varela Round', 'Roboto', sans-serif;
+  // font-family: Roboto, "Helvetica Neue", sans-serif;
   font-size: 16px;
-  // background-color: #f0f0f0;
   line-height: 1.5;
-
-
-  background-color: #2196f3; // Base blue color
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
-  background-size: 50px 50px; // Size of each grid cell
+  height: 100%;
+  scroll-behavior: smooth;
 }
 
 // Estilos para el modo claro
 .grid-background {
   min-height: 100vh; // Para cubrir toda la pantalla
-  background-color: #2196f3; // Azul claro (modo claro)
+  background-color: #2196f3;
   background-image:
-    linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
-  background-size: 50px 50px;
+  linear-gradient(#0000001a 0.0625rem, transparent 0.0625rem),
+  linear-gradient(90deg, #0000001a 0.0625rem, transparent 0.0625rem);
+  background-size: 3.125rem 3.125rem;
+  ::selection {
+    background-color: #ffb347; /* Color de fondo cuando seleccionas */
+    color: var(--color-letra-blanca);            /* Color del texto seleccionado */
+  }
 }
 
 // Estilos para modo oscuro
@@ -61,51 +63,11 @@ html, body {
   background-size: 50px 50px;
 
   color: var(--color-letra-blanca);
-}
-
-.common-div {
-  border-radius: 1em;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  padding: 1em;
-  margin: 1em;
-  background-color: var(--color-blanco-general);
-}
-
-// .light-effect {
-//   position: absolute;
-//   top: 10%;
-//   left: 50%;
-//   width: 300px;
-//   height: 300px;
-//   background: rgba(255, 255, 255, 0.3);
-//   border-radius: 50%;
-//   box-shadow: 0 0 60px rgba(255, 255, 255, 0.6);
-//   animation: shine 3s infinite alternate;
-//   transform: translate(-50%, -50%);
-// }
-
-@keyframes shine {
-  0% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 0.6;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1.2);
-    opacity: 1;
+  ::selection {
+    background-color: #ffb347; // Color de fondo cuando seleccionas
+    color: var(--color-letra-negra); // Color del texto seleccionado
   }
 }
-
-// FONDO DE PÁGINA (IMAGEN)
-.background {
-//   // background-image: url('/images/background2.jpg');
-//   background-repeat: no-repeat;
-//   background-size: cover;
-//   height: 100%;
-//   width: 100%;
-  min-height: 100vh; /* Asegura que cubra todo el viewport */
-}
-
-
 
 
 @font-face {
@@ -152,6 +114,3 @@ html, body {
   font-family: 'Myfont';
   src: url('../public/fonts/Myfont-Regular.ttf');
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
