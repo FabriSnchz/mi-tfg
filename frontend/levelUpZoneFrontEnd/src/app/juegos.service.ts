@@ -21,4 +21,6 @@ export class JuegosService {
       this.juegosSubject.next(juegos); // Emitir la lista de juegos a través del BehaviorSubject
     });
   }
+
+
 }

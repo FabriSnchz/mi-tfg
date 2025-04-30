@@ -201,11 +201,20 @@ h1 {
 
 .slides div {
   width: 75vmin;
-  height: 100vmin;
+  height: auto;
   position: absolute;
   z-index: 1;
   opacity: 0;  /* Las imágenes inicialmente están ocultas */
   transition: opacity 1s ease;
+
+  border: #121212 solid 1px;
+  border-radius: 0.6rem;
+  overflow: hidden;
+
+
+  box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
+  -webkit-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
+  -moz-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
 }
 
 .slides div.active {
@@ -221,10 +230,19 @@ h1 {
 .thumbnails img {
   // width: 30vmin;
   width: 7rem;
-  height: 20vmin;
+  height: 22.69vmin;
   object-fit: cover;
   object-position: top;
-  border-radius: 1rem;
+
+  border: #121212 solid 1px;
+  border-radius: 0.6rem;
+  overflow: hidden;
+
+  margin: 0 0.5rem;
+
+  box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
+  -webkit-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
+  -moz-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
 }
 
 .thumbnails img:hover {
@@ -291,9 +309,25 @@ h1 {
   }
 }
 
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+  z-index: 4;
+  pointer-events: none; /* Evita que el texto interfiera con clics */
+  text-align: center;
+  padding: 0 1rem;
+}
+
+
 // * COLORES
 .container {
-  background-color:#00ffc3;
+  // background-color:#00ffc3;
 }
 .slides {
   background-color:#6fff00;
@@ -306,4 +340,41 @@ h1 {
 }
 .thumbnails {
   background-color:#ff0000;
+}
+
+
+// * Carrusel2
+.carousel-container {
+  max-width: 40rem; /* o el tamaño que desees */
+  margin: 0 auto; /* centra el carrusel */
+
+
+}
+.slide-text {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+}
+.slide-wrapper {
+  /* border-radius: 10px; */
+  /* overflow: hidden; */
+  height: 250px;
+  border: #121212 solid 1px;
+  border-radius: 0.6rem;
+  overflow: hidden;
+  img { /*! Si funciona*/
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+    box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
+    -webkit-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
+    -moz-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
+  }
 }
