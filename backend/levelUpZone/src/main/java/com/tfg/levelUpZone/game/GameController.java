@@ -1,4 +1,4 @@
-package com.tfg.levelUpZone;
+package com.tfg.levelUpZone.game;
 
 import java.util.Optional;
 
@@ -12,25 +12,25 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/juegos")
-public class JuegoController {
+@RequestMapping("/games")
+public class GameController {
 	
 	@Autowired
-	private final JuegoRepository juegoRepository;
-	private JuegoController(JuegoRepository juegoRepository) {
-		this.juegoRepository = juegoRepository;
+	private final GameRepository gameRepository;
+	private GameController(GameRepository gameRepository) {
+		this.gameRepository = gameRepository;
 	}
 	
 	@GetMapping
 	public ResponseEntity<Object> findAll(){
-		return ResponseEntity.ok().body(juegoRepository.findAll());
+		return ResponseEntity.ok().body(gameRepository.findAll());
 	}
 	
 	@GetMapping("/{requestedId}")
-	private ResponseEntity<Juego> findById(@PathVariable Long requestedId) {
-		Optional<Juego> juegoOptional = juegoRepository.findById(requestedId);
-		if(juegoOptional.isPresent()) {
-		return ResponseEntity.ok(juegoOptional.get());
+	private ResponseEntity<Game> findById(@PathVariable Long requestedId) {
+		Optional<Game> gameOptional = gameRepository.findById(requestedId);
+		if(gameOptional.isPresent()) {
+		return ResponseEntity.ok(gameOptional.get());
 		} else {
 		return ResponseEntity.notFound().build();
 		}

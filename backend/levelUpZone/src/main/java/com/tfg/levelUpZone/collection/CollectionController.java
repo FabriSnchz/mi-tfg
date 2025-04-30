@@ -1,4 +1,4 @@
-package com.tfg.levelUpZone;
+package com.tfg.levelUpZone.collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,17 +9,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/colecciones")
-public class ColeccionController {
+@RequestMapping("/collections")
+public class CollectionController {
 	
 	@Autowired
-	private final ColeccionRepository coleccionRepository;
-	private ColeccionController(ColeccionRepository coleccionRepository) {
-		this.coleccionRepository = coleccionRepository;
+	private final CollectionRepository collectionRepository;
+	private CollectionController(CollectionRepository collectionRepository) {
+		this.collectionRepository = collectionRepository;
 	}
 	
 	@GetMapping
 	public ResponseEntity<Object> findAll(){
-		return ResponseEntity.ok().body(coleccionRepository.findAll());
+		return ResponseEntity.ok().body(collectionRepository.findAll());
 	}
 }
