@@ -1,11 +1,11 @@
-import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { BehaviorSubject } from 'rxjs';
-import { ColeccionesService } from '../colecciones.service';
-import { Coleccion } from '../colecciones';
+import { Collection } from '../collections';
+import { CollectionsService } from '../collections.service';
 
 @Component({
   selector: 'app-table',
@@ -15,29 +15,28 @@ import { Coleccion } from '../colecciones';
 })
 export class TableComponent implements OnInit, AfterViewInit {
 
-  // TODO: Hacer tabla para juegos
+  // TODO: Hacer tabla para Games
   // TODO: Hacer tabla para admin después. Osea que sea dínamica, dependiendo de que usuario vienen los datos.
   // TODO: Incluir Sorting, filtro y paginación
 
-  inventario: Coleccion[] = [];
-  displayedColumns: string[] = ['nombre', 'genero', 'fecha_lanzamiento', 'plataformas', 'multijugador', 'foto'];
+  displayedColumns: string[] = ['name', 'genre', 'release_date', 'platforms', 'multiplayer', 'photo'];
   dataSubject = new BehaviorSubject<any[]>([]);
   // idCatalogoGuardado: number = 0;
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>([]);
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private readonly coleccioneService: ColeccionesService) {}
+  constructor(private readonly collectionsService: CollectionsService) {}
 
   ngOnInit(): void {
     console.log('ngOnInit ejecutado');
-    this.coleccioneService.getColecciones().subscribe(colecciones => {
-      console.log('Colecciones obtenidas:', colecciones);
-      this.dataSubject.next(colecciones); // Actualiza el BehaviorSubject
+    this.collectionsService.getCollections().subscribe(collections => {
+      console.log('Colecciones obtenidas:', collections);
+      this.dataSubject.next(collections); // Actualiza el BehaviorSubject
     });
 
-    this.dataSubject.subscribe(datos => {
-      console.log('Datos recibidos en el dataSubject:', datos);  // Ver los datos al cambiar
-      this.dataSource.data = datos; // Refleja cambios en la tabla
+    this.dataSubject.subscribe(receivedData => {
+      console.log('Datos recibidos en el dataSubject:', receivedData);  // Ver los datos al cambiar
+      this.dataSource.data = receivedData; // Refleja cambios en la tabla
     });
 }
 

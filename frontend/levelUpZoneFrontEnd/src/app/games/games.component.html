@@ -24,17 +24,17 @@
 
 
     <div class="grid">
-      @for (juego of juegosFiltrados; track $index) {
+      @for (game of FilteredGames; track $index) {
         <div class="square">
-          <img src="{{juego.foto}}" alt="{{juego.foto}}" class="square-image">
-          <p>{{juego.nombre}}</p>
-          <!-- <button class="add-button" (click)="agregarAlInventario(juego)">Agregar</button> -->
+          <img src="{{game.foto}}" alt="{{game.foto}}" class="square-image">
+          <p>{{game.nombre}}</p>
+          <!-- <button class="add-button" (click)="agregarAlInventario(game)">Agregar</button> -->
 
           <div class="button-container">
             <button mat-icon-button mat-dialog-close>
               <mat-icon aria-hidden="false" aria-label="Example close icon" fontIcon="star"></mat-icon>
             </button>
-            <button class="view-button" mat-raised-button (click)="openDialog('100ms', '100ms', juego)">Saber más</button>
+            <button class="view-button" mat-raised-button (click)="openDialog('100ms', '100ms', game)">Saber más</button>
             <button mat-icon-button mat-dialog-close>
               <mat-icon aria-hidden="false" aria-label="Example close icon" fontIcon="add"></mat-icon>
             </button>

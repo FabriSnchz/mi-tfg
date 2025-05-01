@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit, Inject } from '@angular/core';
-import { Juego } from '../juegos';
-import { JuegosService } from '../juegos.service';
+import { Game } from '../games';
+import { GamesService } from '../games.service';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent,  MatDialogRef,  MatDialogTitle, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -10,45 +10,45 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @Component({
-    selector: 'app-juegos',
+    selector: 'app-games',
     standalone: true,
     imports: [CommonModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule],
     changeDetection: ChangeDetectionStrategy.OnPush, // Se utiliza para mejorar el rendimiento de la aplicación al evitar la detección de cambios innecesarios.
-    templateUrl: './juegos.component.html',
-    styleUrl: './juegos.component.scss'
+    templateUrl: './games.component.html',
+    styleUrl: './games.component.scss'
 })
-export class JuegosComponent implements OnInit {
-  juegos: Juego[] = [];
-  juegosFiltrados: Juego[] = [];
+export class GamesComponent implements OnInit {
+  Games: Game[] = [];
+  FilteredGames: Game[] = [];
   readonly dialog = inject(MatDialog);
-  constructor(private readonly juegosService: JuegosService) {}
+  constructor(private readonly GamesService: GamesService) {}
 
   ngOnInit(): void {
-    this.juegosService.emitirJuegos(); // Dispara la carga inicial de juegos
-    this.juegosService.juegos$.subscribe(juegos => {
-      this.juegos = juegos;
-      this.juegosFiltrados = juegos; // Inicializa los juegos filtrados con todos los juegos
+    this.GamesService.emitirGames(); // Dispara la carga inicial de Games
+    this.GamesService.Games$.subscribe(Games => {
+      this.Games = Games;
+      this.FilteredGames = Games; // Inicializa los Games filtrados con todos los Games
     });
   }
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string, juego: Juego): void {
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string, game: Game): void {
     this.dialog.open(Dialog, {
       width: '90%',
       height: '75%',
       enterAnimationDuration,
       exitAnimationDuration,
-      data: { selectedJuego: juego } // Pasa el juego seleccionado al diálogo
+      data: { selectedGame: game } // Pasa el game seleccionado al diálogo
     });
   }
 
   filtrarResultado(texto: string) {
     if (!texto) {
-      this.juegosFiltrados = this.juegos;
+      this.FilteredGames = this.Games;
       return;
     }
-    this.juegosFiltrados = this.juegos.filter(
-      juegosFiltrados =>
-  juegosFiltrados?.nombre.toLowerCase().includes(texto.toLowerCase())
+    this.FilteredGames = this.Games.filter(
+      FilteredGames =>
+  FilteredGames?.nombre.toLowerCase().includes(texto.toLowerCase())
     );
   }
 }
@@ -56,15 +56,15 @@ export class JuegosComponent implements OnInit {
 @Component({
   selector: 'dialog',
   templateUrl: 'dialog.html',
-  styleUrl: 'juegos.component.scss',
+  styleUrl: 'Games.component.scss',
   imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent, MatIconModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Dialog {
-  selectedJuego: Juego | null = null;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { selectedJuego: Juego },
-    private readonly juegosService: JuegosService) {
-      this.selectedJuego = data.selectedJuego;
+  selectedGame: Game | null = null;
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { selectedGame: Game },
+    private readonly GamesService: GamesService) {
+      this.selectedGame = data.selectedGame;
       }
   readonly dialogRef = inject(MatDialogRef<Dialog>);
 }

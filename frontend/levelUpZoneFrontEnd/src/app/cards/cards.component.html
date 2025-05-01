@@ -1,14 +1,14 @@
 <div class="grid">
-@for (juego of juegos; track $index) {
+@for (game of Games; track $index) {
   <div class="square">
     <mat-card class="example-card" appearance="outlined">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title><p>{{juego.nombre}}</p></mat-card-title>
+        <mat-card-title><p>{{game.nombre}}</p></mat-card-title>
       </mat-card-header>
 
-        <!-- <button class="add-button" (click)="agregarAlInventario(juego)">Agregar</button> -->
-        <img src="{{juego.foto}}" alt="Imagen 1" class="square-image">
+        <!-- <button class="add-button" (click)="agregarAlInventario(game)">Agregar</button> -->
+        <img src="{{game.foto}}" alt="Imagen 1" class="square-image">
         <mat-card-content>
           <p>
             The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
@@ -17,7 +17,7 @@
           </p>
         </mat-card-content>
         <mat-card-actions>
-          <button class="view-button" (click)="openDialog(juego)">Ver</button>
+          <button class="view-button" (click)="openDialog(game)">Ver</button>
           <button mat-button>LIKE</button>
           <button mat-button>SHARE</button>
         </mat-card-actions>
@@ -27,13 +27,13 @@
     <div class="dialog-overlay" (click)="closeDialog()">
       <div class="dialog-content" (click)="$event.stopPropagation()">
         <button class="dialog-close" (click)="closeDialog()">&times;</button>
-        <img [src]="selectedJuego?.foto" alt="Imagen del juego" class="dialog-image">
+        <img [src]="selectedGame?.foto" alt="Imagen del juego" class="dialog-image">
         <div class="dialog-text">
-          <h2>{{selectedJuego?.nombre}}</h2>
-          <p><b>Fecha de lanzamiento: </b>{{selectedJuego?.fecha_lanzamiento}}</p>
-          <p><b>Género: </b>{{selectedJuego?.genero}}</p>
-          <p><b>multijugador: </b>{{selectedJuego?.multijugador}}</p>
-          <p><b>Plataformas: </b>{{selectedJuego?.plataformas}}</p>
+          <h2>{{selectedGame?.nombre}}</h2>
+          <p><b>Fecha de lanzamiento: </b>{{selectedGame?.fecha_lanzamiento}}</p>
+          <p><b>Género: </b>{{selectedGame?.genero}}</p>
+          <p><b>multijugador: </b>{{selectedGame?.multijugador}}</p>
+          <p><b>Plataformas: </b>{{selectedGame?.plataformas}}</p>
           <!-- <button (click)="closeDialog()">Cerrar</button> -->
         </div>
       </div>

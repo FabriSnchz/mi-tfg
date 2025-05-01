@@ -1,9 +1,9 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
-import { Juego } from '../juegos';
-import { JuegosService } from '../juegos.service';
-import { InventarioService } from '../inventario.service';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { Game } from '../games';
+import { GamesService } from '../games.service';
+import { CollectionsService } from '../collections.service';
 
 
 
@@ -15,24 +15,24 @@ import { InventarioService } from '../inventario.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardsComponent implements OnInit{
-  juegos: Juego[] = [];
+  Games: Game[] = [];
   isDialogVisible: boolean = false;
-  selectedJuego: Juego | null = null;
-  constructor(private juegosService: JuegosService, private inventarioService: InventarioService) {}
+  selectedGame: Game | null = null;
+  constructor(private readonly gamesService: GamesService, private readonly CollectionsService: CollectionsService) {}
 
   ngOnInit(): void {
-    this.juegosService.getJuegos().subscribe(juegos => {
-      this.juegos = juegos;
+    this.gamesService.getGames().subscribe(Games => {
+      this.Games = Games;
     });
   }
 
-  openDialog(juego: Juego): void {
-    this.selectedJuego = juego;
+  openDialog(game: Game): void {
+    this.selectedGame = game;
     this.isDialogVisible = true;
   }
 
   closeDialog(): void {
     this.isDialogVisible = false;
-    this.selectedJuego = null;
+    this.selectedGame = null;
   }
 }

@@ -1,6 +1,6 @@
 import { Plataforma } from './plataformas';
 
-export interface Juego {
+export interface Game {
   id: number;
   nombre: string;
   genero: string;

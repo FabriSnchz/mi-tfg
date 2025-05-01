@@ -32,23 +32,23 @@
       </thead>
       <tbody>
         @for (coleccion of inventario; track $index) {
-          @for (juego of coleccion.juegos; track $index) {
+          @for (game of coleccion.Games; track $index) {
             <tr>
-            <td>{{juego.nombre}}</td>
-            <td>{{juego.genero}}</td>
-            <td>{{juego.fecha_lanzamiento}}</td>
+            <td>{{game.nombre}}</td>
+            <td>{{game.genero}}</td>
+            <td>{{game.fecha_lanzamiento}}</td>
             <td>
-              @for (item of juego.plataformas; track $index) {
+              @for (item of game.plataformas; track $index) {
                 [{{item.nombre}}]
               }
             </td>
 
-            @if (juego.multijugador === true) {
+            @if (game.multijugador === true) {
               <td>Sí</td>
             } @else {
               <td>No</td>
             }
-            <td><img style="height: 10px;" src="{{ juego.foto }}" alt=""></td>
+            <td><img style="height: 10px;" src="{{ game.foto }}" alt=""></td>
           </tr>
           }
         }
@@ -62,7 +62,7 @@
         </tr>
       </thead>
       @for (coleccion of inventario; track $index) {
-        @for (juego of coleccion.juegos; track $index) {
+        @for (game of coleccion.Games; track $index) {
         <tbody>
           <tr>
               <td class="action-links">
@@ -84,7 +84,7 @@
         </tr>
       </thead>
       @for (coleccion of inventario; track $index) {
-        @for (juego of coleccion.juegos; track $index) {
+        @for (game of coleccion.Games; track $index) {
         <tbody>
           <tr>
             <td>
