@@ -1,5 +1,5 @@
 
-<!-- TODO: Poder Agrgerar el nombre del juego como título -->
+<!-- TODO: Poder Agrgerar el name del juego como título -->
 <!-- <h2 mat-dialog-title>Información Sobre el juego</h2> -->
 <mat-dialog-actions>
   <button mat-icon-button mat-dialog-close>
@@ -7,22 +7,15 @@
   </button>
 </mat-dialog-actions>
 
-
-
-
 <mat-dialog-content>
   <div class="dialog-content">
-      <img [src]="selectedGame?.foto" alt="{{selectedGame?.nombre}}" class="dialog-image">
+      <img [src]="selectedGame?.photo" alt="{{selectedGame?.name}}" class="dialog-image">
       <div class="dialog-text">
-        <h2>{{selectedGame?.nombre}}</h2>
-        <p><b>Fecha de lanzamiento: </b>{{selectedGame?.fecha_lanzamiento}}</p>
-        <p><b>Género: </b>{{selectedGame?.genero}}</p>
-        <p><b>multijugador: </b>{{selectedGame?.multijugador}}</p>
-        <p><b>Plataformas: </b>{{selectedGame?.plataformas}}</p>
+        <h2>{{selectedGame?.name}}</h2>
+        <p><b>Fecha de lanzamiento: </b>{{selectedGame?.release_date}}</p>
+        <p><b>Género: </b>{{selectedGame?.genre}}</p>
+        <p><b>multijugador: </b>{{selectedGame?.multiplayer}}</p>
+        <p><b>Plataformas: </b>{{selectedGame?.platforms}}</p>
     </div>
   </div>
 </mat-dialog-content>
-
-
-
-

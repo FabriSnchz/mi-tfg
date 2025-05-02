@@ -21,11 +21,11 @@ export class GamesComponent implements OnInit {
   Games: Game[] = [];
   FilteredGames: Game[] = [];
   readonly dialog = inject(MatDialog);
-  constructor(private readonly GamesService: GamesService) {}
+  constructor(private readonly gamesService: GamesService) {}
 
   ngOnInit(): void {
-    this.GamesService.emitirGames(); // Dispara la carga inicial de Games
-    this.GamesService.Games$.subscribe(Games => {
+    this.gamesService.emitirGames(); // Dispara la carga inicial de Games
+    this.gamesService.Games$.subscribe(Games => {
       this.Games = Games;
       this.FilteredGames = Games; // Inicializa los Games filtrados con todos los Games
     });
@@ -48,7 +48,7 @@ export class GamesComponent implements OnInit {
     }
     this.FilteredGames = this.Games.filter(
       FilteredGames =>
-  FilteredGames?.nombre.toLowerCase().includes(texto.toLowerCase())
+  FilteredGames?.name.toLowerCase().includes(texto.toLowerCase())
     );
   }
 }
@@ -63,7 +63,7 @@ export class GamesComponent implements OnInit {
 export class Dialog {
   selectedGame: Game | null = null;
   constructor(@Inject(MAT_DIALOG_DATA) public data: { selectedGame: Game },
-    private readonly GamesService: GamesService) {
+    private readonly gamesService: GamesService) {
       this.selectedGame = data.selectedGame;
       }
   readonly dialogRef = inject(MatDialogRef<Dialog>);

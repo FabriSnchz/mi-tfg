@@ -1,11 +1,11 @@
-import { Plataforma } from './plataformas';
+import { Platform } from './platforms';
 
 export interface Game {
   id: number;
-  nombre: string;
-  genero: string;
-  fecha_lanzamiento: Date;
-  plataformas: Plataforma[];
-  multijugador: boolean;
-  foto: string;
+  name: string;
+  genre: string;
+  release_date: Date;
+  platforms: Platform[];
+  multiplayer: boolean;
+  photo: string;
 }

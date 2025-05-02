@@ -7,12 +7,13 @@ import { BehaviorSubject, Observable } from "rxjs";
   providedIn: 'root'
 })
 export class GamesService {
-  private readonly apiUrl = 'http://localhost:8080/Games';  // URL de la API
+  private readonly apiUrl = 'http://localhost:8080/games';  // URL de la API
   private readonly GamesSubject = new BehaviorSubject<Game[]>([]);
   Games$ = this.GamesSubject.asObservable(); // Observable para suscribirse a los cambios en la lista de Games
 
   constructor(private readonly http: HttpClient) { }
   getGames(): Observable<Game[]> {
+    console.log(this.http.get<Game[]>(this.apiUrl));
     return this.http.get<Game[]>(this.apiUrl);
   }
 
