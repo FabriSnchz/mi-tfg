@@ -13,7 +13,7 @@
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <h1><mat-icon>person</mat-icon> Iniciar sesión</h1>
       <!-- <input formControlName="email" placeholder="Email" type="email" /> -->
-      <input formControlName="username" placeholder="Nombre de usuario..." type="text" />
+      <input formControlName="userName" placeholder="Nombre de usuario..." type="text" />
       <input formControlName="password" placeholder="Contraseña..." type="password" />
       <button class="button" type="submit">Iniciar sesión</button>
       <br>
@@ -27,8 +27,15 @@
       <h1><mat-icon>person</mat-icon> Regístrate</h1>
 
       <input formControlName="fullName" placeholder="Nombre completo..." type="text" />
-      <input formControlName="username" placeholder="Nombre de usuario..." type="text" />
+      <input formControlName="userName" placeholder="Nombre de usuario..." type="text" />
       <input formControlName="email" placeholder="Email..." type="email" />
+
+      @if (registerForm.get('email')?.invalid && registerForm.get('email')?.touched) {
+        <small class="error">Por favor, introduce un email válido.</small>
+      }
+
+
+
       <input formControlName="password" placeholder="Contraseña..." type="password" />
       <br>
       <input formControlName="birthDate" placeholder="Fecha de nacimiento..." type="date" />

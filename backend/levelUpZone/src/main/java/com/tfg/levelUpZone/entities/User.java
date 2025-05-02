@@ -1,6 +1,10 @@
 package com.tfg.levelUpZone.entities;
 
+import java.time.LocalDate;
+
 import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,10 +42,25 @@ public class User {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
+    
+    @NotBlank
+    @Column(nullable = false, name = "full_name")
+    private String fullName;
 
-    public User(String userName, String password, Role role) {
+    @NotBlank
+    @Column(unique = true, nullable = false)
+    private String email;
+
+    @Column(name = "birth_date")
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate birthDate;
+
+    public User(String userName, String password, String fullName, String email, LocalDate birthDate, Role role) {
         this.userName = userName;
         this.password = password;
+        this.fullName = fullName;
+        this.email = email;
+        this.birthDate = birthDate;
         this.role = role;
     }
 }

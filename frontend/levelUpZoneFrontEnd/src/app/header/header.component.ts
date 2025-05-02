@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../auth-service';
 
 
 @Component({
@@ -53,38 +54,72 @@ export class Dialog {
   loginForm: FormGroup;
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private readonly fb: FormBuilder, private readonly authService: AuthService) {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      userName: ['', Validators.required],
+      password: ['', Validators.required]
     });
+
 
     this.registerForm = this.fb.group({
       fullName: ['', Validators.required],
-      username: ['', Validators.required],
+      userName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       birthDate: ['', Validators.required]
     });
   }
 
-  toggleMode(): void {
-    this.isRegisterMode = !this.isRegisterMode;
-  }
-
   onLogin(): void {
     if (this.loginForm.valid) {
-      console.log('Login:', this.loginForm.value);
-      // aquí iría el servicio de login
+      console.log(this.loginForm.value);  // Aquí verás lo que realmente está enviando
+      this.authService.login(this.loginForm.value).subscribe({
+        next: (response) => {
+          this.authService.saveToken(response.token);  // Guardar token
+          // Redirigir o realizar otra acción
+        },
+        error: (err) => {
+          console.error(err);  // Para ver el error exacto
+          alert('Credenciales incorrectas');
+        }
+      });
     }
   }
+
+
+
 
   onRegister(): void {
     if (this.registerForm.valid) {
-      console.log('Registro:', this.registerForm.value);
-      // aquí iría el servicio de registro
+      console.log('Formulario de registro válido:', this.registerForm.value);
+
+      this.authService.register(this.registerForm.value).subscribe({
+        next: (res) => {
+          console.log('Respuesta del backend al registrarse:', res);
+          alert(res.message);
+          this.toggleRegister(false);
+        },
+        error: (err) => {
+          console.error('Error al registrarse:', err);
+          alert('Error al registrarse');
+        }
+      });
+    } else {
+      console.warn('Formulario de registro inválido');
+      console.log('Estado del formulario:', this.registerForm);
+      console.log('Controles:', this.registerForm.controls);
+
+      // Imprimir errores específicos de cada campo
+      Object.entries(this.registerForm.controls).forEach(([key, control]) => {
+        console.log(`Campo ${key}:`, control.errors);
+      });
+      return;
     }
   }
+
+
+
+
 
 
   toggleRegister(showRegister: boolean): void {

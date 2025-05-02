@@ -4,6 +4,8 @@ import com.tfg.levelUpZone.enums.RoleList;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -21,6 +23,7 @@ public class Role {
 	@Column(name = "role_id")
 	private Integer id;
 	
+    @Enumerated(EnumType.STRING) // indicamos que el enum debe guardarse como un String
 	@Column(nullable = false)
 	private RoleList name;
 	
