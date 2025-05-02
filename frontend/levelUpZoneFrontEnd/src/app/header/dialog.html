@@ -1,0 +1,62 @@
+<mat-dialog-actions>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon aria-hidden="false" aria-label="Example close icon" fontIcon="close"></mat-icon>
+  </button>
+</mat-dialog-actions>
+
+
+
+
+<div class="container" [class.right-panel-active]="isRegisterMode">
+  <!-- FORMULARIO DE INICIO DE SESIÓN -->
+  <div class="form-container sign-in-container">
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <h1><mat-icon>person</mat-icon> Iniciar sesión</h1>
+      <!-- <input formControlName="email" placeholder="Email" type="email" /> -->
+      <input formControlName="username" placeholder="Nombre de usuario..." type="text" />
+      <input formControlName="password" placeholder="Contraseña..." type="password" />
+      <button class="button" type="submit">Iniciar sesión</button>
+      <br>
+      <a href="#">¿Perdiste tu contraseña?</a>
+    </form>
+  </div>
+
+  <!-- FORMULARIO DE REGISTRO -->
+  <div class="form-container sign-up-container">
+    <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+      <h1><mat-icon>person</mat-icon> Regístrate</h1>
+
+      <input formControlName="fullName" placeholder="Nombre completo..." type="text" />
+      <input formControlName="username" placeholder="Nombre de usuario..." type="text" />
+      <input formControlName="email" placeholder="Email..." type="email" />
+      <input formControlName="password" placeholder="Contraseña..." type="password" />
+      <br>
+      <input formControlName="birthDate" placeholder="Fecha de nacimiento..." type="date" />
+      <br>
+
+      <!-- TODO: Ver si cambiarlo por Angular Material o no -->
+
+      <button class="button" type="submit">Registrarte</button>
+      <br>
+      <a href="#">¿Perdiste tu contraseña?</a>
+    </form>
+  </div>
+
+
+  <!-- PANEL DESLIZANTE -->
+  <div class="overlay-container">
+    <div class="overlay">
+      <div class="overlay-panel overlay-left">
+        <h1>¿Ya tienes una cuenta?</h1>
+        <p>Inicia sesión para acceder</p>
+        <button class="ghost button" (click)="toggleRegister(false)">Inicia sesión</button>
+      </div>
+      <div class="overlay-panel overlay-right">
+        <h1>¡Hola!</h1>
+        <p>¿Aún no tienes cuenta? ¡Crea una!</p>
+        <button class="ghost button" (click)="toggleRegister(true)">Registrarme</button>
+      </div>
+    </div>
+  </div>
+</div>
+

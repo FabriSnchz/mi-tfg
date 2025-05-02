@@ -119,6 +119,12 @@ header {
 // .levelupzonelogo-img2{
 //   background-color: #a64646;
 // }
+.first-dialog-column{
+  background-color: #4686a6;
+}
+.second-dialog-column{
+  background-color: aquamarine;
+}
 
 // CUANDO LOS BOTONES ESTÁN ACTIVOS
 .activebutton {
@@ -249,3 +255,148 @@ span:nth-child(11) {
   /* Puedes personalizar más, por ejemplo, cambiar otros componentes */
 
 
+  /* POP UP */
+// .dialog-content {
+//   padding: 2%;
+//   border-radius: 1%;
+//   position: relative;
+//   display: grid;
+//   grid-template-columns: 1fr 1fr;
+// }
+
+/* Contenedor principal */
+.container {
+  background: #fff;
+  // border-radius: 10px;
+  position: relative;
+  z-index: 0; // Cambialo si quere las idea de ventana angiua
+  max-width: 100%;
+  min-height: 480px;
+  display: flex;
+  overflow: hidden;
+}
+
+/* Paneles de formulario */
+.form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  // transition: all 0.6s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 50%;
+}
+
+.sign-in-container {
+  left: 0;
+  z-index: 2;
+}
+
+.sign-up-container {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+/* Activo: Mover registro al frente */
+.container.right-panel-active .sign-in-container {
+  transform: translateX(100%);
+  opacity: 0;
+  z-index: 1;
+}
+
+.container.right-panel-active .sign-up-container {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+}
+
+/* Overlay */
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 100;
+}
+
+.overlay {
+  background: linear-gradient(to right, #2196f3, #33ccff);
+  color: #fff;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.container.right-panel-active .overlay-container {
+  transform: translateX(-100%);
+}
+
+.container.right-panel-active .overlay {
+  transform: translateX(50%);
+}
+
+/* Panel dentro del overlay */
+.overlay-panel {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+  transform: translateX(-20%);
+  left: 0;
+}
+
+.overlay-right {
+  right: 0;
+  transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-left {
+  transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-right {
+  transform: translateX(20%);
+}
+
+/* Botones */
+.button {
+  border: none;
+  padding: 12px 24px;
+  background-color: orange;
+  color: white;
+  border-radius: 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button.ghost {
+  background-color: white;
+  color: #333;
+}
+
+input{
+  height: 1.5rem;
+  margin: 0.5rem 0;
+  border: 2px solid #000000;
+  box-shadow: 2px 3px 0px 1px #000000;
+  -webkit-box-shadow: 2px 3px 0px 1px #000000;
+}

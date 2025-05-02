@@ -42,11 +42,19 @@
     <mat-slide-toggle (change)="toggleTheme()"></mat-slide-toggle>
     <!-- * Icono de usuario -->
     <!--  -->
-    <button mat-icon-button [matMenuTriggerFor]="menu" class="login-button"><img class="login-img" src="/images/LoginLogo.png" alt="LoginLogo.png"></button>
+    <!-- <button mat-icon-button [matMenuTriggerFor]="menu" class="login-button"><img class="login-img" src="/images/LoginLogo.png" alt="LoginLogo.png"></button>
     <mat-menu #menu="matMenu">
       <a href="" style="color: inherit; text-decoration: none;"><button mat-menu-item>Ver Perfil</button></a>
       <a href="" style="color: inherit; text-decoration: none;"><button mat-menu-item>Cerrar Sesión</button></a>
-    </mat-menu>
+    </mat-menu> -->
+
+    <button mat-icon-button (click)="openDialog('100ms', '100ms')">
+      <!-- <mat-icon mat-raised-button aria-hidden="false" aria-label="Example close icon" fontIcon="account_circle"></mat-icon> -->
+      <img class="login-img" src="/images/LoginLogo.png" alt="LoginLogo.png">
+    </button>
+
+    <!-- TODO: Corregir arriba mat-icon -->
+
   </div>
 
 
