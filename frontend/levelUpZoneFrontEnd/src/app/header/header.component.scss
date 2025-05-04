@@ -6,7 +6,7 @@
 
 * {
   z-index: 1;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+  text-shadow: 0 0 10px #ffffffcc, 0 0 20px #ffffff99, 0 0 30px #ffffff66;
 }
 header {
   // DEJO EL DISPLAY FLEX POR SI ACASO DEBO DE REGRESAR A USARLO
@@ -92,33 +92,6 @@ header {
   cursor: pointer;
 }
 // COLORES
-// header {
-//   background-color: #6a115e;
-// }
-// .nav-header {
-//   background-color: aquamarine;
-// }
-// .nav-item {
-//   background-color: #d82f70;
-// }
-// .nav-header > nav > ul {
-//   background-color: #f9ff51;
-// }
-// .nav-header > nav > ul > li {
-//   background-color: #4c24cf;
-// }
-// .login-container, .logo-container {
-//   background-color: #51ff6e;
-// }
-// .login-button, .logo-button {
-//   background-color: #ff5151;
-// }
-// .levelupzonelogo-img, .login-img {
-//   background-color: #4686a6;
-// }
-// .levelupzonelogo-img2{
-//   background-color: #a64646;
-// }
 .first-dialog-column{
   background-color: #4686a6;
 }
@@ -133,9 +106,8 @@ header {
   border-radius: 10rem;
   padding: 0.5rem 1rem;
   // box-shadow: 0 4px 6px #0000001a;
-  box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
-  -webkit-box-shadow: 5px 5px 0px 1px rgba(0,0,0,1);
-  -moz-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
+  box-shadow: 0.5px 5px 0px 1px #0a4528;
+  -webkit-box-shadow: 0.5px 5px 0px 1px #0a4528;
   // font-weight: bold; // TODO: ¿Cúal es mejor, con o sin?
   transition: all 0.3s ease; /* Suavidad al interactuar */
   // TODO: Revisar

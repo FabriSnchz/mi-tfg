@@ -27,12 +27,20 @@
         <li><a routerLink="/home" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Inicio</a></li>
         <li><a routerLink="/collections" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Mi inventario</a></li>
         <!-- <li><a><img class="levelupzonelogo-img2" src="/images/LevelUpZoneLogoCenter.png" alt="LevelUpZoneLogoMenu"/></a></li> -->
-        <li><a routerLink="/games" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Games</a></li>
+        <li><a routerLink="/games" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Juegos</a></li>
         <li><a routerLink="/contact" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Contacto</a></li>
         <!-- <li><a routerLink="" routerLinkActive="" ariaCurrentWhenActive="page">Ayuda</a></li> -->
       </ul>
     </nav>
   </div>
+
+  <!-- TODO: Darle una vuelta -->
+  <style>
+    .nav-header {
+      background-color: #00000066;
+      border-radius: 2rem;
+    }
+  </style>
 
   <div class="third-column">
     <!-- * Toggle -->
@@ -56,7 +64,7 @@
         @if (role === 'ROLE_ADMIN') {
           <p>Bienvenido, administrador</p>
         } @if (role === 'ROLE_USER') {
-          <p>{{ userName }}</p>
+          <p style="font-family: 'PressStart2P-vaV7';"> 1P {{ userName }}</p>
           <button mat-icon-button [matMenuTriggerFor]="menu" class="login-button"><img class="login-img" src="/images/LoginLogo.png" alt="LoginLogo.png"></button>
           <mat-menu #menu="matMenu">
             <a href="" style="color: inherit; text-decoration: none;"><button mat-menu-item>Ver Perfil</button></a>
