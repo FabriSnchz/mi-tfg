@@ -7,6 +7,9 @@ import { handleNavigationError } from './navigation-error-handler';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './auth.interceptor';
 
+import { provideAnimations } from '@angular/platform-browser/animations';
+
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
@@ -14,5 +17,6 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideHttpClient(withFetch(),
     withInterceptors([authInterceptor])
-  )]
+  ),
+  provideAnimations()]
 };

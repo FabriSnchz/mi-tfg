@@ -31,7 +31,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 	        throws ServletException, IOException {
 
 	    String path = request.getServletPath();
-
+	    
 	    // Ignorar rutas públicas
 	    if (path.equals("/auth/login") || path.equals("/auth/register")) {
 	        filterChain.doFilter(request, response);
@@ -45,18 +45,27 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
 	    if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
 	        jwt = authorizationHeader.substring(7);
-	        userName = jwtUtil.extractUserName(jwt);
+	        try {
+	            userName = jwtUtil.extractUserName(jwt);
+	        } catch (Exception e) {
+	            // loguear pero continuar sin interrumpir la petición
+	            logger.warn("Token JWT inválido: " + e.getMessage());
+	        }
 	    }
+
 
 	    if (userName != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 	        UserDetails userDetails = userService.loadUserByUsername(userName);
 
-	        if (jwtUtil.validateToken(jwt, userDetails)) {
-	            UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-	                    userDetails, null, userDetails.getAuthorities()
-	            );
-	            authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-	            SecurityContextHolder.getContext().setAuthentication(authToken);
+	        try {
+	            if (jwtUtil.validateToken(jwt, userDetails)) {
+	                UsernamePasswordAuthenticationToken authToken =
+	                    new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+	                authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+	                SecurityContextHolder.getContext().setAuthentication(authToken);
+	            }
+	        } catch (Exception e) {
+	            logger.warn("Error al validar el token JWT: " + e.getMessage());
 	        }
 	    }
 

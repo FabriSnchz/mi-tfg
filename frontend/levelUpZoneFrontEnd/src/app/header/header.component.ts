@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input, ChangeDetectionStrategy, inject, Inject } from '@angular/core';
+import { Component, Output, EventEmitter, Input, ChangeDetectionStrategy, inject, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,6 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../auth-service';
+import { Router } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 
 
 @Component({
@@ -20,12 +22,25 @@ import { AuthService } from '../auth-service';
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+
+  isLoading = true;
+  isLogged: boolean = false;
+  role: string = '';
 
   @Output() themeToggled = new EventEmitter<void>();
 
   toggleTheme(): void {
     this.themeToggled.emit(); // sólo emite el evento
+  }
+
+  constructor(private readonly authService: AuthService, private router: Router, @Inject(PLATFORM_ID) private readonly platformId: Object) {}
+
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.role = this.authService.getUserRole() ?? '';
+      this.isLogged = this.authService.getToken() !== null;
+    }
   }
 
 
@@ -39,6 +54,12 @@ export class HeaderComponent {
       exitAnimationDuration,
     });
   }
+
+  onLogout(): void {
+    this.authService.logout();
+    this.router.navigate(['/']); // Redirige a página pública como inicio o login
+  }
+
   }
 @Component({
   selector: 'dialog',
@@ -54,7 +75,7 @@ export class Dialog {
   loginForm: FormGroup;
   registerForm: FormGroup;
 
-  constructor(private readonly fb: FormBuilder, private readonly authService: AuthService) {
+  constructor(private readonly fb: FormBuilder, private readonly authService: AuthService, private router: Router) {
     this.loginForm = this.fb.group({
       userName: ['', Validators.required],
       password: ['', Validators.required]
@@ -72,21 +93,31 @@ export class Dialog {
 
   onLogin(): void {
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value);  // Aquí verás lo que realmente está enviando
-      this.authService.login(this.loginForm.value).subscribe({
+      const credentials = this.loginForm.value;  // { userName: ..., password: ... }
+      console.log('Enviando credenciales:', credentials);
+
+      this.authService.login(credentials).subscribe({
         next: (response) => {
-          this.authService.saveToken(response.token);  // Guardar token
-          // Redirigir o realizar otra acción
+          console.log('Respuesta del backend:', response);
+
+          this.authService.saveToken(response.jwt, response.role);
+          console.log('Token y rol guardados en localStorage:', {
+            token: localStorage.getItem('token'),
+            role: localStorage.getItem('role'),
+          });
+
+          // this.router.navigate(['/']);
+          window.location.href = '/' // Úsalo solo si necesitas recargar completamente
         },
         error: (err) => {
-          console.error(err);  // Para ver el error exacto
+          console.error('Error durante el login:', err);
           alert('Credenciales incorrectas');
         }
       });
+    } else {
+      console.warn('Formulario inválido:', this.loginForm.errors);
     }
   }
-
-
 
 
   onRegister(): void {

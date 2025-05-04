@@ -24,11 +24,11 @@
   <div class="nav-header">
     <nav class="nav-item" aria-label="Main navigation">
       <ul class="ul-item">
-        <li><a routerLink="/inicio" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Inicio</a></li>
-        <li><a routerLink="/mi-inventario" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Mi inventario</a></li>
+        <li><a routerLink="/home" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Inicio</a></li>
+        <li><a routerLink="/collections" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Mi inventario</a></li>
         <!-- <li><a><img class="levelupzonelogo-img2" src="/images/LevelUpZoneLogoCenter.png" alt="LevelUpZoneLogoMenu"/></a></li> -->
-        <li><a routerLink="/Games" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Games</a></li>
-        <li><a routerLink="/contacto" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Contacto</a></li>
+        <li><a routerLink="/games" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Games</a></li>
+        <li><a routerLink="/contact" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Contacto</a></li>
         <!-- <li><a routerLink="" routerLinkActive="" ariaCurrentWhenActive="page">Ayuda</a></li> -->
       </ul>
     </nav>
@@ -48,12 +48,26 @@
       <a href="" style="color: inherit; text-decoration: none;"><button mat-menu-item>Cerrar Sesión</button></a>
     </mat-menu> -->
 
-    <button mat-icon-button (click)="openDialog('100ms', '100ms')">
-      <!-- <mat-icon mat-raised-button aria-hidden="false" aria-label="Example close icon" fontIcon="account_circle"></mat-icon> -->
-      <img class="login-img" src="/images/LoginLogo.png" alt="LoginLogo.png">
-    </button>
+
 
     <!-- TODO: Corregir arriba mat-icon -->
+
+    @if (isLogged) {
+        @if (role === 'ROLE_ADMIN') {
+          <p>Bienvenido, administrador</p>
+        } @if (role === 'ROLE_USER') {
+          <button mat-icon-button [matMenuTriggerFor]="menu" class="login-button"><img class="login-img" src="/images/LoginLogo.png" alt="LoginLogo.png"></button>
+          <mat-menu #menu="matMenu">
+            <a href="" style="color: inherit; text-decoration: none;"><button mat-menu-item>Ver Perfil</button></a>
+            <a href="" style="color: inherit; text-decoration: none;"><button mat-menu-item (click)="onLogout()">Cerrar Sesión</button></a>
+          </mat-menu>
+        }
+    } @else {
+      <button mat-icon-button (click)="openDialog('100ms', '100ms')">
+        <!-- <mat-icon mat-raised-button aria-hidden="false" aria-label="Example close icon" fontIcon="account_circle"></mat-icon> -->
+        <img class="login-img" src="/images/LoginLogo.png" alt="LoginLogo.png">
+      </button>
+    }
 
   </div>
 

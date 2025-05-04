@@ -34,7 +34,8 @@
             <button mat-icon-button mat-dialog-close>
               <mat-icon aria-hidden="false" aria-label="Example close icon" fontIcon="star"></mat-icon>
             </button>
-            <button class="view-button" mat-raised-button (click)="openDialog('100ms', '100ms', game)">Saber más</button>
+            <!-- <button class="view-button"></button> -->
+            <a [routerLink]="['/game-details', game.id]">Saber más</a>
             <button mat-icon-button mat-dialog-close>
               <mat-icon aria-hidden="false" aria-label="Example close icon" fontIcon="add"></mat-icon>
             </button>

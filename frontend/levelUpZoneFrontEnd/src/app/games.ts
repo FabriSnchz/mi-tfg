@@ -8,4 +8,5 @@ export interface Game {
   platforms: Platform[];
   multiplayer: boolean;
   photo: string;
+  studio: string;
 }

@@ -6,14 +6,21 @@ import { ContactComponent } from './contact/contact.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CardsComponent } from './cards/cards.component';
 import { AsdComponent } from './asd/asd.component';
+import { authGuard } from './auth.guard';
+import { AppComponent } from './app.component';
+import { GameDetailComponent } from './game-detail/game-detail.component';
 
 export const routes: Routes = [
-  {path: '', redirectTo: '/inicio', pathMatch: 'full', title: 'Inicio'},
+  {path: '', redirectTo: '/home', pathMatch: 'full', title: 'Inicio'},
+  // { path: '', component: AppComponent, pathMatch: 'full', canActivate: [authGuard] }, // Protege la ruta raíz
+  // { path: '', component: AppComponent, pathMatch: 'full' }, // Protege la ruta raíz
+
   {path: 'cards', component: CardsComponent, title: 'Inicio'},
   {path: 'asd', component: AsdComponent, title: 'Asd'},
-  {path: 'inicio', component: HomeComponent, title: 'Inicio'},
-  {path: 'mi-inventario', component: CollectionComponent, title: 'Mi Inventario'},
-  {path: 'Games', component: GamesComponent, title: 'Games'},
-  {path: 'contacto', component: ContactComponent, title: 'Contacto'},
+  {path: 'home', component: HomeComponent, title: 'Inicio'}, // Protege la ruta /home
+  {path: 'collections', component: CollectionComponent, title: 'Mi Inventario'},
+  {path: 'games', component: GamesComponent, title: 'Juegos'},
+  {path: 'game-details/:id', component: GameDetailComponent, title: 'Detalles del Juego'},
+  {path: 'contact', component: ContactComponent, title: 'Contacto'},
   {path: '**', component: PageNotFoundComponent, title: 'Page Not Found'},
 ];

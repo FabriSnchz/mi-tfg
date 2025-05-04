@@ -22,14 +22,18 @@ import java.util.List;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-	
-	@Bean
+
+    @Bean
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.cors(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/auth/register", "/auth/login")
-                        .permitAll()
-                        .anyRequest().authenticated())
+                .authorizeHttpRequests(auth -> auth
+                    .requestMatchers("/auth/register", "/auth/login").permitAll() // Permitir acceso sin autenticación
+                     .requestMatchers("/games/**").permitAll() // Permitir acceso público a /games
+                    .requestMatchers("/admin/**").hasRole("ADMIN") // Solo para ADMIN
+                    .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN") // Solo para USER o ADMIN
+                    .requestMatchers("/guest/**").hasAnyRole("GUEST", "USER", "ADMIN") // Solo para GUEST, USER o ADMIN
+                    .anyRequest().authenticated()) // Cualquier otra solicitud requiere autenticación
                 .httpBasic(Customizer.withDefaults())
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(jwtEntryPoint()))
                 .addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
@@ -54,9 +58,8 @@ public class SecurityConfig {
     @Bean
     CorsConfigurationSource corsConfigurationSource(){
         CorsConfiguration configuration = new CorsConfiguration();
-
         configuration.setAllowedOrigins(List.of("http://localhost:4200"));
-        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS")); // Métodos 
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
         configuration.setAllowCredentials(true);
 

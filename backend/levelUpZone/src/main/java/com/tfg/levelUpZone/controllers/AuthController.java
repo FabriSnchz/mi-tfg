@@ -49,18 +49,24 @@ public class AuthController {
             return ResponseEntity.badRequest().build();
         }
         try {
+            // Autenticar al usuario y generar el JWT
             String jwt = authService.authenticate(loginUserDto.getUserName(), loginUserDto.getPassword());
-            return ResponseEntity.ok(new JwtResponse(jwt));
+
+            // Obtener el usuario desde la base de datos
+            User user = userRepository.findByUserName(loginUserDto.getUserName()).orElseThrow();
+            String role = user.getRole().getName().name();
+            return ResponseEntity.ok(new JwtResponse(jwt, role));
         } catch (Exception e){
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new JwtResponse("Credenciales incorrectas"));
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new JwtResponse("Credenciales incorrectas", null));
         }
     }
+
     
     @PostMapping("/register")
     public ResponseEntity<?> register(@Valid @RequestBody NewUserDto newUserDto, BindingResult bindingResult) {
 
-    	Role roleGuest = roleRepository.findByName(RoleList.ROLE_GUEST)
-    	        .orElseThrow(() -> new RuntimeException("Rol ROLE_GUEST no encontrado"));
+    	Role roleGuest = roleRepository.findByName(RoleList.ROLE_USER)
+    	        .orElseThrow(() -> new RuntimeException("Rol ROLE_USER no encontrado"));
     	
         if (bindingResult.hasErrors()) {
             return ResponseEntity.badRequest().body("Error: " + bindingResult.getAllErrors().get(0).getDefaultMessage());

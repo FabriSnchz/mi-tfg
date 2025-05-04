@@ -56,4 +56,7 @@ public class Game {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private List<Collection> collections;
+    
+    @Column(nullable = false)
+    private String studio;
 }

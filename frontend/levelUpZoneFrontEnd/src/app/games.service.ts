@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Game } from "./games";
 import { BehaviorSubject, Observable } from "rxjs";
@@ -12,10 +12,28 @@ export class GamesService {
   Games$ = this.GamesSubject.asObservable(); // Observable para suscribirse a los cambios en la lista de Games
 
   constructor(private readonly http: HttpClient) { }
+  // getGames(): Observable<Game[]> {
+  //   console.log(this.http.get<Game[]>(this.apiUrl));
+  //   return this.http.get<Game[]>(this.apiUrl);
+  // }
+
   getGames(): Observable<Game[]> {
-    console.log(this.http.get<Game[]>(this.apiUrl));
-    return this.http.get<Game[]>(this.apiUrl);
+    let headers = new HttpHeaders();
+
+    if (typeof window !== 'undefined') { // Nos aseguramos de que está en el navegador
+      const token = localStorage.getItem('token');
+      if (token) {
+        headers = headers.set('Authorization', `Bearer ${token}`);
+      }
+    }
+
+    return this.http.get<Game[]>(this.apiUrl, { headers });
   }
+
+  getGameById(id: string): Observable<Game> {
+    return this.http.get<Game>(`${this.apiUrl}/${id}`);  // Aquí usamos la URL completa
+  }
+
 
   emitirGames(): void {
     this.getGames().subscribe(Games => {

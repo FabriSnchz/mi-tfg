@@ -1,9 +1,10 @@
-import { APP_ID, Component, Inject } from '@angular/core';
+import { APP_ID, Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, RouterOutlet, Router } from '@angular/router';
-import { CommonModule, DOCUMENT } from '@angular/common';
+import { CommonModule, DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { LoadingComponent } from './loading/loading.component';
+import { AuthService } from './auth-service';
 
 @Component({
     selector: 'app-root',
@@ -15,13 +16,16 @@ import { LoadingComponent } from './loading/loading.component';
       { provide: APP_ID, useValue: 'level-up-zone' },
     ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'level-up-zone';
   isDarkTheme = false;
   isLoading = true;
 
+  isLogged: boolean = false;
+  role: string = '';
+
  // * Se inyecta el token DOCUMENT para acceder al DOM de forma segura, compatible con SSR y sin depender directamente de 'document'
-  constructor(@Inject(DOCUMENT) private readonly document: Document, private readonly router: Router) {
+  constructor(@Inject(DOCUMENT) private readonly document: Document, private readonly router: Router, @Inject(PLATFORM_ID) private readonly platformId: Object, private readonly authService: AuthService) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         this.isLoading = true;
@@ -52,4 +56,28 @@ export class AppComponent {
       body.classList.add('light-theme');
     }
   }
+
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+
+      this.role = this.authService.getUserRole() ?? '';
+      this.isLogged = this.authService.getToken() !== null;
+
+      console.log('User role from localStorage:', this.role);
+      console.log('Logged in:', this.isLogged);
+    }
+
+    // Si quieres redirigir automáticamente cuando ya hay sesión iniciada:
+    if (this.isLogged) {
+      this.router.navigate(['/']); // Ajusta la ruta según tus necesidades
+    }
+  }
+
+
+  isLoggedIn(): boolean {
+    const loggedIn = isPlatformBrowser(this.platformId) && !!localStorage.getItem('token');
+    console.log('isLoggedIn called, result:', loggedIn);
+    return loggedIn;
+  }
+
 }
