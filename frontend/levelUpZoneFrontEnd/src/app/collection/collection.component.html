@@ -1,30 +1,29 @@
 <main>
-  <p class="title">Inventario de ...</p>
-  <br>
-  <!-- <article class="filter-section">
-    <div class="filter-container">
-      <button class="filter-button">Filtrar</button>
-      <div class="dropdown">
-        <ul>
-            <li>Opción 1</li>
-            <li>Opción 2</li>
-            <li>Opción 3</li>
-        </ul>
-      </div>
+
+  @if (isLogged) {
+    @if (role === 'ROLE_ADMIN') {
+      <p>Bienvenido, administrador</p>
+    } @else if (role === 'ROLE_USER') {
+      <p class="title">Inventario de ...</p>
+      <article>
+        <div class="container">
+          <app-table></app-table>
+        </div>
+      </article>
+    }
+  } @else {
+    <div class="warning-container">
+      <mat-icon>block</mat-icon>
+      <h2>Acceso denegado</h2>
+      <p>No puedes acceder a tu inventario si no posees una cuenta registrada.</p>
+      <!-- <button mat-raised-button color="primary" (click)="openDialog('100ms', '100ms')">
+        Crear una cuenta
+      </button>
+      <button mat-raised-button color="warn" (click)="openDialog('100ms', '100ms')">
+        Registrarse
+      </button> -->
     </div>
-    <div class="search-container">
-      <input type="text" id="search" class="search-input" placeholder="Buscar...">
-      <button class="search-button">Buscar</button>
-    </div>
-  </article> -->
-
-  <div class="container">
-
-
-  <app-table></app-table>
-</div>
-
-
+  }
 </main>
 
 <!-- todo: inyectar el .svg en HTML cuando lo tenga que manipular con JS y SCSS -->
