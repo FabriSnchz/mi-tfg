@@ -1,0 +1,65 @@
+main {
+  margin: 2% 2%;
+
+}
+
+.square {
+
+  width: 14rem;
+  height: 26rem;
+
+  background-color: #2a90c3;
+  border: 2px solid #000000;
+  // box-shadow: 0 5px 15px #0000004d;
+  box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
+  -webkit-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
+  -moz-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
+  border-radius: 8px;
+  padding: 1.5%;
+  text-align: center;
+  // position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  .square-image {
+    width: 100%;
+    height: 20rem;
+    // height: 115%; // TODO: Hacer que funcione
+    object-fit: cover; /* Ajusta la imagen sin deformarla */
+    border-radius: 8px;
+    margin-bottom: 6%;
+  }
+}
+
+
+main {
+  background-color: #aa3f3fa8;
+}
+.grid {
+  background-color: #83aa3fa8;
+}
+h2 {
+  background-color: #2ac339;
+}
+.info-container {
+  background-color: #462ac3;
+}
+
+.info-container {
+
+}
+
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.square {
+  grid-area: 1 / 1 / 6 / 2;
+}
+
+.info-container {
+  grid-area: 1 / 2 / 2 / 4;
+}

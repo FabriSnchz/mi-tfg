@@ -1,0 +1,26 @@
+@if (loading) {
+  <div>Cargando juego...</div>
+}
+
+@if (error) {
+  <div>{{ error }}</div>
+}
+
+@if (game) {
+  <main>
+    <div class="grid">
+      <div class="square">
+        <img src="{{game.photo}}" alt="{{game.photo}}" class="square-image">
+      </div>
+
+
+      <div class="info-container">
+        <h2>{{game.name}}</h2>
+        <p><b>Fecha de lanzamiento: </b>{{game.release_date}}</p>
+        <p><b>Género: </b>{{game.genre}}</p>
+        <p><b>Multijugador: </b>{{game.multiplayer}}</p>
+        <p><b>Plataformas: </b>{{game.platforms}}</p>
+      </div>
+    </div>
+  </main>
+}
