@@ -27,24 +27,22 @@ export class HeaderComponent implements OnInit {
   isLoading = true;
   isLogged: boolean = false;
   role: string = '';
-
+  userName: string = '';
+  readonly dialog = inject(MatDialog);
   @Output() themeToggled = new EventEmitter<void>();
 
-  toggleTheme(): void {
-    this.themeToggled.emit(); // sólo emite el evento
-  }
-
   constructor(private readonly authService: AuthService, private router: Router, @Inject(PLATFORM_ID) private readonly platformId: Object) {}
-
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.role = this.authService.getUserRole() ?? '';
       this.isLogged = this.authService.getToken() !== null;
+      this.userName = this.authService.getUserName() ?? ''; // <- nuevo
     }
   }
 
-
-  readonly dialog = inject(MatDialog);
+  toggleTheme(): void {
+    this.themeToggled.emit(); // sólo emite el evento
+  }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(Dialog, {
@@ -71,7 +69,6 @@ export class HeaderComponent implements OnInit {
 export class Dialog {
 
   isRegisterMode = false;
-
   loginForm: FormGroup;
   registerForm: FormGroup;
 
@@ -80,8 +77,6 @@ export class Dialog {
       userName: ['', Validators.required],
       password: ['', Validators.required]
     });
-
-
     this.registerForm = this.fb.group({
       fullName: ['', Validators.required],
       userName: ['', Validators.required],
@@ -94,23 +89,15 @@ export class Dialog {
   onLogin(): void {
     if (this.loginForm.valid) {
       const credentials = this.loginForm.value;  // { userName: ..., password: ... }
-      console.log('Enviando credenciales:', credentials);
 
       this.authService.login(credentials).subscribe({
         next: (response) => {
-          console.log('Respuesta del backend:', response);
-
-          this.authService.saveToken(response.jwt, response.role);
-          console.log('Token y rol guardados en localStorage:', {
-            token: localStorage.getItem('token'),
-            role: localStorage.getItem('role'),
-          });
+          this.authService.saveToken(response.jwt, response.role, response.userName);
 
           // this.router.navigate(['/']);
           window.location.href = '/' // Úsalo solo si necesitas recargar completamente
         },
         error: (err) => {
-          console.error('Error durante el login:', err);
           alert('Credenciales incorrectas');
         }
       });

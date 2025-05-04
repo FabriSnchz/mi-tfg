@@ -55,9 +55,11 @@ public class AuthController {
             // Obtener el usuario desde la base de datos
             User user = userRepository.findByUserName(loginUserDto.getUserName()).orElseThrow();
             String role = user.getRole().getName().name();
-            return ResponseEntity.ok(new JwtResponse(jwt, role));
+            String userName = user.getUserName();
+
+            return ResponseEntity.ok(new JwtResponse(jwt, role, userName));
         } catch (Exception e){
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new JwtResponse("Credenciales incorrectas", null));
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new JwtResponse("Credenciales incorrectas", null, null));
         }
     }
 

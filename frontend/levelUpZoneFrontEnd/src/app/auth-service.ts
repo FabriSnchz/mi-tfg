@@ -19,11 +19,11 @@ export class AuthService {
     return this.http.post<{ message: string }>(`${this.apiUrl}/register`, data);
   }
 
-  saveToken(token: string, role: string): void {
-    localStorage.setItem('token', token);
+  saveToken(jwt: string, role: string, userName: string): void {
+    localStorage.setItem('token', jwt);
     localStorage.setItem('role', role);
+    localStorage.setItem('userName', userName);
   }
-
 
   getToken(): string | null {
     if (typeof window !== 'undefined') {
@@ -38,6 +38,12 @@ export class AuthService {
     }
     return null;
   }
+
+  getUserName(): string | null {
+    console.log('getUserName', localStorage.getItem('userName'));
+    return localStorage.getItem('userName'); // o donde lo estés guardando
+  }
+
 
   logout(): void {
     localStorage.removeItem('token');

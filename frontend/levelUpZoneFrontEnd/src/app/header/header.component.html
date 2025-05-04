@@ -56,6 +56,7 @@
         @if (role === 'ROLE_ADMIN') {
           <p>Bienvenido, administrador</p>
         } @if (role === 'ROLE_USER') {
+          <p>{{ userName }}</p>
           <button mat-icon-button [matMenuTriggerFor]="menu" class="login-button"><img class="login-img" src="/images/LoginLogo.png" alt="LoginLogo.png"></button>
           <mat-menu #menu="matMenu">
             <a href="" style="color: inherit; text-decoration: none;"><button mat-menu-item>Ver Perfil</button></a>
