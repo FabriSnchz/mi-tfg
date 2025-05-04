@@ -1,27 +1,37 @@
 <main>
-<p class="title">Inventario de ...</p>
+<p class="title">Lista completa de juegos</p>
+<style>
+  .title {
+    /* font-family: 'Invasion2000'; */
+    font-family: 'HangTheDJ';
+    /* font-family: 'Flashback'; */
+  }
+</style>
   <br>
   <div class="container">
 
+    <!-- <div class="pagination">
+      <button class="prev-page">← Anterior</button>
+      <span class="page-info">Página 1 de 5</span>
+      <button class="next-page">Siguiente →</button>
+    </div>  -->
 
+    <article class="filter-section">
+      <div class="filter-container">
 
-      <article class="filter-section">
-        <div class="filter-container">
+        <form (submit)="$event.preventDefault()">
+          <mat-form-field>
+            <mat-label>Buscar por nombre</mat-label>
+            <input matInput #filter>
+          </mat-form-field>
+          <!-- <button mat-button type="button" (click)="filtrarResultado(filter.value)">Buscar</button> -->
+          <button mat-mini-fab type="button" (click)="filtrarResultado(filter.value)">
+            <mat-icon>search</mat-icon>
+          </button>
+        </form>
 
-          <form (submit)="$event.preventDefault()">
-            <mat-form-field>
-              <mat-label>Buscar por nombre</mat-label>
-              <input matInput #filter>
-            </mat-form-field>
-            <!-- <button mat-button type="button" (click)="filtrarResultado(filter.value)">Buscar</button> -->
-            <button mat-mini-fab type="button" (click)="filtrarResultado(filter.value)">
-              <mat-icon>search</mat-icon>
-            </button>
-          </form>
-
-        </div>
-      </article>
-
+      </div>
+    </article>
 
     <div class="grid">
       @for (game of FilteredGames; track $index) {
@@ -31,23 +41,28 @@
           <!-- <button class="add-button" (click)="agregarAlInventario(game)">Agregar</button> -->
 
           <div class="button-container">
-            <button mat-icon-button mat-dialog-close>
+            <button mat-icon-button mat-dialog-close (click)="showAuthMsg(1)">
               <mat-icon aria-hidden="false" aria-label="Example close icon" fontIcon="star"></mat-icon>
             </button>
             <!-- <button class="view-button"></button> -->
             <a [routerLink]="['/game-details', game.id]">Saber más</a>
-            <button mat-icon-button mat-dialog-close>
-              <mat-icon aria-hidden="false" aria-label="Example close icon" fontIcon="add"></mat-icon>
+            <button mat-icon-button (click)="showAuthMsg(2)">
+              <mat-icon aria-hidden="false" aria-label="Icono de agregar" fontIcon="add"></mat-icon>
             </button>
           </div>
         </div>
       }
     </div>
-
-    <!-- <div class="pagination">
-      <button class="prev-page">← Anterior</button>
-      <span class="page-info">Página 1 de 5</span>
-      <button class="next-page">Siguiente →</button>
-    </div>  -->
   </div>
+
+  @if (isLogged) {
+    @if (role === 'ROLE_ADMIN') {
+      <p>Bienvenido, administrador</p>
+    } @else {
+
+    }
+  }
+
+
+
 </main>

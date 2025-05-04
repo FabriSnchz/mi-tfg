@@ -1,13 +1,15 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { Game } from '../games';
 import { GamesService } from '../games.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialog} from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { AuthService } from '../auth-service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 
 @Component({
@@ -21,10 +23,12 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 export class GamesComponent implements OnInit {
   route = inject(ActivatedRoute);
   gameId!: string;
-
   Games: Game[] = [];
   FilteredGames: Game[] = [];
-  constructor(private readonly gamesService: GamesService) {}
+  isLogged: boolean = false;
+  role: string = '';
+
+  constructor(private readonly gamesService: GamesService, @Inject(PLATFORM_ID) private readonly platformId: Object, private readonly authService: AuthService, private readonly snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.gamesService.emitirGames(); // Dispara la carga inicial de Games
@@ -36,11 +40,12 @@ export class GamesComponent implements OnInit {
 
     this.route.paramMap.subscribe(params => {
       this.gameId = params.get('id')!;
-      console.log('ID desde ruta:', this.gameId);
-
-      // Aquí puedes llamar a un método para buscar un juego concreto
-      // this.loadGameById(this.gameId);
     });
+
+    if (isPlatformBrowser(this.platformId)) {
+      this.role = this.authService.getUserRole() ?? '';
+      this.isLogged = this.authService.getToken() !== null;
+    }
   }
 
 
@@ -49,9 +54,23 @@ export class GamesComponent implements OnInit {
       this.FilteredGames = this.Games;
       return;
     }
-    this.FilteredGames = this.Games.filter(
-      FilteredGames =>
-  FilteredGames?.name.toLowerCase().includes(texto.toLowerCase())
+    this.FilteredGames = this.Games.filter( FilteredGames =>
+      FilteredGames?.name.toLowerCase().includes(texto.toLowerCase())
     );
+  }
+
+  // * Método que verifica si tienes una cuenta para agregar juegos a favoritos o a una colección y si no la tienes, muestra un mensaje de error.
+  showAuthMsg(origin: number) {
+    let texto = '';
+    if (origin === 1) {
+      texto = 'Debes tener una cuenta para agregar juegos a favoritos.';
+    } else if (origin === 2) {
+      texto = 'Debes tener una cuenta para agregar juegos.';
+    }
+    this.snackBar.open(texto, 'Cerrar', {
+      duration: 3000,
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+    });
   }
 }
