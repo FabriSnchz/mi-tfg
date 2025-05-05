@@ -9,9 +9,19 @@
   <link href="https://www.pizzadude.dk/" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script>
+    (function () {
+      try {
+        const isDark = localStorage.getItem('isDarkTheme') === 'true';
+        const className = isDark ? 'dark-theme' : 'light-theme';
+        document.body.classList.add(className);
+      } catch (e) {
+        console.error('Error al aplicar el tema:', e);
+      }
+    })();
+</script>
 </head>
-<body class="mat-typography">
+<body>
     <app-root></app-root>
-    <div class="light-effect"></div>
 </body>
 </html>

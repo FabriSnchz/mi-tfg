@@ -20,7 +20,6 @@ export class AppComponent implements OnInit {
   title = 'level-up-zone';
   isDarkTheme = false;
   isLoading = true;
-
   isLogged: boolean = false;
   role: string = '';
 
@@ -43,35 +42,50 @@ export class AppComponent implements OnInit {
     });
   }
 
-  // * Alterna entre los temas claro y oscuro aplicando clases CSS al <body>.
-  toggleThemeFromHeader(): void {
-    this.isDarkTheme = !this.isDarkTheme;
-    const body = this.document.body;
-
-    if (this.isDarkTheme) {
-      body.classList.add('dark-mode');
-      body.classList.remove('light-theme');
-    } else {
-      body.classList.remove('dark-mode');
-      body.classList.add('light-theme');
-    }
-  }
-
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-
       this.role = this.authService.getUserRole() ?? '';
       this.isLogged = this.authService.getToken() !== null;
-
-      console.log('User role from localStorage:', this.role);
-      console.log('Logged in:', this.isLogged);
     }
 
     // Si quieres redirigir automáticamente cuando ya hay sesión iniciada:
     if (this.isLogged) {
       this.router.navigate(['/']); // Ajusta la ruta según tus necesidades
     }
+
+    if (isPlatformBrowser(this.platformId)) {
+      const storedTheme = localStorage.getItem('isDarkTheme');
+      this.isDarkTheme = storedTheme === 'true';
+
+      const body = this.document.body;
+
+      // Solo aplica si aún no hay clase de tema puesta
+      if (!body.classList.contains('dark-mode') && !body.classList.contains('light-theme')) {
+        if (this.isDarkTheme) {
+          body.classList.add('dark-mode');
+        } else {
+          body.classList.add('light-theme');
+        }
+      }
+    }
   }
+
+  // * Alterna entre los temas claro y oscuro aplicando clases CSS al <body>.
+  toggleThemeFromHeader(): void {
+    this.isDarkTheme = !this.isDarkTheme;
+    localStorage.setItem('isDarkTheme', this.isDarkTheme.toString());
+
+    const body = this.document.body;
+    if (this.isDarkTheme) {
+      body.classList.add('dark-theme');
+      body.classList.remove('light-theme');
+    } else {
+      body.classList.remove('dark-theme');
+      body.classList.add('light-theme');
+    }
+  }
+
+
 
 
   isLoggedIn(): boolean {
