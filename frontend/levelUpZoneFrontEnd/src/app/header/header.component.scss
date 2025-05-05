@@ -6,7 +6,6 @@
 
 * {
   z-index: 1;
-  text-shadow: 0 0 10px #ffffffcc, 0 0 20px #ffffff99, 0 0 30px #ffffff66;
 }
 header {
   // DEJO EL DISPLAY FLEX POR SI ACASO DEBO DE REGRESAR A USARLO
@@ -16,28 +15,11 @@ header {
   grid-template-columns: repeat(3, 1fr);
   font-size: 1em;
   padding: 0.7em;
-  div {
-    a {
-      div {
-        .logo {
-          font-family: 'Myfont';
-          font-size: 1.75rem;
-          // font-size: 2.75rem; // TODO: Con este tamaño puedo escribir algo debajo del título
-          margin-right: 0.5rem;
-        }
-        span {
-          font-family: 'Flashback';
-          color: var(--color-letra-blanca);
-          text-shadow:
-            0 0 5px var(--color-secundario),
-            0 0 10px var(--color-secundario),
-            0 0 20px var(--color-secundario),
-            0 0 40px var(--color-secundario),
-            0 0 80px var(--color-secundario);
-          // animation: flicker 2s infinite;
-        }
-      }
-    }
+  .levelupzonelogo-img {
+    width: 2.5em;
+    height: auto;
+    display: flex;
+    margin: 0 1em;
   }
 }
 .nav-header {
@@ -45,6 +27,8 @@ header {
   justify-content: center;
   // display: grid;
   align-items: center;
+  background-color: #00000066;
+  border-radius: 2rem;
   .nav-item {
     padding: 0 1%;
   }
@@ -61,6 +45,15 @@ header {
           color: var(--color-letra-blanca);
           white-space: nowrap;
         }
+        &:hover {
+          color: var(--color-secundario);
+          text-shadow:
+            0 0 5px var(--color-secundario),
+            0 0 10px var(--color-secundario),
+            0 0 20px var(--color-secundario),
+            0 0 40px var(--color-secundario),
+            0 0 80px var(--color-secundario);
+        }
       }
     }
   }
@@ -71,13 +64,20 @@ header {
 }
 .third-column {
   display: flex;
-  justify-content: flex-end; // Alinea a la derecha
-  align-items: center;       // Centra verticalmente los elementos
-  // gap: 9rem;
+  justify-content: flex-end;
+  align-items: center;
+  mat-slide-toggle {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1000;
+  }
+
+
 }
 .logo-button {
   display: flex;
-  // padding: 0.2em;
+  padding: 0.3em;
 }
 .login-img {
   width: 1em;
@@ -91,15 +91,9 @@ header {
 .login-img:hover, .neon-text:hover {
   cursor: pointer;
 }
-// COLORES
-.first-dialog-column{
-  background-color: #4686a6;
-}
-.second-dialog-column{
-  background-color: aquamarine;
-}
 
-// CUANDO LOS BOTONES ESTÁN ACTIVOS
+
+// * CUANDO LOS BOTONES ESTÁN ACTIVOS
 .activebutton {
   background-color: var(--color-secundario);
   color: var(--color-letra-blanca);
@@ -113,137 +107,17 @@ header {
   // TODO: Revisar
 }
 
-// TEXTO EN NEÓN
-.neon-text {
-  font-size: 1.7rem;
-  display: flex; // Permite manejar letras como bloques individuales
-  font-weight: bold;
-}
-.lowercase {
-  font-size: 1rem;
-  letter-spacing: 0.2rem;
-  margin-top: 0.875rem;
-}
 
 
-
-/* Diferentes letras con animaciones únicas */
-
-span:nth-child(2) {
-  animation: flicker 3s infinite;
-}
-span:nth-child(4) {
-  animation: off 4s infinite;
-}
-span:nth-child(6),
-span:nth-child(8) {
-  animation: flicker 2.5s infinite alternate;
-}
-span:nth-child(11) {
-  animation: off 5s infinite;
-}
-
-/* Animación de parpadeo */
-@keyframes flicker {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-    text-shadow:
-      0 0 5px var(--color-secundario),
-      0 0 10px var(--color-secundario),
-      0 0 20px var(--color-secundario),
-      0 0 40px var(--color-secundario),
-      0 0 80px var(--color-secundario);
-    opacity: 1;
-  }
-  20%, 24%, 55% {
-    text-shadow: none;
-    opacity: 0.3;
-  }
-}
-
-/* Animación de apagado */
-@keyframes off {
-  0%, 80% {
-    text-shadow: none;
-    opacity: 0.2;
-  }
-  81%, 100% {
-    text-shadow:
-      0 0 5px var(--color-secundario),
-      0 0 10px var(--color-secundario),
-      0 0 20px var(--color-secundario),
-      0 0 40px var(--color-secundario),
-      0 0 80px var(--color-secundario);
-    opacity: 1;
-    }
-  }
-
-
-
-
-
-
-  .theme-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 24px;
-    position: relative;
-    width: 50px;
-    height: 50px;
-    overflow: hidden;
-  }
-
-  .icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 0;
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-
-  .dark-mode .icon:nth-child(2) {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-
-  .dark-mode .icon:nth-child(1) {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.5);
-  }
-
-  .light-theme .icon:nth-child(1) {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-
-  .light-theme .icon:nth-child(2) {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.5);
-  }
-
-
-
-  /* Puedes personalizar más, por ejemplo, cambiar otros componentes */
-
-
-  /* POP UP */
-// .dialog-content {
-//   padding: 2%;
-//   border-radius: 1%;
-//   position: relative;
-//   display: grid;
-//   grid-template-columns: 1fr 1fr;
-// }
+// * Pop up de inicio de sesión y registro
 
 /* Contenedor principal */
 .container {
   background: #fff;
-  // border-radius: 10px;
-  position: relative;
+  // position: relative;
   z-index: 0; // Cambialo si quere las idea de ventana angiua
   max-width: 100%;
-  min-height: 480px;
+  min-height: 30rem;
   display: flex;
   overflow: hidden;
 }
@@ -253,7 +127,7 @@ span:nth-child(11) {
   position: absolute;
   top: 0;
   height: 100%;
-  // transition: all 0.6s ease-in-out;
+  transition: all 0.6s ease-in-out;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -371,4 +245,17 @@ input{
   border: 2px solid #000000;
   box-shadow: 2px 3px 0px 1px #000000;
   -webkit-box-shadow: 2px 3px 0px 1px #000000;
+}
+
+::ng-deep .cdk-overlay-backdrop.blur-backdrop {
+  backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0.3); // opcional: para oscurecer un poco el fondo
+}
+
+// * COLORES
+.first-dialog-column{
+  background-color: #4686a6;
+}
+.second-dialog-column{
+  background-color: aquamarine;
 }

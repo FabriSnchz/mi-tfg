@@ -12,18 +12,18 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AuthService } from '../auth-service';
 import { Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 @Component({
     selector: 'app-header',
     standalone: true,
-    imports: [RouterLink, RouterLinkActive, MatSlideToggleModule, MatButtonModule, MatMenuModule, MatIconModule],
-    // RouterLinkActive es una directiva que agrega una clase CSS cuando el enlace está activo
+    imports: [RouterLink, RouterLinkActive, MatSlideToggleModule, MatButtonModule, MatMenuModule, MatIconModule, MatBadgeModule],
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
-
+  badgeCount!: number;
   isLoading = true;
   isLogged: boolean = false;
   role: string = '';
@@ -50,6 +50,7 @@ export class HeaderComponent implements OnInit {
       // height: '75%',
       enterAnimationDuration,
       exitAnimationDuration,
+      backdropClass: 'blur-backdrop'
     });
   }
 
@@ -67,7 +68,6 @@ export class HeaderComponent implements OnInit {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Dialog {
-
   isRegisterMode = false;
   loginForm: FormGroup;
   registerForm: FormGroup;
@@ -124,8 +124,6 @@ export class Dialog {
       });
     } else {
       console.warn('Formulario de registro inválido');
-      console.log('Estado del formulario:', this.registerForm);
-      console.log('Controles:', this.registerForm.controls);
 
       // Imprimir errores específicos de cada campo
       Object.entries(this.registerForm.controls).forEach(([key, control]) => {
@@ -134,12 +132,6 @@ export class Dialog {
       return;
     }
   }
-
-
-
-
-
-
   toggleRegister(showRegister: boolean): void {
     this.isRegisterMode = showRegister;
   }
