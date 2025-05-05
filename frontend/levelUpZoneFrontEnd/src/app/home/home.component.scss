@@ -1,5 +1,5 @@
 // TODO: Añadir media queries para que se adapte a pantallas más pequeñas
-// TODO: Pasar a SCSS [x]
+// TODO: Pasar a SCSS []
 // TODO: Si hay muchos hover, los puedo agrupar abajo a todos
 
 main {
@@ -15,7 +15,7 @@ main {
       display: flex;
       gap: 1em;
       align-items: center;
-      justify-content: center;
+      // justify-content: center;
       img {
         display: block;
         // margin: 2.5% auto;
@@ -23,8 +23,13 @@ main {
         width: 13em;
       }
       h1 {
-        font-family: 'Flashback', 'Varela Round', 'Roboto', sans-serif;
+        // font-family: 'Flashback', 'Varela Round', 'Roboto', sans-serif;
+        font-family: 'Invasion2000';
         font-size: 5em;
+        color: #6fff00;
+        -webkit-text-stroke: 1px black; /* Contorno opcional */
+        text-shadow: 3px 2px 0px rgba(0,0,0,1);
+
       }
     }
   }
@@ -34,6 +39,11 @@ main {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+.description {
+  font-size: 1.3rem;
+  margin: 2.5%;
+  text-align: center;
 }
 
 
@@ -92,9 +102,7 @@ main {
     visibility:hidden;
   }
 }
-.swiper-wrapper{
 
-}
 .swiper-slide{
   overflow: hidden;
   @extend %backface_visibility_hidden;
@@ -149,212 +157,16 @@ main {
   transform:translateX(-50px);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//COLORES
-main {
-  background-color: #c47b2881;
-}
-article {
-  background-color: #28c44a81;
-}
-figure {
-  background-color: #c4289581;
-}
-figure img {
-  background-color: #6128c481;
-}
-p {
-  background-color: #2838c499;
-}
-// ---------------------------------------------
-
-
-// * Carrusel
-
-.container {
-  display: flex;
-  gap: 5rem;
-  justify-content: center;
-}
-
-h1 {
-  text-align: center;
-}
-.grid {
-  display: flex;
-  flex-direction: column;
-}
-
-.slides div {
-  width: 75vmin;
-  height: auto;
-  position: absolute;
-  z-index: 1;
-  opacity: 0;  /* Las imágenes inicialmente están ocultas */
-  transition: opacity 1s ease;
-
-  border: #121212 solid 1px;
-  border-radius: 0.6rem;
-  overflow: hidden;
-
-
-  box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
-  -webkit-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
-  -moz-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
-}
-
-.slides div.active {
-  opacity: 1;  /* La imagen seleccionada será visible */
-  z-index: 3;
-}
-
-.thumbnails a {
-  display: block;
-  cursor: pointer;
-}
-
-.thumbnails img {
-  // width: 30vmin;
-  width: 7rem;
-  height: 22.69vmin;
-  object-fit: cover;
-  object-position: top;
-
-  border: #121212 solid 1px;
-  border-radius: 0.6rem;
-  overflow: hidden;
-
-  margin: 0 0.5rem;
-
-  box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
-  -webkit-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
-  -moz-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
-}
-
-.thumbnails img:hover {
-  // TODO:  Hacer zoom
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-  margin: 0;
-  padding: 0;
-}
-
-.thumbnails {
-  line-height: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-}
-
-.thumbnails div {
-  flex: auto;
-  margin: 1rem 0 0 0;
-}
-
-.slides {
-  overflow: hidden;
-  width: 75vmin;
-  height: 100%;
-}
-
-.slides img {
-  height: 100vmin;
-  height: 25rem;
-  width: 100%;
-  object-fit: cover;
-  object-position: top;
-}
-
-.slides div:target {
-  z-index: 3;
-  animation: slide 1s 1;
-}
-
-.slides div:not(:target) {
-  animation: hidden 1s 1;
-}
-
-@keyframes slide {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(0%);
-  }
-}
-
-@keyframes hidden {
-  0% {
-    z-index: 2;
-  }
-  100% {
-    z-index: 2;
-  }
-}
-
-.overlay-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 2rem;
-  font-weight: bold;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
-  z-index: 4;
-  pointer-events: none; /* Evita que el texto interfiera con clics */
-  text-align: center;
-  padding: 0 1rem;
-}
-
-
-// * COLORES
-.container {
-  // background-color:#00ffc3;
-}
-.slides {
-  background-color:#6fff00;
-}
-.li {
-  background-color:#e1ff00;
-}
-.img {
-  background-color:#ff00cc;
-}
-.thumbnails {
-  background-color:#ff0000;
-}
-
-
 // * Carrusel2
 .carousel-container {
   max-width: 40rem; /* o el tamaño que desees */
-  margin: 0 auto; /* centra el carrusel */
-
-
+  margin: 0 auto;
 }
 .slide-text {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  background: linear-gradient(to top, #000000b3, transparent);
   color: white;
   padding: 10px;
   text-align: center;
@@ -367,7 +179,7 @@ h1 {
   border: #121212 solid 1px;
   border-radius: 0.6rem;
   overflow: hidden;
-  img { /*! Si funciona*/
+  img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -375,6 +187,95 @@ h1 {
 
     box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
     -webkit-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
-    -moz-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
+  }
+}
+
+// * Colores
+// main {
+//   background-color: #c47b2881;
+// }
+// .slides {
+//   background-color:#6fff00;
+// }
+// article {
+//   background-color: #28c44a81;
+// }
+// figure {
+//   background-color: #c4289581;
+// }
+// figure img {
+//   background-color: #6128c481;
+// }
+// p {
+//   background-color: #2838c499;
+// }
+// ---------------------------------------------
+
+.logo {
+  display: flex;
+  // justify-content: center;
+  // align-items: center;
+  width: 7rem;
+}
+
+.letter {
+  opacity: 0;
+  transform: scale(0.5) rotate(-15deg);
+  animation: arcadePop 0.4s ease-out forwards;
+}
+
+.letter-1  { animation-delay: 0s; }
+.letter-2  { animation-delay: 0.1s; }
+.letter-3  { animation-delay: 0.2s; }
+.letter-4  { animation-delay: 0.3s; }
+.letter-5  { animation-delay: 0.4s; }
+.letter-6  { animation-delay: 0.5s; }
+.letter-7  { animation-delay: 0.6s; }
+.letter-8  { animation-delay: 0.7s; }
+.letter-9  { animation-delay: 0.8s; }
+.letter-10 { animation-delay: 0.9s; }
+.letter-11 { animation-delay: 1s; }
+
+@keyframes arcadePop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-15deg);
+    filter: brightness(0) blur(4px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(5deg);
+    filter: brightness(2) blur(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter: brightness(1);
+  }
+}
+
+.levelupzonelogo-img {
+  width: 120px;
+  height: auto;
+  animation: logoIntro 1s ease-out forwards;
+  opacity: 0;
+  transform: scale(0.7) rotate(-5deg);
+}
+
+@keyframes logoIntro {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) rotate(-5deg);
+    filter: brightness(0) blur(4px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(2deg);
+    filter: brightness(1.5) blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+    filter: brightness(1);
   }
 }
