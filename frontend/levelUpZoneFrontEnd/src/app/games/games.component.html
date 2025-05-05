@@ -10,12 +10,6 @@
   <br>
   <div class="container">
 
-    <!-- <div class="pagination">
-      <button class="prev-page">← Anterior</button>
-      <span class="page-info">Página 1 de 5</span>
-      <button class="next-page">Siguiente →</button>
-    </div>  -->
-
     <article class="filter-section">
       <div class="filter-container">
 
@@ -34,18 +28,15 @@
     </article>
 
     <div class="grid">
-      @for (game of FilteredGames; track $index) {
+      @for (game of pagedGames; track $index;) {
         <div class="square">
           <img src="{{game.photo}}" alt="{{game.photo}}" class="square-image">
           <p>{{game.name}}</p>
-          <!-- <button class="add-button" (click)="agregarAlInventario(game)">Agregar</button> -->
-
           <div class="button-container">
             <button mat-icon-button mat-dialog-close (click)="showAuthMsg(1)">
               <mat-icon aria-hidden="false" aria-label="Example close icon" fontIcon="star"></mat-icon>
             </button>
-            <!-- <button class="view-button"></button> -->
-            <a [routerLink]="['/game-details', game.id]">Saber más</a>
+            <a class="info-button" [routerLink]="['/game-details', game.id]">Saber más</a>
             <button mat-icon-button (click)="showAuthMsg(2)">
               <mat-icon aria-hidden="false" aria-label="Icono de agregar" fontIcon="add"></mat-icon>
             </button>
@@ -53,6 +44,10 @@
         </div>
       }
     </div>
+    <mat-paginator [length]="FilteredGames.length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
   </div>
 
   @if (isLogged) {
