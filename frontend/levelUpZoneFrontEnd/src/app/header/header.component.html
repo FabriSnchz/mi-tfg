@@ -1,8 +1,7 @@
 <header>
   <div class="logo-container">
     <a routerLink="/home" class="logo-button">
-      <img class="levelupzonelogo-img" src="/images/logo_pixel_art.png" alt="LevelUpZoneLogo"/>
-
+      <img class="levelupzonelogo-img" [src]="currentImage" alt="LevelUpZoneLogo" (mouseenter)="changeImage()"/>
     </a>
   </div>
 
@@ -43,16 +42,20 @@
           </mat-menu>
         }
     } @else {
-      <button mat-icon-button (click)="openDialog('100ms', '100ms')">
-        <!-- <mat-icon mat-raised-button aria-hidden="false" aria-label="Example close icon" fontIcon="account_circle"></mat-icon> -->
-        <img class="login-img" src="/images/LoginLogo.png" alt="LoginLogo.png">
+      <button class="account-button" mat-icon-button (click)="openDialog('100ms', '100ms')">
+        <mat-icon mat-raised-button aria-hidden="false" aria-label="Example close icon" fontIcon="account_circle"></mat-icon>
       </button>
+
+      <style>
+        .account-button {
+          background-color: var(--color-blanco-general);
+          border-radius: 100%;
+          /* border: 1px solid var(--color-negro-general); */
+          box-shadow: 2px 2px 0px 1px #000000;
+          -webkit-box-shadow: 2px 2px 0px 1px #000000;
+        }
+      </style>
     }
 
   </div>
-
-
-
-
-
   </header>

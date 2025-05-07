@@ -16,10 +16,16 @@ header {
   font-size: 1em;
   padding: 0.7em;
   .levelupzonelogo-img {
-    width: 2.5em;
+    width: 3.5em;
     height: auto;
     display: flex;
     margin: 0 1em;
+
+    transition: transform 0.2s ease; /* Animación suave del movimiento */
+    &:hover {
+      transform: scale(1.1); /* Aumenta el tamaño al pasar el mouse */
+      transition: transform 0.2s ease; /* Animación suave del movimiento */
+    }
   }
 }
 .nav-header {
@@ -99,12 +105,16 @@ header {
   color: var(--color-letra-blanca);
   border-radius: 10rem;
   padding: 0.5rem 1rem;
-  // box-shadow: 0 4px 6px #0000001a;
+  border: 1px solid #000000;
   box-shadow: 0.5px 5px 0px 1px #0a4528;
   -webkit-box-shadow: 0.5px 5px 0px 1px #0a4528;
   // font-weight: bold; // TODO: ¿Cúal es mejor, con o sin?
   transition: all 0.3s ease; /* Suavidad al interactuar */
   // TODO: Revisar
+}
+.activebutton:active {
+  transform: translateY(2px); /* Simula que el botón se presiona hacia abajo */
+  box-shadow: 0px 2px 0px 1px #0a4528;  /* Cambia la sombra para simular presión */
 }
 
 

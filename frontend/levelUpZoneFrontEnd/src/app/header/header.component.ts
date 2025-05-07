@@ -23,6 +23,21 @@ import {MatBadgeModule} from '@angular/material/badge';
     styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
+  imageList: string[] = [
+    '/images/logo_pixel_art_loved.png',
+    '/images/logo_pixel_art_happy.png',
+    '/images/logo_pixel_art_died.png',
+    '/images/logo_pixel_art.png'
+  ];
+
+  // Imagen actual
+  currentImage: string = '/images/logo_pixel_art.png';
+
+  // Método para cambiar la imagen a una aleatoria
+  changeImage(): void {
+    const randomIndex = Math.floor(Math.random() * this.imageList.length);
+    this.currentImage = this.imageList[randomIndex];
+  }
   badgeCount!: number;
   isLoading = true;
   isLogged: boolean = false;

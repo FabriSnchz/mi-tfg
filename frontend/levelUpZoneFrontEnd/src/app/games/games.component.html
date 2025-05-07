@@ -1,25 +1,23 @@
 <main>
-<p class="title">Lista completa de juegos</p>
-<style>
-  .title {
-    /* font-family: 'Invasion2000'; */
-    font-family: 'HangTheDJ';
-    /* font-family: 'Flashback'; */
-  }
-</style>
+<h1>Lista completa de juegos</h1>
   <br>
   <div class="container">
 
-    <article class="filter-section">
+    <article>
       <div class="filter-container">
-
         <form (submit)="$event.preventDefault()">
           <mat-form-field>
             <mat-label>Buscar por nombre</mat-label>
             <input matInput #filter>
+            <style>
+              .mat-mdc-form-field {
+                font-size: 14px;
+                width: 95%;
+              }
+            </style>
           </mat-form-field>
           <!-- <button mat-button type="button" (click)="filtrarResultado(filter.value)">Buscar</button> -->
-          <button mat-mini-fab type="button" (click)="filtrarResultado(filter.value)">
+          <button style="margin-left: 10px;" mat-fab type="button" (click)="filtrarResultado(filter.value)">
             <mat-icon>search</mat-icon>
           </button>
         </form>
@@ -38,7 +36,8 @@
                 <p>Bienvenido, administrador</p>
               } @else if (role === 'ROLE_USER') {
                 <button mat-icon-button mat-dialog-close (click)="showAuthMsg(1)">
-                  <mat-icon aria-hidden="false" aria-label="Example close icon" fontIcon="star"></mat-icon>
+                  <!-- <mat-icon aria-hidden="false" aria-label="Example close icon" fontIcon="star"></mat-icon> -->
+                  <img src="images/star_colorless.png" alt="">
                 </button>
                 <a class="info-button" [routerLink]="['/game-details', game.id]">Saber más</a>
                 <button mat-icon-button (click)="addToTemporaryCollection(game)">
@@ -47,7 +46,8 @@
               }
             } @else {
               <button mat-icon-button mat-dialog-close (click)="showAuthMsg(1)">
-                <mat-icon aria-hidden="false" aria-label="Example close icon" fontIcon="star"></mat-icon>
+                <!-- <mat-icon aria-hidden="false" aria-label="Example close icon" fontIcon="star"></mat-icon> -->
+                <img src="images/star_colorless.png" alt="">
               </button>
               <a class="info-button" [routerLink]="['/game-details', game.id]">Saber más</a>
               <button mat-icon-button (click)="showAuthMsg(2)">
@@ -62,6 +62,14 @@
     [pageSize]="pageSize"
     [pageSizeOptions]="[5, 10, 25, 100]">
     </mat-paginator>
+
+    <style>
+      mat-paginator {
+        border: 1px solid #000000;
+        border-radius: 0.6rem;
+        background-color: var(--color-blanco-general);
+      }
+    </style>
   </div>
 
   @if (isLogged) {

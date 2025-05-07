@@ -2,7 +2,7 @@
 <!-- TODO: Cambiar los cards con CSS puro con cards de Angular Material [] -->
 
 <article class="main-container">
-  <h1 class="title">Contáctanos</h1>
+  <h1>Contáctanos</h1>
   <h2 style="  text-align: center;">Estamos aquí para ayudarte. No dudes en ponerte en contacto con nosotros para cualquier consulta, comentario o solicitud.</h2>
   <section class="background-container">
 
@@ -20,7 +20,7 @@
 
             <div class="contact-item-info-box">
               <span class="contact-item-details">
-                <h1>+34 612 345 678</h1>
+                <h3>+34 612 345 678</h3>
               </span>
             </div>
 
@@ -37,7 +37,7 @@
 
             <div class="contact-item-info-box">
               <span class="contact-item-details">
-                <h1>+34 612 345 678</h1>
+                <h3>+34 612 345 678</h3>
               </span>
             </div>
           </div>
@@ -53,7 +53,7 @@
 
             <div class="contact-item-info-box">
               <span class="contact-item-details">
-                <h1><a href="mailto:hola@gmail.com">hola&#64;gmail.com</a></h1>
+                <h3><a href="mailto:hola@gmail.com">hola&#64;gmail.com</a></h3>
               </span>
             </div>
           </div>
@@ -95,9 +95,36 @@
     <!-- Columna1 -->
     <section>
       <figure>
-        <img src="" alt="">
+        <img src="images/logo_pixel_art_happy.png" alt="" class="img-form">
+        <img src="images/kindpng_3224165.png" alt="" class="img-phone">
       </figure>
     </section>
+
+    <style>
+
+      figure {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .img-form-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .img-form {
+        width: 100%;
+        height: auto;
+        max-width: 400px; /* Ajusta el tamaño máximo según sea necesario */
+      }
+      .img-phone {
+        width: 100%;
+        height: auto;
+        max-width: 200px; /* Ajusta el tamaño máximo según sea necesario */
+      }
+    </style>
 
     <!-- Columna2 -->
     <section class="form-container">
@@ -114,7 +141,7 @@
           <label for="email">Correo electrónico</label>
           <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
           <label for="mensaje">Tu mensaje</label>
-          <textarea id="mensaje" name="mensaje" placeholder="Tu mensaje" required></textarea>
+          <textarea id="mensaje" name="mensaje" placeholder="" required></textarea>
           <button type="submit">Enviar</button>
       </form>
     </section>

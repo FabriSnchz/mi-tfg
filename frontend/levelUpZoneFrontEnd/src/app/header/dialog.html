@@ -11,7 +11,7 @@
   <!-- FORMULARIO DE INICIO DE SESIÓN -->
   <div class="form-container sign-in-container">
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-      <h1><mat-icon>person</mat-icon> Iniciar sesión</h1>
+      <h2><mat-icon>person</mat-icon> Iniciar sesión</h2>
       <!-- <input formControlName="email" placeholder="Email" type="email" /> -->
       <input formControlName="userName" placeholder="Nombre de usuario..." type="text" />
       <input formControlName="password" placeholder="Contraseña..." type="password" />
@@ -24,7 +24,7 @@
   <!-- FORMULARIO DE REGISTRO -->
   <div class="form-container sign-up-container">
     <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
-      <h1><mat-icon>person</mat-icon> Regístrate</h1>
+      <h2><mat-icon>person</mat-icon> Regístrate</h2>
 
       <input formControlName="fullName" placeholder="Nombre completo..." type="text" />
       <input formControlName="userName" placeholder="Nombre de usuario..." type="text" />
@@ -54,12 +54,12 @@
   <div class="overlay-container">
     <div class="overlay">
       <div class="overlay-panel overlay-left">
-        <h1>¿Ya tienes una cuenta?</h1>
+        <h2>¿Ya tienes una cuenta?</h2>
         <p>Inicia sesión para acceder</p>
         <button class="ghost button" (click)="toggleRegister(false)">Inicia sesión</button>
       </div>
       <div class="overlay-panel overlay-right">
-        <h1>¡Hola!</h1>
+        <h2>¡Hola!</h2>
         <p>¿Aún no tienes cuenta? ¡Crea una!</p>
         <button class="ghost button" (click)="toggleRegister(true)">Registrarme</button>
       </div>

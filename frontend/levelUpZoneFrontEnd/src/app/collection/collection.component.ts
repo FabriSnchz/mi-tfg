@@ -17,6 +17,8 @@ export class CollectionComponent implements OnInit {
   collection: Collection[] = [];
   isLogged: boolean = false;
   role: string = '';
+  userName: string = '';
+
 
 constructor(private readonly collectionService: CollectionsService,  @Inject(PLATFORM_ID) private readonly platformId: Object, private readonly authService: AuthService) {}
 
@@ -25,6 +27,8 @@ ngOnInit(): void {
     // Verificar si el usuario está logueado y obtener su rol
     this.isLogged = this.authService.isLoggedIn();
     this.role = this.authService.getUserRole() ?? '';
+    this.userName = this.authService.getUserName() ?? ''; // <- nuevo
+
 
     // Si está logueado, cargar las colecciones del usuario
     if (this.isLogged) {

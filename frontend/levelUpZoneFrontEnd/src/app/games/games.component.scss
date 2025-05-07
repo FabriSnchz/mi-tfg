@@ -1,3 +1,4 @@
+// TODO: Saber como ordenarlo con SCSS
 * {
   box-sizing: border-box;
 }
@@ -9,6 +10,11 @@ main {
 }
 .container {
   padding: 2%;
+  // border-radius: 0.6rem;
+  // background-color: #3ABEF9;
+  // box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
+  // -webkit-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
+  // border: #121212 solid 1px;
 }
 .filter-section {
   display: flex;
@@ -36,12 +42,11 @@ main {
   color: white;
   border-radius: 5px;
 }
-.search-button:hover {
-  background-color: #0056b3;
-}
+
 .filter-container {
   position: relative;
 }
+
 .filter-button {
   padding: 10px 20px;
   font-size: 16px;
@@ -88,20 +93,25 @@ main {
 .grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 2%;
-  margin-bottom: 2%;
+  gap: 2rem;
+  padding: 2rem;
+  margin-bottom: 1rem;
   .square {
 
-    width: 14rem;
-    height: 26rem;
+    // width: 14rem;
+    // height: 26rem;
 
-    background-color: #2a90c3;
+    // background: radial-gradient(circle at center, #229AF4 100%, aquamarine 100%);
+    background: lineal-gradient(to bottom, #F8E559, #864AF9);
+    background-color: #F8E559;
+    // background: linear-gradient(to bottom, #4686a6, aquamarine);
+
+
+
     border: 2px solid #000000;
-    // box-shadow: 0 5px 15px #0000004d;
     box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
     -webkit-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
-    -moz-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
-    border-radius: 8px;
+    border-radius: 0.6rem;
     padding: 1.5%;
     text-align: center;
     // position: relative;
@@ -110,24 +120,26 @@ main {
     .square-image {
       width: 100%;
       height: 20rem;
-      // height: 115%; // TODO: Hacer que funcione
       object-fit: cover; /* Ajusta la imagen sin deformarla */
-      border-radius: 8px;
+      border-radius: 0.6rem;
       margin-bottom: 6%;
+      border: 0.5px solid #000000;
+
     }
     .info-button {
-      // padding: 10px 15px;
       white-space: nowrap;
       padding: 5% 4%;
       font-size: 90%;
       cursor: pointer;
-      border: none;
-      background-color: #28a745;
+      background-color: #3ecd5e;
       color: white;
       border-radius: 4px;
       margin: 4% 0 1% 0;
       text-decoration: none;
       transition: background-color 0.3s ease;
+      border: 1px solid #000000;
+      box-shadow: 0.5px 5px 0px 1px #0a4528;
+      -webkit-box-shadow: 0.5px 5px 0px 1px #0a4528;
       &:hover {
         background-color: #218838;
       }
@@ -146,23 +158,11 @@ main {
   gap: 1rem;
 }
 
-// TODO: Saber como ordenarlo con SCSS
-
-.add-button:hover, .view-button:hover {
-  background-color: #218838;
-}
-.view-button {
-  background-color: #17a2b8;
-}
-.add-button {
-  background-color: #b81717;
-}
-.view-button:hover {
-  background-color: #138496;
-}
 
 
-/* POP UP */
+
+
+// * POP UP
 .dialog-content {
   padding: 2%;
   border-radius: 1%;
@@ -179,20 +179,20 @@ main {
   }
 }
 
-// COLORES
+// * COLORES
 
-main {
-  background-color: #c47b2881;
-}
-article {
-  background-color: #28c44a81;
-}
-figure {
-  background-color: #c4289581;
-}
-figure img {
-  background-color: #6128c481;
-}
-p {
-  background-color: #2838c499;
-}
+// main {
+//   background-color: #c47b2881;
+// }
+// article {
+//   background-color: #28c44a81;
+// }
+// figure {
+//   background-color: #c4289581;
+// }
+// figure img {
+//   background-color: #6128c481;
+// }
+// p {
+//   background-color: #2838c499;
+// }
