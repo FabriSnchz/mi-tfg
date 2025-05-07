@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Enter the name of your collection</h2>
+
+<mat-dialog-content>
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Collection name</mat-label>
+    <input matInput [(ngModel)]="collectionName" />
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button color="primary" (click)="save()" [disabled]="!collectionName">Save</button>
+</mat-dialog-actions>

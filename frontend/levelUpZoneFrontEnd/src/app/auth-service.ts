@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { JwtResponse } from './jwt-response';
 
 @Injectable({
@@ -11,18 +11,34 @@ export class AuthService {
 
   constructor(private readonly http: HttpClient) {}
 
+  // login(credentials: { userName: string; password: string }): Observable<JwtResponse> {
+  //   return this.http.post<JwtResponse>(`${this.apiUrl}/login`, credentials);
+  // }
+
   login(credentials: { userName: string; password: string }): Observable<JwtResponse> {
-    return this.http.post<JwtResponse>(`${this.apiUrl}/login`, credentials);
+    return this.http.post<JwtResponse>(`${this.apiUrl}/login`, credentials).pipe(
+      tap(response => {
+        console.log('Login response:', response);  // Imprime todo el objeto
+        if (response && response.token) {
+          console.log('JWT received:', response.token);  // Verifica que el JWT se reciba
+          this.saveToken(response.token, response.role, response.userName, response.id); // Guarda el token como jwt
+        } else {
+          console.error('No JWT received in response', response);
+        }
+      })
+    );
   }
 
   register(data: any): Observable<{ message: string }> {
     return this.http.post<{ message: string }>(`${this.apiUrl}/register`, data);
   }
 
-  saveToken(jwt: string, role: string, userName: string): void {
+  saveToken(jwt: string, role: string, userName: string, userId: number): void {
+    console.log('Saving token', jwt);  // Agrega un log aquí para verificar que el token se está guardando
     localStorage.setItem('token', jwt);
     localStorage.setItem('role', role);
     localStorage.setItem('userName', userName);
+    localStorage.setItem('userId', String(userId)); // Asegúrate de que el ID del usuario se guarde correctamente
   }
 
   getToken(): string | null {
@@ -44,6 +60,10 @@ export class AuthService {
     return localStorage.getItem('userName'); // o donde lo estés guardando
   }
 
+  getUserId(): number | null {
+    console.log('getUserId', localStorage.getItem('userId'));
+    return localStorage.getItem('userId') ? Number(localStorage.getItem('userId')) : null; // Asegúrate de que el ID del usuario se guarde correctamente
+  }
 
   logout(): void {
     localStorage.removeItem('token');
@@ -53,5 +73,4 @@ export class AuthService {
   isLoggedIn(): boolean {
     return !!this.getToken();  // true si hay token, false si no
   }
-
 }

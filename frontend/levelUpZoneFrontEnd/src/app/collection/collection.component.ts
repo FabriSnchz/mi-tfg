@@ -20,13 +20,26 @@ export class CollectionComponent implements OnInit {
 
 constructor(private readonly collectionService: CollectionsService,  @Inject(PLATFORM_ID) private readonly platformId: Object, private readonly authService: AuthService) {}
 
-  ngOnInit(): void {
-    this.collectionService.getCollections().subscribe(collections =>{
-      this.collection = collections
-  });
-    if (isPlatformBrowser(this.platformId)) {
-      this.role = this.authService.getUserRole() ?? '';
-      this.isLogged = this.authService.getToken() !== null;
+ngOnInit(): void {
+  if (isPlatformBrowser(this.platformId)) {
+    // Verificar si el usuario está logueado y obtener su rol
+    this.isLogged = this.authService.isLoggedIn();
+    this.role = this.authService.getUserRole() ?? '';
+
+    // Si está logueado, cargar las colecciones del usuario
+    if (this.isLogged) {
+      const userId = this.authService.getUserId();
+      if (userId) {
+        this.collectionService.getCollectionsByUserId(userId).subscribe(collections => {
+          this.collection = collections;
+        });
+      }
+    } else {
+      // Si no está logueado, cargar todas las colecciones
+      this.collectionService.getCollections().subscribe(collections => {
+        this.collection = collections;
+      });
     }
   }
+}
 }

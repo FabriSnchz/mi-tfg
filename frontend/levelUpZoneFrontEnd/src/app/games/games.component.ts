@@ -110,4 +110,20 @@ export class GamesComponent implements OnInit, AfterViewInit {
       verticalPosition: 'top',
     });
   }
+
+  addToTemporaryCollection(game: Game): void {
+    const storedGames = localStorage.getItem('temporaryGames');
+    let temporaryGames: Game[] = storedGames ? JSON.parse(storedGames) : [];
+
+    // Evita duplicados
+    const exists = temporaryGames.find(g => g.id === game.id);
+    if (!exists) {
+      temporaryGames.push(game);
+      localStorage.setItem('temporaryGames', JSON.stringify(temporaryGames));
+      alert('Game added to temporary collection.');
+    } else {
+      alert('This game is already in your temporary collection.');
+    }
+  }
+
 }

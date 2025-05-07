@@ -12,10 +12,6 @@ export class GamesService {
   Games$ = this.GamesSubject.asObservable(); // Observable para suscribirse a los cambios en la lista de Games
 
   constructor(private readonly http: HttpClient) { }
-  // getGames(): Observable<Game[]> {
-  //   console.log(this.http.get<Game[]>(this.apiUrl));
-  //   return this.http.get<Game[]>(this.apiUrl);
-  // }
 
   getGames(): Observable<Game[]> {
     let headers = new HttpHeaders();

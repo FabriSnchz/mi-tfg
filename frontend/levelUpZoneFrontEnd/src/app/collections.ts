@@ -1,9 +1,7 @@
-import { Game } from './games';
 
 export interface Collection {
-  id: number;
+  id?: number;
   name: string;
-  id_usuario: number;
-
-  Games: Game[];
+  user_id: number;
+  gameIds: number[]; // IDs de los juegos en la colección
 }

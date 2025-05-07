@@ -10,6 +10,21 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+
+  titleLetters = [
+    { src: 'l.png', alt: 'L' },
+    { src: 'e.png', alt: 'E' },
+    { src: 'v.png', alt: 'V' },
+    { src: 'e.png', alt: 'E' },
+    { src: 'l.png', alt: 'L' },
+    { src: 'u.png', alt: 'U' },
+    { src: 'p.png', alt: 'P' },
+    { src: 'z.png', alt: 'Z' },
+    { src: 'o.png', alt: 'O' },
+    { src: 'n.png', alt: 'N' },
+    { src: 'e.png', alt: 'E' }
+  ];
+
   slides = [
     {
       image: 'https://cdn.pixabay.com/photo/2024/05/04/01/37/retro-8738140_1280.jpg',

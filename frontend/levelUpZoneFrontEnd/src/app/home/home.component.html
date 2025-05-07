@@ -7,17 +7,13 @@
           <!-- <h1><i>Level Up Zone</i></h1> -->
 
           <div class="logo">
-            <img src="/fonts/TitleLevelUpZone/pixil-frame-8.png" alt="L" class="letter letter-1">
-            <img src="/fonts/TitleLevelUpZone/pixil-frame-1.png" alt="E" class="letter letter-2">
-            <img src="/fonts/TitleLevelUpZone/pixil-frame-2.png" alt="V" class="letter letter-3">
-            <img src="/fonts/TitleLevelUpZone/pixil-frame-1.png" alt="E" class="letter letter-4">
-            <img src="/fonts/TitleLevelUpZone/pixil-frame-8.png" alt="L" class="letter letter-5">
-            <img src="/fonts/TitleLevelUpZone/pixil-frame-3.png" alt="U" class="letter letter-6">
-            <img src="/fonts/TitleLevelUpZone/pixil-frame-4.png" alt="P" class="letter letter-7">
-            <img src="/fonts/TitleLevelUpZone/pixil-frame-5.png" alt="Z" class="letter letter-8">
-            <img src="/fonts/TitleLevelUpZone/pixil-frame-6.png" alt="O" class="letter letter-9">
-            <img src="/fonts/TitleLevelUpZone/pixil-frame-7.png" alt="N" class="letter letter-10">
-            <img src="/fonts/TitleLevelUpZone/pixil-frame-1.png" alt="E" class="letter letter-11">
+            <img
+              *ngFor="let letter of titleLetters; let i = index"
+              [src]="'/fonts/TitleLevelUpZone/' + letter.src"
+              [alt]="letter.alt"
+              class="letter"
+              [ngClass]="'letter-' + (i + 1)"
+            />
           </div>
 
           <!-- <h1><i>Zone</i></h1> -->

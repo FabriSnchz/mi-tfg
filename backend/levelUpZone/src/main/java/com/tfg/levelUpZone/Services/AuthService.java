@@ -11,6 +11,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +37,7 @@ public class AuthService {
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username,password);
         Authentication authResult = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
         SecurityContextHolder.getContext().setAuthentication(authResult);
-        return jwtUtil.generateToken(authResult);
+        return jwtUtil.generateAccessToken(authResult);
     }
 
     public void registerUser(NewUserDto newUserDto){
@@ -48,6 +49,19 @@ public class AuthService {
         User user = new User(newUserDto.getUserName(), passwordEncoder.encode(newUserDto.getPassword()), newUserDto.getFullName(),newUserDto.getEmail(),
         	    newUserDto.getBirthDate(), roleUser);
         userService.save(user);
+    }
+    
+    public String refreshToken(String refreshToken) {
+        if (jwtUtil.isTokenExpired(refreshToken)) {
+            throw new RuntimeException("Refresh token expired");
+        }
+        String username = jwtUtil.extractUserName(refreshToken);
+        UserDetails userDetails = userService.loadUserByUsername(username);
+        
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
+                userDetails.getUsername(), null, userDetails.getAuthorities());
+        
+        return jwtUtil.generateAccessToken(authenticationToken);
     }
 
 }

@@ -6,14 +6,20 @@ import com.tfg.levelUpZone.dtos.NewUserDto;
 import com.tfg.levelUpZone.entities.Role;
 import com.tfg.levelUpZone.entities.User;
 import com.tfg.levelUpZone.enums.RoleList;
+import com.tfg.levelUpZone.jwt.JwtUtil;
 import com.tfg.levelUpZone.repositories.RoleRepository;
 import com.tfg.levelUpZone.repositories.UserRepository;
+import com.tfg.levelUpZone.ErrorResponse;
 import com.tfg.levelUpZone.Services.AuthService;
 import com.tfg.levelUpZone.Services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -32,15 +38,17 @@ public class AuthController {
     private UserRepository userRepository;
     private PasswordEncoder passwordEncoder;
     private RoleRepository roleRepository;
+    private JwtUtil jwtUtil;
 
     @Autowired
     public AuthController(AuthService authService, UserRepository userRepository, PasswordEncoder passwordEncoder, RoleRepository roleRepository,
-            UserService userService) {
+            UserService userService, JwtUtil jwtUtil) {
 		this.authService = authService;
 		this.userRepository = userRepository;
 		this.passwordEncoder = passwordEncoder;
 		this.roleRepository = roleRepository;
 		this.userService = userService;
+		this.jwtUtil = jwtUtil;
 		}
     
     @PostMapping("/login")
@@ -56,10 +64,11 @@ public class AuthController {
             User user = userRepository.findByUserName(loginUserDto.getUserName()).orElseThrow();
             String role = user.getRole().getName().name();
             String userName = user.getUserName();
+            Long userId = user.getId();
 
-            return ResponseEntity.ok(new JwtResponse(jwt, role, userName));
+            return ResponseEntity.ok(new JwtResponse(jwt, role, userName, userId));
         } catch (Exception e){
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new JwtResponse("Credenciales incorrectas", null, null));
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new JwtResponse("Credenciales incorrectas", null, null, null));
         }
     }
 
@@ -105,6 +114,48 @@ public class AuthController {
         return ResponseEntity.ok(response);
 
     }
+
+    @PostMapping("/refresh")
+    public ResponseEntity<?> refreshToken(@RequestBody Map<String, String> request) {
+        String refreshToken = request.get("refreshToken");
+
+        // Validación de entrada
+        if (refreshToken == null || refreshToken.isEmpty()) {
+            return ResponseEntity.badRequest().body(new ErrorResponse("El refresh token es obligatorio."));
+        }
+
+        try {
+            // Validar si el refresh token está expirado
+            String username = jwtUtil.extractUserName(refreshToken);
+
+            if (jwtUtil.isTokenExpired(refreshToken)) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ErrorResponse("El refresh token ha expirado."));
+            }
+
+            // Buscar el usuario por el nombre de usuario
+            User user = userRepository.findByUserName(username)
+                    .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado con el nombre: " + username));
+
+            // Construir el objeto UserDetails para la autenticación
+            UserDetails userDetails = userService.loadUserByUsername(user.getUserName());
+            Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+
+            // Generar un nuevo token de acceso
+            String newAccessToken = jwtUtil.generateAccessToken(authentication);
+
+            // Devolver el nuevo JWT junto con el rol y el ID de usuario
+            JwtResponse jwtResponse = new JwtResponse(newAccessToken, user.getRole().getName().name(), user.getUserName(), user.getId());
+            return ResponseEntity.ok(jwtResponse);
+
+        } catch (UsernameNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ErrorResponse("Usuario no encontrado."));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ErrorResponse("Refresh token inválido."));
+        }
+    }
+
+
+
 
     @GetMapping("/check-auth")
     public ResponseEntity<String> checkAuth(){

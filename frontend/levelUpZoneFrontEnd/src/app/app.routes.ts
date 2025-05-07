@@ -9,6 +9,7 @@ import { AsdComponent } from './asd/asd.component';
 import { authGuard } from './auth.guard';
 import { AppComponent } from './app.component';
 import { GameDetailComponent } from './game-detail/game-detail.component';
+import { TemporaryCollectionComponent } from './temporary-collection/temporary-collection.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full', title: 'Inicio'},
@@ -17,8 +18,9 @@ export const routes: Routes = [
 
   {path: 'cards', component: CardsComponent, title: 'Inicio'},
   {path: 'asd', component: AsdComponent, title: 'Asd'},
-  {path: 'home', component: HomeComponent, title: 'Inicio'}, // Protege la ruta /home
+  {path: 'home', component: HomeComponent, title: 'Inicio'},
   {path: 'collections', component: CollectionComponent, title: 'Mi Inventario'},
+  {path: 'temporary-collection', component: TemporaryCollectionComponent, title: 'Mi colección temporal'},
   {path: 'games', component: GamesComponent, title: 'Juegos'},
   {path: 'game-details/:id', component: GameDetailComponent, title: 'Detalles del Juego'},
   {path: 'contact', component: ContactComponent, title: 'Contacto'},

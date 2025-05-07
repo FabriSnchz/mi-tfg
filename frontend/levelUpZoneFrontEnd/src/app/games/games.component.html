@@ -33,13 +33,27 @@
           <img src="{{game.photo}}" alt="{{game.photo}}" class="square-image">
           <p>{{game.name}}</p>
           <div class="button-container">
-            <button mat-icon-button mat-dialog-close (click)="showAuthMsg(1)">
-              <mat-icon aria-hidden="false" aria-label="Example close icon" fontIcon="star"></mat-icon>
-            </button>
-            <a class="info-button" [routerLink]="['/game-details', game.id]">Saber más</a>
-            <button mat-icon-button (click)="showAuthMsg(2)">
-              <mat-icon aria-hidden="false" aria-label="Icono de agregar" fontIcon="add"></mat-icon>
-            </button>
+            @if (isLogged) {
+              @if (role === 'ROLE_ADMIN') {
+                <p>Bienvenido, administrador</p>
+              } @else if (role === 'ROLE_USER') {
+                <button mat-icon-button mat-dialog-close (click)="showAuthMsg(1)">
+                  <mat-icon aria-hidden="false" aria-label="Example close icon" fontIcon="star"></mat-icon>
+                </button>
+                <a class="info-button" [routerLink]="['/game-details', game.id]">Saber más</a>
+                <button mat-icon-button (click)="addToTemporaryCollection(game)">
+                  <mat-icon aria-hidden="false" aria-label="Icono de agregar" fontIcon="add"></mat-icon>
+                </button>
+              }
+            } @else {
+              <button mat-icon-button mat-dialog-close (click)="showAuthMsg(1)">
+                <mat-icon aria-hidden="false" aria-label="Example close icon" fontIcon="star"></mat-icon>
+              </button>
+              <a class="info-button" [routerLink]="['/game-details', game.id]">Saber más</a>
+              <button mat-icon-button (click)="showAuthMsg(2)">
+                <mat-icon aria-hidden="false" aria-label="Icono de agregar" fontIcon="add"></mat-icon>
+              </button>
+            }
           </div>
         </div>
       }

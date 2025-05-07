@@ -1,0 +1,78 @@
+<div class="container">
+  <h2>Games in Temporary Collection</h2>
+
+  <!-- @if (temporaryGames.length > 0 && temporaryGames.length < 5) {
+    <p>Temporary collection has {{temporaryGames.length}} games.</p>
+  } @else if (temporaryGames.length >= 5) {
+    <p>Temporary collection is full with {{temporaryGames.length}} games.</p>
+  } @else if (temporaryGames.length === 0 && !isLoggedIn) {
+    <p>Please log in to save your collection.</p>
+  } @else if (temporaryGames.length === 0 && isLoggedIn
+
+  ) {} -->
+
+  @if (temporaryGames.length > 0) {
+    <table mat-table [dataSource]="temporaryGames" class="mat-elevation-z8">
+
+    <!-- Name -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let game"> {{ game.name }} </td>
+    </ng-container>
+
+    <!-- Genre -->
+    <ng-container matColumnDef="genre">
+      <th mat-header-cell *matHeaderCellDef> Genre </th>
+      <td mat-cell *matCellDef="let game"> {{ game.genre }} </td>
+    </ng-container>
+
+    <!-- Release Date -->
+    <ng-container matColumnDef="release_date">
+      <th mat-header-cell *matHeaderCellDef> Release Date </th>
+      <td mat-cell *matCellDef="let game"> {{ game.release_date }} </td>
+    </ng-container>
+
+    <!-- Studio -->
+    <ng-container matColumnDef="studio">
+      <th mat-header-cell *matHeaderCellDef> Studio </th>
+      <td mat-cell *matCellDef="let game"> {{ game.studio }} </td>
+    </ng-container>
+
+    <!-- Multiplayer -->
+    <ng-container matColumnDef="multiplayer">
+      <th mat-header-cell *matHeaderCellDef> Multiplayer </th>
+      <td mat-cell *matCellDef="let game"> {{ game.multiplayer ? 'Yes' : 'No' }} </td>
+    </ng-container>
+
+    <!-- Platforms -->
+    <ng-container matColumnDef="platforms">
+      <th mat-header-cell *matHeaderCellDef> Platforms </th>
+      <td mat-cell *matCellDef="let game"> {{ formatPlatforms(game.platforms) }} </td>
+    </ng-container>
+
+    <!-- Action -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let game">
+        <button mat-icon-button color="warn" (click)="removeGame(game)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+} @else {
+    <p>Your temporary collection is empty.</p>
+  }
+
+  <!-- Save collection button -->
+  <div class="save-button">
+    <button mat-raised-button color="primary"
+            (click)="saveTemporaryCollection()"
+            [disabled]="temporaryGames.length === 0">
+      Save Collection
+    </button>
+  </div>
+</div>

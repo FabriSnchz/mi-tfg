@@ -28,8 +28,9 @@ public class Collection {
     private Long id;
 
     private String name;
-
-    private Long user_id;
+    
+    @Column(name = "user_id")
+    private Long userId;
 
     @ManyToMany(mappedBy = "collections")
     private List<Game> games;

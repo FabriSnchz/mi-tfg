@@ -92,10 +92,11 @@ export class Dialog {
 
       this.authService.login(credentials).subscribe({
         next: (response) => {
-          this.authService.saveToken(response.jwt, response.role, response.userName);
+          this.authService.saveToken(response.token, response.role, response.userName, response.id); // Guarda el token como jwt
+          console.log('Saving userId:', response.id);  // Verifica que el userId se guarda correctamente
 
-          // this.router.navigate(['/']);
-          window.location.href = '/' // Úsalo solo si necesitas recargar completamente
+          this.router.navigate(['/']);
+          // window.location.href = '/' // Úsalo solo si necesitas recargar completamente
         },
         error: (err) => {
           alert('Credenciales incorrectas');
