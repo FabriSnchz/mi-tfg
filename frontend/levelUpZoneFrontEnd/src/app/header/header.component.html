@@ -26,7 +26,11 @@
     <mat-slide-toggle (change)="toggleTheme()"></mat-slide-toggle>
 
     <button mat-icon-button routerLink="/temporary-collection">
-      <mat-icon [matBadge]="badgeCount" aria-hidden="false" aria-label="Example inventory_2 icon">inventory_2</mat-icon>
+      @if (badgeCount !== 0) {
+        <mat-icon [matBadge]="badgeCount" aria-hidden="false" aria-label="Example inventory_2 icon">inventory_2</mat-icon>
+      } @else {
+        <mat-icon aria-hidden="false" aria-label="Example inventory_2 icon">inventory_2</mat-icon>
+      }
     </button>
 
     <!-- * Icono de usuario -->

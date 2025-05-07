@@ -11,6 +11,9 @@ export class GamesService {
   private readonly GamesSubject = new BehaviorSubject<Game[]>([]);
   Games$ = this.GamesSubject.asObservable(); // Observable para suscribirse a los cambios en la lista de Games
 
+  private readonly badgeCountSource = new BehaviorSubject<number>(0); // inicializa en 0
+  badgeCount$ = this.badgeCountSource.asObservable();
+
   constructor(private readonly http: HttpClient) { }
 
   getGames(): Observable<Game[]> {
@@ -25,17 +28,21 @@ export class GamesService {
 
     return this.http.get<Game[]>(this.apiUrl, { headers });
   }
-
   getGameById(id: string): Observable<Game> {
     return this.http.get<Game>(`${this.apiUrl}/${id}`);  // Aquí usamos la URL completa
   }
-
-
   emitirGames(): void {
     this.getGames().subscribe(Games => {
       this.GamesSubject.next(Games); // Emitir la lista de Games a través del BehaviorSubject
     });
   }
 
+  incrementBadgeCount(): void {
+    const currentCount = this.badgeCountSource.value;
+    this.badgeCountSource.next(currentCount + 1);
+  }
+  setBadgeCount(count: number): void {
+    this.badgeCountSource.next(count);
+  }
 
 }

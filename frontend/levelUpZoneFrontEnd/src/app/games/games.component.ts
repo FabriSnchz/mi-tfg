@@ -120,6 +120,9 @@ export class GamesComponent implements OnInit, AfterViewInit {
     if (!exists) {
       temporaryGames.push(game);
       localStorage.setItem('temporaryGames', JSON.stringify(temporaryGames));
+
+      this.gamesService.incrementBadgeCount();
+
       alert('Game added to temporary collection.');
     } else {
       alert('This game is already in your temporary collection.');

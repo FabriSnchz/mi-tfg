@@ -13,6 +13,7 @@ import { AuthService } from '../auth-service';
 import { Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import {MatBadgeModule} from '@angular/material/badge';
+import { GamesService } from '../games.service';
 
 
 @Component({
@@ -46,13 +47,23 @@ export class HeaderComponent implements OnInit {
   readonly dialog = inject(MatDialog);
   @Output() themeToggled = new EventEmitter<void>();
 
-  constructor(private readonly authService: AuthService, private router: Router, @Inject(PLATFORM_ID) private readonly platformId: Object) {}
+  constructor(private readonly authService: AuthService, private router: Router, @Inject(PLATFORM_ID) private readonly platformId: Object, private readonly gamesService: GamesService) {}
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.role = this.authService.getUserRole() ?? '';
       this.isLogged = this.authService.getToken() !== null;
-      this.userName = this.authService.getUserName() ?? ''; // <- nuevo
+      this.userName = this.authService.getUserName() ?? '';
+
+      const storedGames = localStorage.getItem('temporaryGames');
+      const games: any[] = storedGames ? JSON.parse(storedGames) : [];
+      const initialCount = games.length;
+      this.gamesService.setBadgeCount(initialCount);
     }
+
+    this.gamesService.badgeCount$.subscribe(count => {
+      this.badgeCount = count;
+    });
+
   }
 
   toggleTheme(): void {
