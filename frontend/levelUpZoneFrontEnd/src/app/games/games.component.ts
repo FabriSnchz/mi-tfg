@@ -44,7 +44,6 @@ export class GamesComponent implements OnInit, AfterViewInit {
       this.Games = Games;
       this.FilteredGames = Games;
       this.updatePagedGames();
-      // this.gamesService.emitirGames(); // Dispara la carga inicial de Games
     });
 
     this.route.paramMap.subscribe(params => {

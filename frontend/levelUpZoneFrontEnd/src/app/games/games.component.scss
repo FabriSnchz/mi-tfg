@@ -34,15 +34,17 @@ main {
   border-radius: 5px;
 }
 .search-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
   background-color: #007bff;
   color: white;
   border-radius: 5px;
+  box-shadow: 2px 2px 0px 1px #000000;
+  -webkit-box-shadow: 2px 2px 0px 1px #000000;
 }
-
+mat-paginator {
+  border: 1px solid #000000;
+  border-radius: 0.6rem;
+  background-color: var(--color-blanco-general);
+}
 .filter-container {
   position: relative;
 }
@@ -158,26 +160,14 @@ main {
   gap: 1rem;
 }
 
-
-
-
-
-// * POP UP
-.dialog-content {
-  padding: 2%;
-  border-radius: 1%;
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  .dialog-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 3%;
-  }
-  .dialog-text {
-    margin-left: 4%;
-  }
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 95%;
 }
+
+
+
+
 
 // * COLORES
 
