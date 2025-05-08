@@ -1,18 +1,13 @@
 .container {
   padding: 2rem;
-  max-width: 800px;
   margin: 0 auto;
-}
-
-h2 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  font-weight: 500;
+  max-width: 50rem;
 }
 
 table {
   width: 100%;
   margin-bottom: 1.5rem;
+  border: 2px solid #000000; // Necesario para el borde de la tabla
 }
 
 .boton-guardar {

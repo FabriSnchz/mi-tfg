@@ -62,8 +62,8 @@ html, body {
 .grid-background {
   min-height: 100vh; // Para cubrir toda la pantalla
   background:
-    linear-gradient(rgba(0, 0, 0, 0.1) 0.0625rem, transparent 0.0625rem),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0.0625rem, transparent 0.0625rem),
+    linear-gradient(#0000001a 0.0625rem, transparent 0.0625rem),
+    linear-gradient(90deg, #0000001a 0.0625rem, transparent 0.0625rem),
     #87CEEB;
   background-size: 3.125rem 3.125rem;
   ::selection {
@@ -88,13 +88,27 @@ html, body {
     background-color: #ffb347; // Color de fondo cuando seleccionas
     color: var(--color-letra-negra); // Color del texto seleccionado
   }
-  h1 {
+  h1, h2 {
     color: var(--color-letra-blanca);
   }
 }
 
 
+.custom-container {
+  border: 2px solid #000000;
+  box-shadow: 9px 9px 0px 1px #000000;
+  -webkit-box-shadow: 9px 9px 0px 1px #000000;
+  border-radius: 0.6rem;
+  overflow: hidden;
+}
 
+.custom-container-2 {
+  border: solid 2px #000000;
+  box-shadow: 9px 9px 0px 1px #000000;
+  -webkit-box-shadow: 9px 9px 0px 1px #000000;
+  border-radius: 0.6rem;
+  overflow: hidden;
+}
 
 
 @font-face {
@@ -143,3 +157,24 @@ html, body {
 }
 
 
+// * Scrollbar
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+// * Track (fondo de la barra)
+::-webkit-scrollbar-track {
+  background: #1e1e2f;
+  border-radius: 10px;
+}
+
+// * Thumb (la parte que se mueve)
+::-webkit-scrollbar-thumb {
+  background: #ffb347;
+  border-radius: 10px;
+}
+
+// * Thumb al pasar el mouse
+::-webkit-scrollbar-thumb:hover {
+  background: #ff7f50;
+}

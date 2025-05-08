@@ -53,21 +53,28 @@ export class AppComponent implements OnInit {
       this.router.navigate(['/']); // Ajusta la ruta según tus necesidades
     }
 
-    if (isPlatformBrowser(this.platformId)) {
-      const storedTheme = localStorage.getItem('isDarkTheme');
-      this.isDarkTheme = storedTheme === 'true';
+      console.log('AppComponent: ngOnInit');
 
-      const body = this.document.body;
 
-      // Solo aplica si aún no hay clase de tema puesta
-      if (!body.classList.contains('dark-mode') && !body.classList.contains('light-theme')) {
-        if (this.isDarkTheme) {
-          body.classList.add('dark-mode');
-        } else {
-          body.classList.add('light-theme');
-        }
-      }
-    }
+    // if (isPlatformBrowser(this.platformId)) {
+    //   const storedTheme = localStorage.getItem('isDarkTheme');
+    //   this.isDarkTheme = storedTheme === 'true';
+
+    //   const body = this.document.body;
+
+    //   // Solo aplica si aún no hay clase de tema puesta
+    //   if (!body.classList.contains('dark-mode') && !body.classList.contains('light-theme')) {
+    //     if (this.isDarkTheme) {
+    //       body.classList.add('dark-mode');
+    //     } else {
+    //       body.classList.add('light-theme');
+    //     }
+    //   }
+    // }
+  }
+
+  ngAfterViewInit() {
+    console.log('AppComponent: ngAfterViewInit');
   }
 
   // * Alterna entre los temas claro y oscuro aplicando clases CSS al <body>.

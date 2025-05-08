@@ -34,20 +34,14 @@
     margin-bottom: 2%;
     padding: 2rem;
     border-radius: 0.6rem;
-    // background-color: #0000007a;
+    // background-color: #0000001a; // TODO: Fijate si esto sirve
   }
   .img-form-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2%;
     .form-container {
-      border: #121212 solid 1px;
       padding: 4%;
-      border-radius: 0.6rem;
-
-      box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
-      -webkit-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
-
       background-color: #a278cb;
       h2 {
         margin-bottom: 4.2%;
@@ -57,27 +51,31 @@
           width: 100%;
           padding: 0.65rem;
           margin-bottom: 15px;
-          border: 1px solid #ccc;
-          border-radius: 15px;
+          border-radius: 0.6rem;
           font-size: 100%;
+          border: 0.0625rem solid #000000; /* 1px solid #000000 */
         }
         textarea {
           height: 10rem;
-          border-radius: 0.6rem;
-          // padding: 2.5%;
         }
         button {
-          padding: 2% 4%;
+          padding: 0.5rem 1rem;
           font-size: 100%;
           cursor: pointer;
-          border: none;
           background-color: #007bff;
           color: white;
           border-radius: 0.6rem;
           transition: background-color 0.3s ease;
+          border: 1px solid #000000;
+          box-shadow: 0.5px 5px 0px 1px #1e0a45;
+          -webkit-box-shadow: 0.5px 5px 0px 1px #1e0a45;
         }
         button:hover {
           background-color: #0056b3;
+        }
+        button:active {
+          transform: translateY(2px);
+          box-shadow: 0px 2px 0px 1px #1e0a45;
         }
       }
     }
@@ -97,14 +95,6 @@
     flex-basis: 14rem;
     margin: 0 0 3rem 0;
     // TODO: Hacer que todos los margenes sean iguales
-    overflow: hidden;
-    // border-radius: 28px; //TODO: Este? o el de abajo?
-    border-radius: 0.6rem;
-    border: #121212 solid 1px;
-
-    box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
-    -webkit-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
-    -moz-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 
@@ -172,7 +162,7 @@
   transition: all .5s ease;
 }
 .contact-card:nth-child(2n) .contact-card-background {
-  background-color: #3ecd5e;
+  background-color: #3A59D1;
 }
 .contact-card:nth-child(3n) .contact-card-background {
   background-color: #e44002;
@@ -234,14 +224,32 @@
   }
 }
 
-mat-expansion-panel {
-  border: #121212 solid 1px;
-}
-
-
 .mat-expansion-panel:not([class*=mat-elevation-z]) {
-  box-shadow: 9px 9px 0px 1px rgba(0, 0, 0, 1);
-  -webkit-box-shadow: 9px 9px 0px 1px rgba(0, 0, 0, 1);
-  -moz-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
+  box-shadow: 9px 9px 0px 1px #000000;
+  -webkit-box-shadow: 9px 9px 0px 1px #000000;
 }
+
+figure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-form {
+  width: 100%;
+  height: auto;
+  max-width: 400px; /* Ajusta el tamaño máximo según sea necesario */
+}
+.img-phone {
+  width: 100%;
+  height: auto;
+  max-width: 200px; /* Ajusta el tamaño máximo según sea necesario */
+}
+
 

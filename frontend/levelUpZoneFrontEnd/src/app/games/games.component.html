@@ -21,7 +21,7 @@
 
     <div class="grid">
       @for (game of pagedGames; track $index;) {
-        <div class="square">
+        <div class="square custom-container">
           <img src="{{game.photo}}" alt="{{game.photo}}" class="square-image">
           <p>{{game.name}}</p>
           <div class="button-container">

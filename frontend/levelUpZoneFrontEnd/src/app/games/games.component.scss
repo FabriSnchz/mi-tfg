@@ -104,16 +104,14 @@ mat-paginator {
     // height: 26rem;
 
     // background: radial-gradient(circle at center, #229AF4 100%, aquamarine 100%);
-    background: lineal-gradient(to bottom, #F8E559, #864AF9);
-    background-color: #F8E559;
+    // background-color: #F8E559;
+    // background: lineal-gradient(to bottom, #864AF9);
+    background-color: #864AF9;
     // background: linear-gradient(to bottom, #4686a6, aquamarine);
 
 
 
-    border: 2px solid #000000;
-    box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
-    -webkit-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
-    border-radius: 0.6rem;
+
     padding: 1.5%;
     text-align: center;
     // position: relative;
@@ -126,24 +124,26 @@ mat-paginator {
       border-radius: 0.6rem;
       margin-bottom: 6%;
       border: 0.5px solid #000000;
-
     }
     .info-button {
       white-space: nowrap;
-      padding: 5% 4%;
-      font-size: 90%;
-      cursor: pointer;
+      padding: 0.5rem 1rem;
+      font-size: 100%;
       background-color: #3ecd5e;
       color: white;
-      border-radius: 4px;
       margin: 4% 0 1% 0;
       text-decoration: none;
       transition: background-color 0.3s ease;
+      border-radius: 0.6rem;
       border: 1px solid #000000;
-      box-shadow: 0.5px 5px 0px 1px #0a4528;
-      -webkit-box-shadow: 0.5px 5px 0px 1px #0a4528;
+      box-shadow: 0.5px 4px 0px 1px #0a4528;
+      -webkit-box-shadow: 0.5px 4px 0px 1px #0a4528;
       &:hover {
         background-color: #218838;
+      }
+      &:active {
+        transform: translateY(2px);
+        box-shadow: 0px 2px 0px 1px #0a4528;
       }
     }
   }

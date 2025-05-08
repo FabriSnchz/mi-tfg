@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script>
-    (function () {
+    document.addEventListener('DOMContentLoaded', function () {
       try {
         const isDark = localStorage.getItem('isDarkTheme') === 'true';
         const className = isDark ? 'dark-theme' : 'light-theme';
@@ -18,8 +18,8 @@
       } catch (e) {
         console.error('Error al aplicar el tema:', e);
       }
-    })();
-</script>
+    });
+  </script>
 </head>
 <body>
     <app-root></app-root>

@@ -6,13 +6,11 @@ import { ContactComponent } from './contact/contact.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CardsComponent } from './cards/cards.component';
 import { AsdComponent } from './asd/asd.component';
-import { authGuard } from './auth.guard';
-import { AppComponent } from './app.component';
 import { GameDetailComponent } from './game-detail/game-detail.component';
 import { TemporaryCollectionComponent } from './temporary-collection/temporary-collection.component';
 
 export const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full', title: 'Inicio'},
+  { path: '', component: HomeComponent, pathMatch: 'full', title: 'Inicio' },
   // { path: '', component: AppComponent, pathMatch: 'full', canActivate: [authGuard] }, // Protege la ruta raíz
   // { path: '', component: AppComponent, pathMatch: 'full' }, // Protege la ruta raíz
 

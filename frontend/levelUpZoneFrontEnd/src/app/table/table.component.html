@@ -3,7 +3,7 @@
   <input matInput (keyup)="applyFilter($event)" #input>
 </mat-form-field>
 
-<div class="mat-elevation-z8">
+<div class="mat-elevation-z8 custom-container">
   <table mat-table [dataSource]="dataSource" matSort>
 
     <ng-container matColumnDef="name">

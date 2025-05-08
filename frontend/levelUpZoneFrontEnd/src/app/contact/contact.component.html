@@ -8,7 +8,7 @@
 
     <!-- * Los tres botónes de contacto -->
       <article class="contact-grid">
-        <div class="contact-card">
+        <div class="contact-card custom-container">
           <div class="contact-card-content">
             <div class="contact-card-background"></div>
 
@@ -26,7 +26,7 @@
 
           </div>
         </div>
-        <div class="contact-card">
+        <div class="contact-card custom-container">
           <div class="contact-card-content">
             <div class="contact-card-background"></div>
 
@@ -42,7 +42,7 @@
             </div>
           </div>
         </div>
-        <div class="contact-card">
+        <div class="contact-card custom-container">
           <div class="contact-card-content">
             <div class="contact-card-background"></div>
 
@@ -63,25 +63,25 @@
 <!-- * FAQ -->
 <h2><b>FAQ</b></h2>
 <mat-accordion>
-  <mat-expansion-panel>
+  <mat-expansion-panel class="custom-container">
     <mat-expansion-panel-header>
       <mat-panel-title><h2>¿Tienen tienda física?</h2></mat-panel-title>
     </mat-expansion-panel-header>
     <p>De momento no, pero esperamos tenerlo en el futuro 😁.</p>
   </mat-expansion-panel>
-  <mat-expansion-panel>
+  <mat-expansion-panel class="custom-container">
     <mat-expansion-panel-header>
       <mat-panel-title><h2>¿Puedo tener una colección sin cuenta?</h2></mat-panel-title>
     </mat-expansion-panel-header>
     <p>Claro que sí, pero si quieres conservarla y guardarla. Te recomendamos crearla.</p>
   </mat-expansion-panel>
-  <mat-expansion-panel>
+  <mat-expansion-panel class="custom-container">
     <mat-expansion-panel-header>
       <mat-panel-title><h2>¿Cómo elimino una cuenta?</h2></mat-panel-title>
     </mat-expansion-panel-header>
     <p>De momento no, pero esperamos tenerlo en el futuro.</p>
   </mat-expansion-panel>
-  <mat-expansion-panel>
+  <mat-expansion-panel class="custom-container">
     <mat-expansion-panel-header>
       <mat-panel-title><h2>¿Tienen tienda física?</h2></mat-panel-title>
     </mat-expansion-panel-header>
@@ -100,34 +100,8 @@
       </figure>
     </section>
 
-    <style>
-
-      figure {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .img-form-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .img-form {
-        width: 100%;
-        height: auto;
-        max-width: 400px; /* Ajusta el tamaño máximo según sea necesario */
-      }
-      .img-phone {
-        width: 100%;
-        height: auto;
-        max-width: 200px; /* Ajusta el tamaño máximo según sea necesario */
-      }
-    </style>
-
     <!-- Columna2 -->
-    <section class="form-container">
+    <section class="form-container custom-container">
       <header class="header-form">
         <h2>Introduce tu información de contacto</h2>
       </header>
@@ -142,7 +116,7 @@
           <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
           <label for="mensaje">Tu mensaje</label>
           <textarea id="mensaje" name="mensaje" placeholder="" required></textarea>
-          <button type="submit">Enviar</button>
+          <button class="submit-button" type="submit">Enviar</button>
       </form>
     </section>
   </section>
