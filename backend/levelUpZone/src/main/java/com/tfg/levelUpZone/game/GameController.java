@@ -1,10 +1,12 @@
 package com.tfg.levelUpZone.game;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,13 +19,15 @@ public class GameController {
 	
 	@Autowired
 	private final GameRepository gameRepository;
-	private GameController(GameRepository gameRepository) {
+	private final GameService gameService;
+	private GameController(GameRepository gameRepository, GameService gameService) {
 		this.gameRepository = gameRepository;
+		this.gameService = gameService;
 	}
 	
 	@GetMapping
-	public ResponseEntity<Object> findAll(){
-		return ResponseEntity.ok().body(gameRepository.findAll());
+	public ResponseEntity<List<Game>> findAll(){
+	    return ResponseEntity.ok().body(gameRepository.findAll());
 	}
 	
 	@GetMapping("/{requestedId}")
@@ -35,4 +39,9 @@ public class GameController {
 		return ResponseEntity.notFound().build();
 		}
 	}
+	
+    @DeleteMapping("/games/{id}")
+    public void deleteGame(@PathVariable Long id) {
+        gameService.deleteGameById(id);
+    }
 }

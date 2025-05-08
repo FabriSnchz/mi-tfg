@@ -35,7 +35,7 @@ public class CollectionController {
 	private CollectionService collectionService;
 	
 	@GetMapping
-	public ResponseEntity<Object> findAll(){
+	public ResponseEntity<List<Collection>> findAll(){
 		return ResponseEntity.ok().body(collectionRepository.findAll());
 	}
 	

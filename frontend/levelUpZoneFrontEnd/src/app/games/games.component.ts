@@ -128,4 +128,8 @@ export class GamesComponent implements OnInit, AfterViewInit {
     }
   }
 
+  deleteGame(id: number): void {
+    this.gamesService.deleteGame(id);
+  }
+
 }

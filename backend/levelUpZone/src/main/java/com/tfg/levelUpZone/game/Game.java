@@ -1,5 +1,6 @@
 package com.tfg.levelUpZone.game;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
 
@@ -37,26 +38,28 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "game_id")
     private Long id;
-
 	private String name;
 	private String genre;
-
     private Date release_date;
-
-    private Boolean multiplayer;
-    private String photo;
-
     @ManyToMany(mappedBy = "games")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private List<Platform> platforms;
-
+    private Boolean multiplayer;
+    private String photo;
+    @Column(nullable = false)
+    private String studio;
+    private String languages;
+    private BigDecimal reviewScore;
+    private String tags;
+    private BigDecimal price;
+    private String ageRating;
+    private String description;
     @ManyToMany
     @JoinTable(name = "collections_games", joinColumns = @JoinColumn(name = "game_id"), inverseJoinColumns = @JoinColumn(name = "collection_id"))
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private List<Collection> collections;
     
-    @Column(nullable = false)
-    private String studio;
+
 }

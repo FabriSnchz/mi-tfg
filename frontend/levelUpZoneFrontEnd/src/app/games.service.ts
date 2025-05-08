@@ -45,4 +45,8 @@ export class GamesService {
     this.badgeCountSource.next(count);
   }
 
+  deleteGame(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
 }
