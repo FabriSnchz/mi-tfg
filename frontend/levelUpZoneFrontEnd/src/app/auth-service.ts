@@ -19,9 +19,8 @@ export class AuthService {
     return this.http.post<JwtResponse>(`${this.apiUrl}/login`, credentials).pipe(
       tap(response => {
         console.log('Login response:', response);  // Imprime todo el objeto
-        if (response && response.token) {
-          console.log('JWT received:', response.token);  // Verifica que el JWT se reciba
-          this.saveToken(response.token, response.role, response.userName, response.id); // Guarda el token como jwt
+        if (response?.token) {
+          this.saveToken(response.token, response.role, response.userName, response.userId); // Guarda el token como jwt
         } else {
           console.error('No JWT received in response', response);
         }
@@ -60,10 +59,6 @@ export class AuthService {
     return localStorage.getItem('userName'); // o donde lo estés guardando
   }
 
-  getUserId(): number | null {
-    console.log('getUserId', localStorage.getItem('userId'));
-    return localStorage.getItem('userId') ? Number(localStorage.getItem('userId')) : null; // Asegúrate de que el ID del usuario se guarde correctamente
-  }
 
   logout(): void {
     localStorage.removeItem('token');

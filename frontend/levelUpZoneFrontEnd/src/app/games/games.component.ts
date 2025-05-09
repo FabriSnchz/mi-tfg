@@ -51,12 +51,14 @@ export class GamesComponent implements OnInit, AfterViewInit {
     });
 
     if (isPlatformBrowser(this.platformId)) {
+
       this.role = this.authService.getUserRole() ?? '';
       this.isLogged = this.authService.getToken() !== null;
     }
   }
 
   ngAfterViewInit() {
+
     this.paginator.page.subscribe(() => {
       this.pageIndex = this.paginator.pageIndex;
       this.pageSize = this.paginator.pageSize;
@@ -112,22 +114,28 @@ export class GamesComponent implements OnInit, AfterViewInit {
 
   addToTemporaryCollection(game: Game): void {
     const storedGames = localStorage.getItem('temporaryGames');
-    let temporaryGames: Game[] = storedGames ? JSON.parse(storedGames) : [];
+    const storedUserId = localStorage.getItem('userId');
 
-    // Evita duplicados
-    const exists = temporaryGames.find(g => g.id === game.id);
+    if (!storedUserId) {
+      alert('No user ID found. Please log in first.');
+      return;
+    }
+
+    let temporaryGames: { userId: string, gameId: number }[] = storedGames ? JSON.parse(storedGames) : [];
+
+    const exists = temporaryGames.find(g => g.userId === storedUserId && g.gameId === game.id);
+
     if (!exists) {
-      temporaryGames.push(game);
+      temporaryGames.push({ userId: storedUserId, gameId: game.id });
+      console.log('temporaryGamesGAMES: ', temporaryGames);
       localStorage.setItem('temporaryGames', JSON.stringify(temporaryGames));
-
+      console.log('storedGamesGAMES: ', storedGames);
       this.gamesService.incrementBadgeCount();
-
-      alert('Game added to temporary collection.');
+      alert('Game added to your temporary collection.');
     } else {
       alert('This game is already in your temporary collection.');
     }
   }
-
   deleteGame(id: number): void {
     this.gamesService.deleteGame(id);
   }

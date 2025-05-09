@@ -56,8 +56,15 @@ export class HeaderComponent implements OnInit {
 
       const storedGames = localStorage.getItem('temporaryGames');
       const games: any[] = storedGames ? JSON.parse(storedGames) : [];
-      const initialCount = games.length;
+
+      if (storedGames) {
+      let userId = localStorage.getItem('userId');
+      let infoGames = JSON.parse(storedGames) as { userId: string; gameId: number }[];
+      let gameIds = infoGames.filter(g => g.userId === userId).map(g => g.gameId);
+      const initialCount = gameIds.length;
       this.gamesService.setBadgeCount(initialCount);
+      }
+
     }
 
     this.gamesService.badgeCount$.subscribe(count => {
@@ -118,11 +125,9 @@ export class Dialog {
 
       this.authService.login(credentials).subscribe({
         next: (response) => {
-          this.authService.saveToken(response.token, response.role, response.userName, response.id); // Guarda el token como jwt
-          console.log('Saving userId:', response.id);  // Verifica que el userId se guarda correctamente
-
+          this.authService.saveToken(response.token, response.role, response.userName, response.userId); // Guarda el token como jwt
           this.router.navigate(['/']);
-          // window.location.href = '/' // Úsalo solo si necesitas recargar completamente
+          // window.location.href = '/'; // Úsalo solo si necesitas recargar completamente
         },
         error: (err) => {
           alert('Credenciales incorrectas');

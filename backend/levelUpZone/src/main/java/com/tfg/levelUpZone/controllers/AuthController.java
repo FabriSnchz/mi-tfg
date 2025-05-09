@@ -154,9 +154,6 @@ public class AuthController {
         }
     }
 
-
-
-
     @GetMapping("/check-auth")
     public ResponseEntity<String> checkAuth(){
             return ResponseEntity.ok().body("Autenticado");
@@ -168,7 +165,5 @@ public class AuthController {
         
         // Respondemos con un código 204 si la eliminación fue exitosa
         return ResponseEntity.noContent().build();
-    }
-    
-    
+    }  
 }

@@ -11,7 +11,12 @@
 
   ) {} -->
 
-  @if (temporaryGames.length > 0) {
+  @if (isLogged) {
+    @if (role === 'ROLE_ADMIN') {
+
+    } @else if (role === 'ROLE_USER') {
+      <p>{{infoGames.length}}</p>
+        @if (temporaryGames.length > -1) {
     <table mat-table [dataSource]="temporaryGames" class="mat-elevation-z8 custom-container">
 
     <!-- Name -->
@@ -75,4 +80,10 @@
       Save Collection
     </button>
   </div>
+    }
+  } @else {
+
+  }
+
+
 </div>

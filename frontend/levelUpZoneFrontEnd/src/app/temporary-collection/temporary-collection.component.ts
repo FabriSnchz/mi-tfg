@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { Game } from '../games';
 import { CollectionsService } from '../collections.service';
 import { Router } from '@angular/router';
@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTable, MatTableModule } from '@angular/material/table';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from '../auth-service';
+import { GamesService } from '../games.service';
 
 @Component({
   selector: 'app-temporary-collection',
@@ -19,28 +20,73 @@ import { AuthService } from '../auth-service';
   templateUrl: './temporary-collection.component.html',
   styleUrl: './temporary-collection.component.scss'
 })
-export class TemporaryCollectionComponent {
+export class TemporaryCollectionComponent implements OnInit {
+  isLogged: boolean = false;
+  role: string = '';
   readonly dialog = inject(MatDialog);
   displayedColumns: string[] = ['name', 'genre', 'release_date', 'studio', 'multiplayer', 'platforms', 'action'];
   temporaryGames: Game[] = [];
+  gameId: any;
+  userId: any;
+  gameIds: any;
+  infoGames: { userId: string, gameId: number }[] = [];
+
 
   constructor(
     private readonly collectionsService: CollectionsService,
     private readonly router: Router,
     private readonly authService: AuthService,
+    private readonly gamesService: GamesService,
   ) {
     if (typeof window !== 'undefined') {
       const storedGames = localStorage.getItem('temporaryGames');
+      console.log('storedGames: ', storedGames);
       if (storedGames) {
-        this.temporaryGames = JSON.parse(storedGames);
-      }
-    }
+        this.infoGames = JSON.parse(storedGames) as { userId: string; gameId: number }[];
+        console.log('infoGames: ', this.infoGames);
+        this.gameId = localStorage.getItem('gameId');
+        this.userId = localStorage.getItem('userId');
+        console.log('gameId: ', this.gameId);
+        this.gameIds = this.infoGames.filter(g => g.userId === this.userId).map(g => g.gameId);
+        console.log('gameIds: ', this.gameIds);
+        // const matchingGames = this.infoGames.filter(g => this.gameIds.includes(g.gameId));
 
+        for (const gameId of this.gameIds) {
+          console.log('gamesIdConst: ', gameId);
+          this.gamesService.getGameById(gameId).subscribe(game => {
+            this.temporaryGames.push(game);
+            this.temporaryGames = [...this.temporaryGames]; // force refresh
+            console.log('temporaryGames: ', this.temporaryGames);
+          });
+        }
+      }
+
+      // this.collectionsService.getCollectionsByUserId(Number(storedGames));
+      // cont storedGamesByUserId = storedGames.filter(g => g.id = storedGames);
+    }
   }
 
+  ngOnInit() {
+    this.isLogged = this.authService.isLoggedIn();
+    this.role = this.authService.getUserRole() ?? '';
+
+
+    // console.log('infoGames: ', this.infoGames);
+    console.log('userId: ', this.userId);
+    console.log('gamesIds: ', this.gameIds);
+    console.log('gamesId: ', this.gameId);
+  }
+
+
   removeGame(game: Game): void {
+    // Elimina la referencia al juego por su id
+    this.infoGames = this.infoGames.filter(g => g.gameId !== game.id);
+
+    // Actualiza el localStorage con el array de referencias actualizado
+    localStorage.setItem('temporaryGames', JSON.stringify(this.infoGames));
+
+    // También elimina el juego del array mostrado en pantalla
     this.temporaryGames = this.temporaryGames.filter(g => g.id !== game.id);
-    localStorage.setItem('temporaryGames', JSON.stringify(this.temporaryGames));
   }
 
   saveTemporaryCollection(): void {
@@ -49,8 +95,7 @@ export class TemporaryCollectionComponent {
     const collectionName = prompt('Enter a name for your collection:');
     if (!collectionName) return;
 
-    const userId = this.authService.getUserId();
-    console.log('User ID:', userId);
+    const userId = localStorage.getItem('userId'); // Get userId from localStorage
 
     if (userId === null) {
       console.error('User ID is null. Cannot create collection.');
@@ -60,13 +105,14 @@ export class TemporaryCollectionComponent {
 
     const newCollection = {
       name: collectionName,
-      user_id: Number(userId),
+      user_id: Number(this.userId),
       // Games: this.temporaryGames
       gameIds: this.temporaryGames.map(game => game.id) // solo IDs
     };
 
     this.collectionsService.saveCollection(newCollection).subscribe({
       next: () => {
+        // console.log('User ID:', Number(this.userId));
         alert('Collection saved successfully!');
         localStorage.removeItem('temporaryGames');
         this.temporaryGames = [];
@@ -94,7 +140,7 @@ export class TemporaryCollectionComponent {
     dialogRef.afterClosed().subscribe((collectionName: string) => {
       if (!collectionName) return;
 
-      const userId = this.authService.getUserId();
+      const userId =  localStorage.getItem('userId');
       console.log('User ID:', userId);
 
       if (userId === null) {

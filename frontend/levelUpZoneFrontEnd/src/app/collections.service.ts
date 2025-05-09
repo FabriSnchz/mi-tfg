@@ -51,16 +51,17 @@ export class CollectionsService {
     if (typeof window !== 'undefined') { // Nos aseguramos de que está en el navegador
       const token = localStorage.getItem('token');
       const userId = localStorage.getItem('userId'); // Get userId from localStorage
+      console.log('USUARIOID: ', userId);
       if (token) {
         headers = headers.set('Authorization', `Bearer ${token}`);
       }
 
-      // Ensure userId is set correctly in the collection
-      if (userId) {
-        collection.user_id = Number(userId); // Set the user_id to the collection
-      } else {
-        console.error('User ID is not available in localStorage');
-      }
+      // // Ensure userId is set correctly in the collection
+      // if (userId) {
+      //   collection.user_id = Number(userId); // Set the user_id to the collection
+      // } else {
+      //   console.error('User ID is not available in localStorage');
+      // }
     }
 
     return this.http.post<Collection>(this.apiUrl, collection, { headers });

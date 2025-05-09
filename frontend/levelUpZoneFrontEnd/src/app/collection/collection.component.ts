@@ -27,14 +27,14 @@ ngOnInit(): void {
     // Verificar si el usuario está logueado y obtener su rol
     this.isLogged = this.authService.isLoggedIn();
     this.role = this.authService.getUserRole() ?? '';
-    this.userName = this.authService.getUserName() ?? ''; // <- nuevo
+    this.userName = this.authService.getUserName() ?? '';
 
 
     // Si está logueado, cargar las colecciones del usuario
     if (this.isLogged) {
-      const userId = this.authService.getUserId();
+      const userId = localStorage.getItem('userId');
       if (userId) {
-        this.collectionService.getCollectionsByUserId(userId).subscribe(collections => {
+        this.collectionService.getCollectionsByUserId(Number(userId)).subscribe(collections => {
           this.collection = collections;
         });
       }

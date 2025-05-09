@@ -29,7 +29,8 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     console.log('ngOnInit ejecutado');
-    this.collectionsService.getCollections().subscribe(collections => {
+    const userId = localStorage.getItem('userId');
+    this.collectionsService.getCollectionsByUserId(Number(userId)).subscribe(collections => {
       console.log('Colecciones obtenidas:', collections);
       this.dataSubject.next(collections); // Actualiza el BehaviorSubject
     });
