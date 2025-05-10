@@ -95,12 +95,22 @@ html, body {
 
 
 .custom-container {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+
   border: 2px solid #000000;
-  box-shadow: 9px 9px 0px 1px #000000;
-  -webkit-box-shadow: 9px 9px 0px 1px #000000;
+  box-shadow:
+  9px 9px 0px 1px var(--color-terciario),   /* la capa de "borde" alrededor de la sombra */
+  9px 9px 0px 2px #000000;  /* la sombra original */
   border-radius: 0.6rem;
   overflow: hidden;
 }
+
+.custom-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
 
 .custom-container-2 {
   border: solid 2px #000000;
@@ -177,4 +187,8 @@ html, body {
 // * Thumb al pasar el mouse
 ::-webkit-scrollbar-thumb:hover {
   background: #ff7f50;
+}
+
+h2 {
+  font-size: 2em;
 }

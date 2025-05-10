@@ -13,6 +13,7 @@ import { MatTable, MatTableModule } from '@angular/material/table';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from '../auth-service';
 import { GamesService } from '../games.service';
+import { Collection } from '../collections';
 
 @Component({
   selector: 'app-temporary-collection',
@@ -43,20 +44,20 @@ export class TemporaryCollectionComponent implements OnInit {
       console.log('storedGames: ', storedGames);
       if (storedGames) {
         this.infoGames = JSON.parse(storedGames) as { userId: string; gameId: number }[];
-        console.log('infoGames: ', this.infoGames);
+        // console.log('infoGames: ', this.infoGames);
         this.gameId = localStorage.getItem('gameId');
         this.userId = localStorage.getItem('userId');
-        console.log('gameId: ', this.gameId);
+        // console.log('gameId: ', this.gameId);
         this.gameIds = this.infoGames.filter(g => g.userId === this.userId).map(g => g.gameId);
-        console.log('gameIds: ', this.gameIds);
+        // console.log('gameIds: ', this.gameIds);
         // const matchingGames = this.infoGames.filter(g => this.gameIds.includes(g.gameId));
 
         for (const gameId of this.gameIds) {
-          console.log('gamesIdConst: ', gameId);
+          // console.log('gamesIdConst: ', gameId);
           this.gamesService.getGameById(gameId).subscribe(game => {
             this.temporaryGames.push(game);
             this.temporaryGames = [...this.temporaryGames]; // force refresh
-            console.log('temporaryGames: ', this.temporaryGames);
+            // console.log('temporaryGames: ', this.temporaryGames);
           });
         }
       }
@@ -103,7 +104,7 @@ export class TemporaryCollectionComponent implements OnInit {
     }
 
 
-    const newCollection = {
+    const newCollection: Collection = {
       name: collectionName,
       user_id: Number(this.userId),
       // Games: this.temporaryGames
@@ -115,6 +116,7 @@ export class TemporaryCollectionComponent implements OnInit {
         // console.log('User ID:', Number(this.userId));
         alert('Collection saved successfully!');
         localStorage.removeItem('temporaryGames');
+        localStorage.setItem('games', JSON.stringify(newCollection.gameIds));
         this.temporaryGames = [];
         this.router.navigate(['/collections']);
       },

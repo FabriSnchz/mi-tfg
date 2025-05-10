@@ -1,101 +1,47 @@
-// TODO: Añadir media queries para que se adapte a pantallas más pequeñas
-// TODO: Pasar a SCSS [x]
-// TODO: Si hay muchos hover, los puedo agrupar abajo a todos
-// TODO: Cambiar a medidas relativas
 
-main {
-  margin: 2% 2%;
-  .title {
-    font-size: 2em;
-  }
+.collection-container {
+  padding: 0 5rem;
 }
 
-  .separator {
-    width: 2px;
-    background-color: #000;
-    // height: 100px; // TODO: Hacer que el separador crezca en función a la catidad de datos
-  }
-  .logo-table {
-    border-collapse: collapse;
-    // width: 100%;
-    // max-width: 100px;
+.collection-card {
+  width: 13rem;
+  height: 13rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 
-    .delete-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
+  border: 2px solid #000000;
+  box-shadow:
+  9px 9px 0px 1px var(--color-terciario),   /* la capa de "borde" alrededor de la sombra */
+  9px 9px 0px 2px #000000;  /* la sombra original */
+  border-radius: 0.6rem;
+  overflow: hidden;
+}
 
-      img {
-        width: 30px;
-        height: 30px;
-        // filter: sepia(0) saturate(1) hue-rotate(0deg);
-        // background-color: #fff;
-        transition: filter 0.3s ease;
-      }
-      img:hover {
-        background-image: url('../../../public/images/trash_red.svg');
-      }
-    }
-  }
+.collection-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
 
+mat-card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
 
+mat-card-subtitle {
+  font-size: 0.9rem;
+  color: gray;
+}
 
-//COLORES
-// main {
-//   background-color: #00000081;
-//   backdrop-filter: blur(10px);
-// }
-// article {
-//   background-color: #c02ad4a2;
-// }
-// figure {
-//   background-color: #382ad4a2;
-// }
-// p {
-//   background-color: #d42a54a2;
-// }
-// .filter-container {
-//   background-color: #682ad4a2;
-// }
-// .search-container {
-//   background-color: #2ad4cba2;
-// }
-// .line {
-//   background-color: #000;
-// }
+a {
+  text-decoration: none;
+  color: #000000;
+}
 
+a:hover {
+  color: #969696;
+}
 
-.warning-container {
-  height: 60vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin: 5rem auto;
-  padding: 2rem;
-  // max-width: 400px;
-
-
-  h2 {
-    margin: 0.5rem 0;
-    color: #740000;
-    font-family: 'PressStart2P-vaV7', 'Varela Round', 'Roboto', sans-serif;
-  }
-
-  p {
-    margin: 0.5rem 0 1.5rem;
-    // color: #555;
-  }
-
-  button {
-    border: none;
-    padding: 12px 24px;
-    background-color: orange;
-    color: white;
-    border-radius: 20px;
-    margin-top: 10px;
-    cursor: pointer;
-    font-size: 14px;
-  }
+.animated-hover {
+  color: black;
+  transition: color 0.5s ease;
 }

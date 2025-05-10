@@ -55,7 +55,6 @@ export class AuthService {
   }
 
   getUserName(): string | null {
-    console.log('getUserName', localStorage.getItem('userName'));
     return localStorage.getItem('userName'); // o donde lo estés guardando
   }
 

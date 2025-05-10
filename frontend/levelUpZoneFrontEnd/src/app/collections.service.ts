@@ -50,11 +50,11 @@ export class CollectionsService {
     let headers = new HttpHeaders();
     if (typeof window !== 'undefined') { // Nos aseguramos de que está en el navegador
       const token = localStorage.getItem('token');
-      const userId = localStorage.getItem('userId'); // Get userId from localStorage
-      console.log('USUARIOID: ', userId);
       if (token) {
         headers = headers.set('Authorization', `Bearer ${token}`);
       }
+      let gameIds = collection.gameIds;
+
 
       // // Ensure userId is set correctly in the collection
       // if (userId) {

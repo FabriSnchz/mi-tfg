@@ -1,0 +1,31 @@
+<main>
+
+  @if (isLogged) {
+    @if (role === 'ROLE_ADMIN') {
+      <p>Bienvenido, administrador</p>
+    } @else if (role === 'ROLE_USER') {
+      <h1>Mi inventario</h1>
+      <h2>Inventario de {{ userName }}</h2>
+      <article>
+        <div>
+          <app-table></app-table>
+        </div>
+      </article>
+    }
+  } @else {
+    <div class="warning-container">
+      <!-- <mat-icon>block</mat-icon> -->
+      <img style="width: 9rem; height: auto;" src="images/logo_pixel_art_died.png" alt="LevelUpZoneLogo" />
+      <h2>Acceso denegado</h2>
+      <p>No puedes acceder a tu inventario si no posees una cuenta registrada.</p>
+      <!-- <button mat-raised-button color="primary" (click)="openDialog('100ms', '100ms')">
+        Crear una cuenta
+      </button>
+      <button mat-raised-button color="warn" (click)="openDialog('100ms', '100ms')">
+        Registrarse
+      </button> -->
+    </div>
+  }
+</main>
+
+<!-- todo: inyectar el .svg en HTML cuando lo tenga que manipular con JS y SCSS -->
