@@ -45,3 +45,40 @@ a:hover {
   color: black;
   transition: color 0.5s ease;
 }
+
+
+
+.warning-container {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 5rem auto;
+  padding: 2rem;
+  // max-width: 400px;
+
+
+  h2 {
+    margin: 0.5rem 0;
+    color: #740000;
+    font-family: 'PressStart2P-vaV7', 'Varela Round', 'Roboto', sans-serif;
+  }
+
+  // p {
+  //   margin: 0.5rem 0 1.5rem;
+  //   // color: #555;
+  // }
+
+  button {
+    border: none;
+    padding: 12px 24px;
+    background-color: orange;
+    color: white;
+    border-radius: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+}

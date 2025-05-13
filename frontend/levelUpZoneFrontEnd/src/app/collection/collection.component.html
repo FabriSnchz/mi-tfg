@@ -17,7 +17,7 @@
             </mat-card-header>
             <!-- <img mat-card-image [src]="collection.imageUrl" alt="{{ collection.name }}" /> -->
             <mat-card-content>
-              <p>{{ collections.length }} games</p>
+              <!-- <p>{{ game.length }} games</p> -->
             </mat-card-content>
             <!-- <mat-card-actions>
               <button mat-button color="primary" (click)="viewCollection(collection.id)">View</button>
@@ -29,7 +29,18 @@
     </div>
     }
   } @else {
-
+    <div class="warning-container">
+      <!-- <mat-icon>block</mat-icon> -->
+      <img style="width: 9rem; height: auto;" src="images/logo_pixel_art_died.png" alt="LevelUpZoneLogo" />
+      <h2>Acceso denegado</h2>
+      <p>No puedes acceder a tu inventario si no posees una cuenta registrada.</p>
+      <!-- <button mat-raised-button color="primary" (click)="openDialog('100ms', '100ms')">
+        Crear una cuenta
+      </button>
+      <button mat-raised-button color="warn" (click)="openDialog('100ms', '100ms')">
+        Registrarse
+      </button> -->
+    </div>
   }
 
 
