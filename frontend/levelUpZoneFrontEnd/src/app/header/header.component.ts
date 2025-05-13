@@ -15,13 +15,28 @@ import { isPlatformBrowser } from '@angular/common';
 import {MatBadgeModule} from '@angular/material/badge';
 import { GamesService } from '../games.service';
 
+import { CommonModule, DOCUMENT } from '@angular/common';
+import { effect, signal } from '@angular/core';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+
 
 @Component({
     selector: 'app-header',
     standalone: true,
     imports: [RouterLink, RouterLinkActive, MatSlideToggleModule, MatButtonModule, MatMenuModule, MatIconModule, MatBadgeModule],
     templateUrl: './header.component.html',
-    styleUrl: './header.component.scss'
+    styleUrl: './header.component.scss',
+    animations: [
+    trigger('iconFade', [
+      state('light', style({ opacity: 1, transform: 'scale(1)' })),
+      state('dark', style({ opacity: 1, transform: 'scale(1)' })),
+      transition('light <=> dark', [
+        animate('150ms ease-in', style({ opacity: 0, transform: 'scale(0.8)' })),
+        animate('150ms ease-out', style({ opacity: 1, transform: 'scale(1.2)' })),
+        animate('100ms ease-in', style({ transform: 'scale(1)' }))
+      ])
+    ])
+  ]
 })
 export class HeaderComponent implements OnInit {
   imageList: string[] = [
@@ -45,38 +60,57 @@ export class HeaderComponent implements OnInit {
   role: string = '';
   userName: string = '';
   readonly dialog = inject(MatDialog);
-  @Output() themeToggled = new EventEmitter<void>();
+  // @Output() themeToggled = new EventEmitter<void>();
 
-  constructor(private readonly authService: AuthService, private router: Router, @Inject(PLATFORM_ID) private readonly platformId: Object, private readonly gamesService: GamesService) {}
+    // * Para el modo oscuro/claro
+  isDarkMode = signal(false);
+  private readonly _document = inject(DOCUMENT);
+
+
+  constructor(private readonly authService: AuthService, private router: Router, @Inject(PLATFORM_ID) private readonly platformId: Object, private readonly gamesService: GamesService) {
+    effect(() => {
+      const isDark = this.isDarkMode();
+      this._document.body.classList.toggle('dark-mode', isDark);
+
+      if (isPlatformBrowser(this.platformId)) {
+        localStorage.setItem('dark-mode', isDark ? 'enabled' : 'disabled');
+      }
+    });
+  }
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      this.role = this.authService.getUserRole() ?? '';
-      this.isLogged = this.authService.getToken() !== null;
-      this.userName = this.authService.getUserName() ?? '';
+    // 🌓 Leer el modo oscuro desde localStorage
+    const savedMode = localStorage.getItem('dark-mode');
+    this.isDarkMode.set(savedMode === 'enabled');
 
-      const storedGames = localStorage.getItem('temporaryGames');
-      const games: any[] = storedGames ? JSON.parse(storedGames) : [];
+    // 🔐 Autenticación
+    this.role = this.authService.getUserRole() ?? '';
+    this.isLogged = this.authService.getToken() !== null;
+    this.userName = this.authService.getUserName() ?? '';
 
-      if (storedGames) {
-      let userId = localStorage.getItem('userId');
-      let infoGames = JSON.parse(storedGames) as { userId: string; gameId: number }[];
-      let gameIds = infoGames.filter(g => g.userId === userId).map(g => g.gameId);
+    // 🎮 Juegos temporales
+    const storedGames = localStorage.getItem('temporaryGames');
+    const games: any[] = storedGames ? JSON.parse(storedGames) : [];
+
+    if (storedGames) {
+      const userId = localStorage.getItem('userId');
+      const infoGames = JSON.parse(storedGames) as { userId: string; gameId: number }[];
+      const gameIds = infoGames.filter(g => g.userId === userId).map(g => g.gameId);
       const initialCount = gameIds.length;
       this.gamesService.setBadgeCount(initialCount);
-      }
-
     }
-
-    this.gamesService.badgeCount$.subscribe(count => {
-      this.badgeCount = count;
-    });
-
   }
 
-  toggleTheme(): void {
-    this.themeToggled.emit(); // sólo emite el evento
-  }
+  // 🔄 Suscripción al contador del badge
+  this.gamesService.badgeCount$.subscribe(count => {
+    this.badgeCount = count;
+  });
 
+  }
+  toggleDarkMode() {
+    this.isDarkMode.update(v => !v);
+    localStorage.setItem('darkMode', this.isDarkMode().toString());
+  }
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(Dialog, {
       width: '90%',

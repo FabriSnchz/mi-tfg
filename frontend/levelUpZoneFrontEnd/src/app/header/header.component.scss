@@ -2,6 +2,7 @@
 // TODO: Pasar a SCSS [x]
 // TODO: Si hay muchos hover, los puedo agrupar abajo a todos
 // TODOS: Abajo de todo.
+@use 'sass:color';
 
 
 * {
@@ -72,12 +73,32 @@ header {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  mat-slide-toggle {
+  .toggle-button {
     position: fixed;
     bottom: 10px;
     left: 10px;
     z-index: 1000;
+
+    background-color: var(--color-blanco-general);
+    border-radius: 100%;
+    box-shadow: 2px 2px 0px 1px #000000;
+    -webkit-box-shadow: 2px 2px 0px 1px #000000;
+
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.1s ease;
+
   }
+  .toggle-button:active {
+    transform: scale(0.95) translateY(1px); // Da sensación de hundirse
+    box-shadow: 1px 1px 0px 0px #000000;     // Menor sombra simula presión
+    background-color: color.adjust(#cccccc, $lightness: -5%);
+  }
+  .account-button {
+    background-color: var(--color-blanco-general);
+    border-radius: 100%;
+    box-shadow: 2px 2px 0px 1px #000000;
+    -webkit-box-shadow: 2px 2px 0px 1px #000000;
+  }
+
 
 
 }
@@ -268,4 +289,23 @@ input{
 }
 .second-dialog-column{
   background-color: aquamarine;
+}
+
+p {
+  color: #ffffff;
+  // border: #000000 2px solid;
+  text-shadow: 2px 2px #000000;
+}
+
+.mode-toggle {
+  transition: background-color 0.3s ease;
+  border-radius: 50%;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  mat-icon {
+    font-size: 24px;
+    transition: transform 0.2s ease;
+  }
 }

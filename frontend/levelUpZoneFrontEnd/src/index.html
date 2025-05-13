@@ -9,19 +9,21 @@
   <link href="https://www.pizzadude.dk/" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      try {
-        const isDark = localStorage.getItem('isDarkTheme') === 'true';
-        const className = isDark ? 'dark-theme' : 'light-theme';
-        document.body.classList.add(className);
-      } catch (e) {
-        console.error('Error al aplicar el tema:', e);
-      }
-    });
-  </script>
 </head>
 <body>
+  <script>
+  (function () {
+    try {
+      const mode = localStorage.getItem('dark-mode');
+      if (mode === 'enabled') {
+        document.body.classList.add('dark-mode');
+      }
+    } catch (e) {
+      // Por si falla en algún navegador antiguo
+      console.warn('Could not access localStorage', e);
+    }
+  })();
+</script>
     <app-root></app-root>
 </body>
 </html>

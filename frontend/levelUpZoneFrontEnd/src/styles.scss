@@ -8,6 +8,7 @@ Utilizar para responsive:
 */
 
 @use '@angular/material' as mat;
+@use 'sass:map';
 
 
 :root {
@@ -33,19 +34,45 @@ Utilizar para responsive:
       container-text-size: 1rem,
     ));
 
+  @include mat.theme((
+    color:(
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    typography: Roboto,
+    density: 0
+  ));
+
 }
 
 *{ // Parece que si uso :root, hay elementos a los que no les afecta
   // color-scheme: light dark; // Indica que el color de fondo y texto se adaptará al modo claro y oscuro del sistema
-  // TODO: Saber si usar color-sheme o no
   margin: 0;
   padding: 0;
 }
 
-html, body {
+body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  height: 100%;
   scroll-behavior: smooth;
+  min-height: 100vh;
+  background:
+    linear-gradient(#0000001a 0.0625rem, transparent 0.0625rem),
+    linear-gradient(90deg, #0000001a 0.0625rem, transparent 0.0625rem),
+    #87CEEB;
+  background-size: 3.125rem 3.125rem;
+  transition: background-color 0.4s ease, color 0.4s ease;
+
+    .toggle-button {
+      color: #adab39;
+    }
+    .account-button {
+      color: #44474E;
+    }
+  ::selection {
+    background-color: #ffb347;
+    color: var(--color-letra-blanca);
+  }
+
   h1 {
     font-size: 5.5rem;
     font-weight: 600;
@@ -54,42 +81,30 @@ html, body {
     margin-bottom: 2%;
     font-family: 'Varela Round', 'Roboto', "Helvetica Neue", sans-serif;
   }
-}
 
-
-
-// * Estilos para el modo claro
-.grid-background {
-  min-height: 100vh; // Para cubrir toda la pantalla
-  background:
-    linear-gradient(#0000001a 0.0625rem, transparent 0.0625rem),
-    linear-gradient(90deg, #0000001a 0.0625rem, transparent 0.0625rem),
-    #87CEEB;
-  background-size: 3.125rem 3.125rem;
-  ::selection {
-    background-color: #ffb347; /* Color de fondo cuando seleccionas */
-    color: var(--color-letra-blanca);            /* Color del texto seleccionado */
-  }
-  h1 {
-    color: var(--color-letra-negra);
-  }
-}
-
-// * Estilos para modo oscuro
-.dark-theme .grid-background {
-  min-height: 100vh; // Para cubrir toda la pantalla
-  background:
-    linear-gradient(#ffffff0d 1px, transparent 1px),
-    linear-gradient(90deg, #ffffff0d 1px, transparent 1px),
-    #242525;
-  background-size: 3.125rem 3.125rem;
-  color: var(--color-letra-blanca);
-  ::selection {
-    background-color: #ffb347; // Color de fondo cuando seleccionas
-    color: var(--color-letra-negra); // Color del texto seleccionado
-  }
-  h1, h2 {
+  &.dark-mode {
+    color-scheme: dark;
+    background:
+      linear-gradient(#ffffff0d 1px, transparent 1px),
+      linear-gradient(90deg, #ffffff0d 1px, transparent 1px),
+      #242525;
+    background-size: 3.125rem 3.125rem;
     color: var(--color-letra-blanca);
+    transition: background-color 0.4s ease, color 0.4s ease;
+
+
+    ::selection {
+      background-color: #ffb347;
+      color: var(--color-letra-negra);
+    }
+
+    .toggle-button {
+      color: #424d7e;
+    }
+
+    h1, h2 {
+      color: var(--color-letra-blanca);
+    }
   }
 }
 

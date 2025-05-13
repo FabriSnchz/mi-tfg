@@ -1,57 +1,8 @@
 <!-- TODO: Al cargar la página se pierda la animación del header -->
-<!-- @if (isLoading) {
-  <div [ngClass]="isDarkTheme ? 'dark-theme' : 'light-theme'">
-    <div class="grid-background">
-      <app-loading/>
-    </div>
-  </div>
-}
 @if (!isLoading) {
-  <div [ngClass]="isDarkTheme ? 'dark-theme' : 'light-theme'">
     <div class="grid-background">
-      <app-header (themeToggled)="toggleThemeFromHeader()" (isDarkTheme)="isDarkTheme"></app-header>
+      <app-header></app-header>
       <router-outlet></router-outlet>
       <app-footer></app-footer>
     </div>
-  </div>
-} -->
-
-@if (isLoading) {
-  <div [ngClass]="isDarkTheme ? 'dark-theme' : 'light-theme'">
-    <div class="grid-background">
-      <app-loading />
-    </div>
-  </div>
-}
-
-@if (!isLoading) {
-  <div [ngClass]="isDarkTheme ? 'dark-theme' : 'light-theme'">
-    <div class="grid-background">
-
-      <!-- Puedes mostrar una bienvenida por rol -->
-      <!-- <section class="welcome-message">
-      @if (isLogged) {
-          @if (role === 'ROLE_ADMIN') {
-            <p>Bienvenido, administrador</p>
-          } @if (role === 'ROLE_USER') {
-            <p>Bienvenido, usuario</p>
-          }
-        } @else {
-          <p>Bienvenido, invitado</p>
-        }
-      </section> -->
-
-
-
-      <!-- Header con saludo según rol -->
-      <app-header
-        (themeToggled)="toggleThemeFromHeader()"
-        (isDarkTheme)="isDarkTheme">
-      </app-header>
-
-
-      <router-outlet></router-outlet>
-      <app-footer></app-footer>
-    </div>
-  </div>
 }

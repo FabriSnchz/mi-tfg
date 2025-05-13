@@ -20,10 +20,13 @@
 
   <div class="third-column">
     <!-- * Toggle -->
-    <!-- TODO: Colocar iconos de sol y luna 🌞🌙-->
-    <!-- TODO: Colocar tres estilos de backround: predeterminado, claro, oscuro -->
 
-    <mat-slide-toggle (change)="toggleTheme()"></mat-slide-toggle>
+    <button mat-icon-button (click)="toggleDarkMode()" aria-label="Cambiar tema" class="mode-toggle toggle-button">
+      <mat-icon
+        [@iconFade]="isDarkMode() ? 'dark' : 'light'">
+        {{ isDarkMode() ? 'dark_mode' : 'light_mode' }}
+      </mat-icon>
+    </button>
 
 
 
@@ -55,15 +58,7 @@
         <mat-icon mat-raised-button aria-hidden="false" aria-label="Example close icon" fontIcon="account_circle"></mat-icon>
       </button>
 
-      <style>
-        .account-button {
-          background-color: var(--color-blanco-general);
-          border-radius: 100%;
-          /* border: 1px solid var(--color-negro-general); */
-          box-shadow: 2px 2px 0px 1px #000000;
-          -webkit-box-shadow: 2px 2px 0px 1px #000000;
-        }
-      </style>
+
     }
 
   </div>

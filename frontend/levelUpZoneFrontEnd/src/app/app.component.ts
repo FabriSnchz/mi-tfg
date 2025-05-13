@@ -9,7 +9,7 @@ import { AuthService } from './auth-service';
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [RouterOutlet, HeaderComponent, FooterComponent, CommonModule, LoadingComponent],
+    imports: [RouterOutlet, HeaderComponent, FooterComponent, CommonModule],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
     providers: [
@@ -52,30 +52,14 @@ export class AppComponent implements OnInit {
     if (this.isLogged) {
       this.router.navigate(['/']); // Ajusta la ruta según tus necesidades
     }
+
   }
 
   // * Alterna entre los temas claro y oscuro aplicando clases CSS al <body>.
-  toggleThemeFromHeader(): void {
-    this.isDarkTheme = !this.isDarkTheme;
-    localStorage.setItem('isDarkTheme', this.isDarkTheme.toString());
-
-    const body = this.document.body;
-    if (this.isDarkTheme) {
-      body.classList.add('dark-theme');
-      body.classList.remove('light-theme');
-    } else {
-      body.classList.remove('dark-theme');
-      body.classList.add('light-theme');
+  toggleDarkMode(): void {
+    if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
+      const enabled = document.body.classList.toggle('dark-mode');
+      localStorage.setItem('dark-mode', enabled ? 'enabled' : 'disabled');
     }
   }
-
-
-
-
-  isLoggedIn(): boolean {
-    const loggedIn = isPlatformBrowser(this.platformId) && !!localStorage.getItem('token');
-    console.log('isLoggedIn called, result:', loggedIn);
-    return loggedIn;
-  }
-
 }
