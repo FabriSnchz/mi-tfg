@@ -13,6 +13,7 @@ Utilizar para responsive:
 
 :root {
   --color-principal: #1FD9F2;
+
   // --color-secundario: #62E102;
   --color-secundario:  #3ecd5e;
   --color-terciario: #94F235;
@@ -24,16 +25,13 @@ Utilizar para responsive:
   @include mat.expansion-overrides((
     container-background-color: var(--color-secundario),
     ));
-
     @include mat.progress-spinner-overrides((
       active-indicator-color: orange,
     ));
-
     @include mat.paginator-overrides((
       container-text-font: "Roboto",
       container-text-size: 1rem,
     ));
-
   @include mat.theme((
     color:(
       primary: mat.$azure-palette,
@@ -46,58 +44,62 @@ Utilizar para responsive:
 }
 
 *{ // Parece que si uso :root, hay elementos a los que no les afecta
+  padding: 0;
+
   // color-scheme: light dark; // Indica que el color de fondo y texto se adaptará al modo claro y oscuro del sistema
   margin: 0;
-  padding: 0;
 }
 
 body {
-  // border-radius: 50px;
-  box-shadow: inset 0 0 0 8px #000;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  scroll-behavior: smooth;
-  min-height: 100vh;
   background:
     linear-gradient(#0000001a 0.0625rem, transparent 0.0625rem),
     linear-gradient(90deg, #0000001a 0.0625rem, transparent 0.0625rem),
     #87CEEB;
-  background-size: 3.125rem 3.125rem;
+
+  // border-radius: 50px;
+  box-shadow: inset 0 0 0 8px #000;
   transition: background-color 0.4s ease, color 0.4s ease;
+  background-size: 3.125rem 3.125rem;
+  min-height: 100vh;
+  scroll-behavior: smooth;
 
     .toggle-button {
       color: #adab39;
     }
+
     .account-button {
       color: #44474E;
     }
+
   ::selection {
-    background-color: #ffb347;
     color: var(--color-letra-blanca);
+    background-color: #ffb347;
   }
 
   h1 {
+    font-family: 'Varela Round', Roboto, "Helvetica Neue", sans-serif;
     font-size: 5.5rem;
     font-weight: 600;
-    color: var(--color-letra-negra);
     text-align: center;
+    color: var(--color-letra-negra);
     margin-bottom: 2%;
-    font-family: 'Varela Round', 'Roboto', "Helvetica Neue", sans-serif;
   }
 
   &.dark-mode {
-    color-scheme: dark;
+    color: var(--color-letra-blanca);
     background:
       linear-gradient(#ffffff0d 1px, transparent 1px),
       linear-gradient(90deg, #ffffff0d 1px, transparent 1px),
       #242525;
-    background-size: 3.125rem 3.125rem;
-    color: var(--color-letra-blanca);
     transition: background-color 0.4s ease, color 0.4s ease;
+    background-size: 3.125rem 3.125rem;
+    color-scheme: dark;
 
 
     ::selection {
-      background-color: #ffb347;
       color: var(--color-letra-negra);
+      background-color: #ffb347;
     }
 
     .toggle-button {
@@ -112,29 +114,27 @@ body {
 
 
 .custom-container {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-
-  border: 2px solid #000000;
-  box-shadow:
-  9px 9px 0px 1px var(--color-terciario),   /* la capa de "borde" alrededor de la sombra */
-  9px 9px 0px 2px #000000;  /* la sombra original */
+  border: 2px solid #000;
   border-radius: 0.6rem;
   overflow: hidden;
+  box-shadow:
+  9px 9px 0 1px var(--color-terciario),   /* la capa de "borde" alrededor de la sombra */
+  9px 9px 0 2px #000;  /* la sombra original */
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .custom-container:hover {
+  box-shadow: 0 8px 20px rgb(0 0 0 / 20%);
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 
 .custom-container-2 {
-  border: solid 2px #000000;
-  box-shadow: 9px 9px 0px 1px #000000;
-  -webkit-box-shadow: 9px 9px 0px 1px #000000;
+  border: solid 2px #000;
   border-radius: 0.6rem;
   overflow: hidden;
+  box-shadow: 9px 9px 0 1px #000;
 }
 
 
@@ -142,44 +142,54 @@ body {
   font-family: 'Backto1982';
   src: url('../public/fonts/Backto1982.ttf');
 }
+
 @font-face {
-  font-family: 'DancingDonuts';
+  font-family: DancingDonuts;
   src: url('../public/fonts/DancingDonutsNF.ttf');
 }
+
 @font-face {
-  font-family: 'Flashback';
+  font-family: Flashback;
   src: url('../public/fonts/Flashback.ttf');
 }
+
 @font-face {
-  font-family: 'Goffik';
+  font-family: Goffik;
   src: url('../public/fonts/Goffik-S.ttf');
 }
+
 @font-face {
-  font-family: 'HangTheDJ';
+  font-family: HangTheDJ;
   src: url('../public/fonts/HangTheDJ.ttf');
 }
+
 @font-face {
   font-family: 'Invasion2000';
   src: url('../public/fonts/Invasion2000.ttf');
 }
+
 @font-face {
-  font-family: 'Invited';
+  font-family: Invited;
   src: url('../public/fonts/Invited.ttf');
 }
+
 @font-face {
   font-family: 'Varela Round';
   src: url('../public/fonts/VarelaRound-Regular.ttf');
 }
+
 @font-face {
-  font-family: 'VelvendaChill';
+  font-family: VelvendaChill;
   src: url('../public/fonts/VelvendaChill.ttf');
 }
+
 @font-face {
   font-family: 'PressStart2P-vaV7';
   src: url('../public/fonts/PressStart2P-vaV7.ttf');
 }
+
 @font-face {
-  font-family: 'Myfont';
+  font-family: Myfont;
   src: url('../public/fonts/Myfont-Regular.ttf');
 }
 
@@ -191,14 +201,14 @@ body {
 
 // * Track (fondo de la barra)
 ::-webkit-scrollbar-track {
-  background: #1e1e2f;
   border-radius: 10px;
+  background: #1e1e2f;
 }
 
 // * Thumb (la parte que se mueve)
 ::-webkit-scrollbar-thumb {
-  background: #ffb347;
   border-radius: 10px;
+  background: #ffb347;
 }
 
 // * Thumb al pasar el mouse
@@ -213,10 +223,10 @@ h2 {
 
 .custom-button {
   padding: 0.5rem 1rem;
-  font-size: 100%;
+  border: 1px solid #000;
   border-radius: 0.6rem;
+  font-size: 100%;
   transition: background-color 0.3s ease;
-  border: 1px solid #000000;
 }
 
 .custom-button:active {

@@ -15,50 +15,58 @@
 * {
   box-sizing: border-box;
 }
+
 main {
-  margin: 2% 2%;
+  margin: 2%;
 
   .title {
     font-size: 2em;
   }
 }
+
 .container {
-  max-width: 1200px;
   // margin: 0 auto;
   padding: 2%;
+  max-width: 1200px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   gap: 2%;
+  grid-template-columns: repeat(4, 1fr);
   margin-bottom: 2%;
+
   .square {
-    background-color: rgb(0, 0, 0);
-    // border: 2px solid #ccc;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    border-radius: 8px;
     padding: 1.5%;
+    border-radius: 8px;
     text-align: center;
+    background-color: rgb(0 0 0);
+
+    // border: 2px solid #ccc;
+    box-shadow: 0 5px 15px rgb(0 0 0 / 30%);
+
     // position: relative;
     .square-image {
       width: 100%;
       height: 350px;
-      // height: 115%; // TODO: Hacer que funcione
-      object-fit: cover; /* Ajusta la imagen sin deformarla */
       border-radius: 8px;
       margin-bottom: 6%;
+
+      // height: 115%; // TODO: Hacer que funcione
+      object-fit: cover; /* Ajusta la imagen sin deformarla */
     }
+
     .add-button, .view-button {
       // padding: 10px 15px;
       padding: 4% 6%;
-      font-size: 90%;
-      cursor: pointer;
+      margin: 4% 0 1%;
       border: none;
+      border-radius: 4px;
+      font-size: 90%;
+
       // background-color: #28a745;
       color: white;
-      border-radius: 4px;
-      margin: 4% 0 1% 0;
+      cursor: pointer;
     }
   }
 }
@@ -68,15 +76,19 @@ main {
 .add-button:hover, .view-button:hover {
   background-color: #218838;
 }
+
 .view-button {
   background-color: #17a2b8;
 }
+
 .add-button {
   background-color: #b81717;
 }
+
 .view-button:hover {
   background-color: #138496;
 }
+
 .add-button {
   margin-right: 10px; /* Separar más los botones */
 }
@@ -87,40 +99,45 @@ main {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(2px);
+  z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background: rgb(0 0 0 / 50%);
+  backdrop-filter: blur(2px);
+
   .dialog-content {
-    background: #d8d4d4;
-    padding: 2%;
-    border-radius: 1%;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    width: 50%;
     position: relative;
     display: grid;
+    width: 50%;
+    padding: 2%;
+    border-radius: 1%;
+    background: #d8d4d4;
+    box-shadow: 0 5px 15px rgb(0 0 0 / 30%);
     grid-template-columns: 1fr 1fr;
+
     .dialog-close {
       position: absolute;
       top: 10px;
       right: 10px;
-      background: none;
       border: none;
       font-size: 18px;
+      background: none;
       cursor: pointer;
     }
+
     .dialog-close:hover {
-      background-color: #00000033;
+      background-color: #0003;
     }
+
     .dialog-image {
-      max-width: 100%;
       height: auto;
       border-radius: 3%;
+      max-width: 100%;
     }
+
     .dialog-text {
       margin-left: 4%;
     }
@@ -132,15 +149,19 @@ main {
 main {
   background-color: #c47b2881;
 }
+
 article {
   background-color: #28c44a81;
 }
+
 figure {
   background-color: #c4289581;
 }
+
 figure img {
   background-color: #6128c481;
 }
+
 p {
   background-color: #2838c499;
 }

@@ -1,21 +1,23 @@
 main {
-  margin: 2% 2%;
+  margin: 2%;
 
 }
 
 .square {
-  background-color: #864AF9;
   padding: 1.5%;
   text-align: center;
+  background-color: #864AF9;
+
   // position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+
   .square-image {
     width: 100%;
     height: 20rem;
-    object-fit: cover; /* Ajusta la imagen sin deformarla */
+    border: 0.5px solid #000;
     border-radius: 0.6rem;
     margin-bottom: 6%;
-    border: 0.5px solid #000000;
+    object-fit: cover; /* Ajusta la imagen sin deformarla */
   }
 }
 
@@ -23,6 +25,7 @@ main {
   // display: grid;
   display: flex;
   gap: 2%;
+
   // grid-template-columns: repeat(3, 1fr);
   // grid-template-rows: 1fr;
   // grid-column-gap: 0px;
@@ -36,25 +39,26 @@ main {
 .info-container {
   // grid-area: 1 / 2 / 2 / 4;
   width: 100%;
-  border: #000000 solid 2px;
-  box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
-  -webkit-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
+  padding: 20px;
+  border: #000 solid 2px;
   border-radius: 0.6rem;
   overflow: hidden;
-  padding: 20px;
   color: #f0f0f0; /* Light text for contrast */
+  box-shadow: 9px 9px 0 1px rgb(0 0 0 / 100%);
 }
 
 
 /* Title styling: larger font, spacing */
+
 /* Estilización del título: fuente más grande, espaciado */
 .info-container h2 {
   font-size: 2rem;
-  margin-bottom: 15px;
   color: #ffd700; /* Golden color for title */
+  margin-bottom: 15px;
 }
 
 /* Paragraph styling: spacing and line height */
+
 /* Estilización de los párrafos: espaciado y altura de línea */
 .info-container p {
   margin: 8px 0;
@@ -62,15 +66,17 @@ main {
 }
 
 /* Bold text styling inside paragraphs */
+
 /* Estilo del texto en negrita dentro de los párrafos */
 .info-container p b {
   color: #ff7f50; /* Coral accent color for labels */
 }
 
 /* Add a subtle border at the bottom of each paragraph */
+
 /* Añade un borde sutil debajo de cada párrafo */
 .info-container p:not(:last-child) {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgb(255 255 255 / 10%);
   padding-bottom: 6px;
 }
 

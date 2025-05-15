@@ -1,0 +1,49 @@
+{
+  "plugins": ["stylelint-order"],
+  "extends": ["stylelint-config-standard-scss"],
+  "rules": {
+    "order/properties-order": [
+      [
+        "position",
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "z-index",
+
+        "display",
+        "flex",
+        "flex-direction",
+        "justify-content",
+        "align-items",
+        "width",
+        "height",
+        "padding",
+        "margin",
+        "border",
+        "border-radius",
+        "overflow",
+
+        "font-family",
+        "font-size",
+        "font-weight",
+        "line-height",
+        "text-align",
+        "color",
+        "text-decoration",
+
+        "background",
+        "background-color",
+        "box-shadow",
+
+        "transform",
+        "transition",
+
+        "cursor"
+      ],
+      {
+        "unspecified": "bottomAlphabetical"
+      }
+    ]
+  }
+}

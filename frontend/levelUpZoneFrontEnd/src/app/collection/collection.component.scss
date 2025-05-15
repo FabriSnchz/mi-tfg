@@ -6,20 +6,20 @@
 .collection-card {
   width: 13rem;
   height: 13rem;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-  border: 2px solid #000000;
-  box-shadow:
-  9px 9px 0px 1px var(--color-terciario),   /* la capa de "borde" alrededor de la sombra */
-  9px 9px 0px 2px #000000;  /* la sombra original */
+  border: 2px solid #000;
   border-radius: 0.6rem;
   overflow: hidden;
+  box-shadow:
+  9px 9px 0 1px var(--color-terciario),   /* la capa de "borde" alrededor de la sombra */
+  9px 9px 0 2px #000;  /* la sombra original */
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
 }
 
 .collection-card:hover {
+  box-shadow: 0 8px 20px rgb(0 0 0 / 20%);
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 mat-card-title {
@@ -33,8 +33,8 @@ mat-card-subtitle {
 }
 
 a {
+  color: #000;
   text-decoration: none;
-  color: #000000;
 }
 
 a:hover {
@@ -49,21 +49,22 @@ a:hover {
 
 
 .warning-container {
-  height: 60vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  text-align: center;
-  margin: 5rem auto;
+  align-items: center;
+  height: 60vh;
   padding: 2rem;
+  margin: 5rem auto;
+  text-align: center;
+
   // max-width: 400px;
 
 
   h2 {
     margin: 0.5rem 0;
+    font-family: 'PressStart2P-vaV7', 'Varela Round', Roboto, sans-serif;
     color: #740000;
-    font-family: 'PressStart2P-vaV7', 'Varela Round', 'Roboto', sans-serif;
   }
 
   // p {
@@ -72,13 +73,21 @@ a:hover {
   // }
 
   button {
-    border: none;
     padding: 12px 24px;
-    background-color: orange;
-    color: white;
+    border: none;
     border-radius: 20px;
-    margin-top: 10px;
-    cursor: pointer;
     font-size: 14px;
+    color: white;
+    background-color: orange;
+    cursor: pointer;
+    margin-top: 10px;
   }
 }
+
+.test {
+  display: flex;
+  padding: 10px;
+  color: blue;
+}
+
+

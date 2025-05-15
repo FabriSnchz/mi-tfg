@@ -6,8 +6,8 @@
 
 table {
   width: 100%;
+  border: 2px solid #000; // Necesario para el borde de la tabla
   margin-bottom: 1.5rem;
-  border: 2px solid #000000; // Necesario para el borde de la tabla
 }
 
 .boton-guardar {
