@@ -8,20 +8,19 @@
 
 
 <div class="container" [class.right-panel-active]="isRegisterMode">
-  <!-- FORMULARIO DE INICIO DE SESIÓN -->
+  <!-- Fomulario inicio de sesión -->
   <div class="form-container sign-in-container">
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <h2><mat-icon>person</mat-icon> Iniciar sesión</h2>
-      <!-- <input formControlName="email" placeholder="Email" type="email" /> -->
       <input formControlName="userName" placeholder="Nombre de usuario..." type="text" />
       <input formControlName="password" placeholder="Contraseña..." type="password" />
       <button class="button" type="submit">Iniciar sesión</button>
       <br>
-      <a href="#">¿Perdiste tu contraseña?</a>
+      <!-- <a href="#">¿Perdiste tu contraseña?</a> -->
     </form>
   </div>
 
-  <!-- FORMULARIO DE REGISTRO -->
+  <!-- Formulario registro -->
   <div class="form-container sign-up-container">
     <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
       <h2><mat-icon>person</mat-icon> Regístrate</h2>
@@ -33,9 +32,6 @@
       @if (registerForm.get('email')?.invalid && registerForm.get('email')?.touched) {
         <small class="error">Por favor, introduce un email válido.</small>
       }
-
-
-
       <input formControlName="password" placeholder="Contraseña..." type="password" />
       <br>
       <input formControlName="birthDate" placeholder="Fecha de nacimiento..." type="date" />
@@ -45,12 +41,12 @@
 
       <button class="button" type="submit">Registrarte</button>
       <br>
-      <a href="#">¿Perdiste tu contraseña?</a>
+      <!-- <a href="#">¿Perdiste tu contraseña?</a> -->
     </form>
   </div>
 
 
-  <!-- PANEL DESLIZANTE -->
+  <!-- Panel deslizante -->
   <div class="overlay-container">
     <div class="overlay">
       <div class="overlay-panel overlay-left">

@@ -114,7 +114,7 @@ export class HeaderComponent implements OnInit {
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(Dialog, {
       width: '90%',
-      // height: '75%',
+      height: '75%',
       enterAnimationDuration,
       exitAnimationDuration,
       backdropClass: 'blur-backdrop'

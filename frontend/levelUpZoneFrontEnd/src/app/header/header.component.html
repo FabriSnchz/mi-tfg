@@ -6,11 +6,10 @@
   </div>
 
   <div class="nav-header">
-    <nav class="nav-item" aria-label="Main navigation">
-      <ul class="ul-item">
+    <nav aria-label="Main navigation">
+      <ul>
         <li><a routerLink="/home" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Inicio</a></li>
         <li><a routerLink="/collections" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Mi inventario</a></li>
-        <!-- <li><a><img class="levelupzonelogo-img2" src="/images/LevelUpZoneLogoCenter.png" alt="LevelUpZoneLogoMenu"/></a></li> -->
         <li><a routerLink="/games" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Juegos</a></li>
         <li><a routerLink="/contact" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Contacto</a></li>
         <!-- <li><a routerLink="" routerLinkActive="" ariaCurrentWhenActive="page">Ayuda</a></li> -->
@@ -21,30 +20,29 @@
   <div class="third-column">
     <!-- * Toggle -->
 
-    <button mat-icon-button (click)="toggleDarkMode()" aria-label="Cambiar tema" class="mode-toggle toggle-button">
+    <button class="mode-toggle toggle-button" mat-icon-button (click)="toggleDarkMode()" aria-label="Cambiar tema">
       <mat-icon
         [@iconFade]="isDarkMode() ? 'dark' : 'light'">
         {{ isDarkMode() ? 'dark_mode' : 'light_mode' }}
       </mat-icon>
     </button>
-
-
-
     <!-- * Icono de usuario -->
+
     @if (isLogged) {
         @if (role === 'ROLE_ADMIN') {
           <p>Bienvenido, administrador</p>
         } @if (role === 'ROLE_USER') {
-            <button mat-icon-button routerLink="/temporary-collection">
-            @if (badgeCount !== 0) {
-              <mat-icon [matBadge]="badgeCount" aria-hidden="false" aria-label="Example inventory_2 icon">inventory_2</mat-icon>
-            } @else {
-              <mat-icon aria-hidden="false" aria-label="Example inventory_2 icon">inventory_2</mat-icon>
-            }
-            </button>
-
-          <p style="font-family: 'PressStart2P-vaV7';"> 1P {{ userName }}</p>
-          <button mat-icon-button [matMenuTriggerFor]="menu" class="login-button"><img class="login-img" src="/images/LoginLogo.png" alt="LoginLogo.png"></button>
+          <button mat-icon-button routerLink="/temporary-collection">
+          @if (badgeCount !== 0) {
+            <mat-icon [matBadge]="badgeCount" aria-hidden="false" aria-label="Example inventory_2 icon">inventory_2</mat-icon>
+          } @else {
+            <mat-icon aria-hidden="false" aria-label="Example inventory_2 icon">inventory_2</mat-icon>
+          }
+          </button>
+          <p> 1P {{ userName }}</p>
+          <button class="account-button" mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon mat-raised-button aria-hidden="false" aria-label="Example close icon" fontIcon="account_circle"></mat-icon>
+          </button>
           <mat-menu #menu="matMenu">
             <a href="" style="color: inherit; text-decoration: none;"><button mat-menu-item>Ver Perfil</button></a>
             <a href="" style="color: inherit; text-decoration: none;"><button mat-menu-item (click)="onLogout()">Cerrar Sesión</button></a>

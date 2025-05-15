@@ -9,70 +9,74 @@
   z-index: 1;
 }
 header {
-  // DEJO EL DISPLAY FLEX POR SI ACASO DEBO DE REGRESAR A USARLO
-  // display: flex;
-  // justify-content: space-between;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   font-size: 1em;
   padding: 0.7em;
-  .levelupzonelogo-img {
-    width: 3.5em;
-    height: auto;
+  .logo-container {
     display: flex;
-    margin: 0 1em;
-
-    transition: transform 0.2s ease;
-    &:hover {
-      transform: scale(1.1);
-      transition: transform 0.2s ease;
+    justify-content: flex-start;
+    .logo-button {
+      display: flex;
+      padding: 0.3em;
+      .levelupzonelogo-img {
+        width: 3.5em;
+        height: auto;
+        display: flex;
+        margin: 0 1em;
+        transition: transform 0.2s ease;
+        &:hover {
+          transform: scale(1.1);
+          transition: transform 0.2s ease;
+        }
+      }
     }
   }
-}
-.nav-header {
-  display: flex;
-  justify-content: center;
-  // display: grid;
-  align-items: center;
-  background-color: #00000066;
-  border-radius: 2rem;
-  .nav-item {
-    padding: 0 1%;
-  }
-  nav {
-    ul {
-      display: flex;
-      gap: 1em;
-      // align-items: center;
-      li {
-        display: inline-block;
-        // padding: 0 5%; //TODO: hacer que tenga margen y que también aumente el ul
-        a {
-          text-decoration: none;
-          color: var(--color-letra-blanca);
-          white-space: nowrap;
-        }
-        &:hover {
-          color: var(--color-secundario);
-          text-shadow:
-            0 0 5px var(--color-secundario),
-            0 0 10px var(--color-secundario),
-            0 0 20px var(--color-secundario),
-            0 0 40px var(--color-secundario),
-            0 0 80px var(--color-secundario);
+  .nav-header {
+    display: flex;
+    justify-content: center;
+    // display: grid;
+    align-items: center;
+    background-color: #000000;
+    border-radius: 0.6rem;
+    position: relative;
+    top: -10px;
+    nav {
+      padding: 0 1%;
+      ul {
+        display: flex;
+        gap: 1em;
+        align-items: center;
+        li {
+          display: inline-block;
+          a {
+            text-decoration: none;
+            color: var(--color-letra-blanca);
+            white-space: nowrap;
+          }
+          &:hover {
+            color: var(--color-secundario);
+            text-shadow:
+              0 0 5px var(--color-secundario),
+              0 0 10px var(--color-secundario),
+              0 0 20px var(--color-secundario),
+              0 0 40px var(--color-secundario),
+              0 0 80px var(--color-secundario);
+          }
         }
       }
     }
   }
 }
-.logo-container {
-  display: flex;
-  justify-content: flex-start;
-}
+
+
 .third-column {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  p {
+    font-family: 'PressStart2P-vaV7';
+  }
   .toggle-button {
     position: fixed;
     bottom: 10px;
@@ -85,7 +89,6 @@ header {
     -webkit-box-shadow: 2px 2px 0px 1px #000000;
 
     transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.1s ease;
-
   }
   .toggle-button:active {
     transform: scale(0.95) translateY(1px); // Da sensación de hundirse
@@ -97,30 +100,12 @@ header {
     border-radius: 100%;
     box-shadow: 2px 2px 0px 1px #000000;
     -webkit-box-shadow: 2px 2px 0px 1px #000000;
+    margin-left: 0.5rem;
   }
-
-
-
-}
-.logo-button {
-  display: flex;
-  padding: 0.3em;
-}
-.login-img {
-  width: 1em;
-  height: auto;
-  display: flex;
-}
-
-.neon-text {
-  max-width: 12.5%;
-}
-.login-img:hover, .neon-text:hover {
-  cursor: pointer;
 }
 
 
-// * CUANDO LOS BOTONES ESTÁN ACTIVOS
+// * Botones activos
 .activebutton {
   background-color: var(--color-secundario);
   color: var(--color-letra-blanca);
@@ -142,55 +127,47 @@ header {
 
 // * Pop up de inicio de sesión y registro
 
-/* Contenedor principal */
 .container {
-  background: #fff;
-  // position: relative;
-  z-index: 0; // Cambialo si quere las idea de ventana angiua
+  z-index: 0;
   max-width: 100%;
   min-height: 30rem;
   display: flex;
   overflow: hidden;
+  .form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 50%;
+  }
+  .sign-in-container {
+    left: 0;
+    z-index: 2;
+  }
+  .sign-up-container {
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+  }
 }
-
-/* Paneles de formulario */
-.form-container {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  transition: all 0.6s ease-in-out;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  width: 50%;
-}
-
-.sign-in-container {
-  left: 0;
-  z-index: 2;
-}
-
-.sign-up-container {
-  left: 0;
-  opacity: 0;
-  z-index: 1;
-}
-
-/* Activo: Mover registro al frente */
+// Activo: Mover registro al frente
 .container.right-panel-active .sign-in-container {
   transform: translateX(100%);
   opacity: 0;
   z-index: 1;
 }
-
 .container.right-panel-active .sign-up-container {
   transform: translateX(100%);
   opacity: 1;
   z-index: 5;
 }
 
-/* Overlay */
+
+// Overlay
 .overlay-container {
   position: absolute;
   top: 0;
@@ -200,18 +177,30 @@ header {
   overflow: hidden;
   transition: transform 0.6s ease-in-out;
   z-index: 100;
+  .overlay {
+    background: linear-gradient(to right, #2196f3, #33ccff);
+    color: #fff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+  }
+  .overlay-panel {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    transition: transform 0.6s ease-in-out;
+  }
 }
 
-.overlay {
-  background: linear-gradient(to right, #2196f3, #33ccff);
-  color: #fff;
-  position: relative;
-  left: -100%;
-  height: 100%;
-  width: 200%;
-  transform: translateX(0);
-  transition: transform 0.6s ease-in-out;
-}
 
 .container.right-panel-active .overlay-container {
   transform: translateX(-100%);
@@ -221,19 +210,7 @@ header {
   transform: translateX(50%);
 }
 
-/* Panel dentro del overlay */
-.overlay-panel {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  top: 0;
-  height: 100%;
-  width: 50%;
-  transition: transform 0.6s ease-in-out;
-}
+
 
 .overlay-left {
   transform: translateX(-20%);
@@ -253,7 +230,7 @@ header {
   transform: translateX(20%);
 }
 
-/* Botones */
+// Botones
 .button {
   border: none;
   padding: 12px 24px;
@@ -261,8 +238,40 @@ header {
   color: white;
   border-radius: 20px;
   margin-top: 10px;
-  cursor: pointer;
+  // cursor: pointer;
   font-size: 14px;
+
+
+}
+mat-dialog-actions {
+  button {
+    background-color: orange;
+    border: 1px solid #ffffff;
+    box-shadow: 0.5px 5px 0px 1px #ca5009;
+    -webkit-box-shadow: 0.5px 5px 0px 1px #ca5009;
+    color: #ffffff;
+  }
+  button:hover {
+  background-color: #ff9500;
+  }
+  button:active {
+  transform: translateY(2px);
+  box-shadow: 0px 2px 0px 1px #ca5009;
+  }
+}
+
+  .button {
+    // background-color: orange;
+    border: 1px solid #000000;
+    // box-shadow: 0.5px 5px 0px 1px #ca5009;
+    // -webkit-box-shadow: 0.5px 5px 0px 1px #ca5009;
+  }
+.button:hover {
+  background-color: #ff9500;
+}
+.button:active {
+  transform: translateY(2px);
+  box-shadow: 0px 2px 0px 1px #ca5009;
 }
 
 button.ghost {
