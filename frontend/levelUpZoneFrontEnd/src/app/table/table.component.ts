@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
@@ -29,43 +29,55 @@ export class TableComponent implements OnInit, AfterViewInit {
   infoGames: { userId: string, gameId: number }[] = [];
   gameId: any;
   userId: any;
-  gameIds: any;
 
+  @Input() gameIds: any[] = [];
 
   constructor(private readonly collectionsService: CollectionsService, private readonly gamesService: GamesService) {
-    if (typeof window !== 'undefined') {
-    const storedGames = localStorage.getItem('games');
-          console.log('games: ', storedGames);
 
-    if (storedGames) {
-      this.gameIds = JSON.parse(storedGames);
-    // this.infoGames = JSON.parse(storedGames) as { userId: string; gameId: number }[];
-    // const userId = localStorage.getItem('userId');
-    // this.gameIds = this.infoGames.filter(g => g.userId === userId).map(g => g.gameId);
-    console.log('gamesIDS QUE NO ES ITERABLE:', this.gameIds);
 
-    const gamesArray: Game[] = [];
-    for (const gameId of this.gameIds) {
-        this.gamesService.getGameById(gameId).subscribe(game => {
-          gamesArray.push(game);
 
-          if (gamesArray.length === this.gameIds.length) {
-            this.dataSubject.next(gamesArray);
-          }
-        });
-      }
+
+    // console.log('gamesIDS QUE NO ES ITERABLE:', this.gameIds);
+
+    // const gamesArray: Game[] = [];
+    // for (const gameId of this.gameIds) {
+    //     this.gamesService.getGameById(gameId).subscribe(game => {
+    //       gamesArray.push(game);
+
+    //       if (gamesArray.length === this.gameIds.length) {
+    //         this.dataSubject.next(gamesArray);
+    //       }
+    //     });
+    // }
+}
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['gameIds'] && this.gameIds?.length) {
+      this.loadGames(this.gameIds);
     }
   }
-}
+
   ngOnInit(): void {
-        this.dataSubject.subscribe(receivedData => {
-      console.log('Datos recibidos en el dataSubject:', receivedData);  // Ver los datos al cambiar
-      this.dataSource.data = receivedData; // Refleja cambios en la tabla
+    this.dataSubject.subscribe(receivedData => {
+      this.dataSource.data = receivedData;
     });
-}
+  }
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
+  }
+
+  private loadGames(gameIds: number[]) {
+    const gamesArray: Game[] = [];
+    for (const gameId of gameIds) {
+      this.gamesService.getGameById(gameId).subscribe(game => {
+        gamesArray.push(game);
+
+        if (gamesArray.length === gameIds.length) {
+          this.dataSubject.next(gamesArray);
+        }
+      });
+    }
   }
 
   applyFilter(event: Event) {

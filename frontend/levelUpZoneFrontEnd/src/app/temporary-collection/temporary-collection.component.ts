@@ -104,27 +104,65 @@ export class TemporaryCollectionComponent implements OnInit {
     }
 
 
-    const newCollection: Collection = {
-      name: collectionName,
-      user_id: Number(this.userId),
-      // Games: this.temporaryGames
-      gameIds: this.temporaryGames.map(game => game.id) // solo IDs
-    };
+    // const newCollection: Collection = {
+    //   name: collectionName,
+    //   user_id: Number(this.userId),
+    //   // Games: this.temporaryGames
+    //   gameIds: this.temporaryGames.map(game => game.id) // solo IDs
+    // };
 
-    this.collectionsService.saveCollection(newCollection).subscribe({
-      next: () => {
-        // console.log('User ID:', Number(this.userId));
-        alert('Collection saved successfully!');
-        localStorage.removeItem('temporaryGames');
-        localStorage.setItem('games', JSON.stringify(newCollection.gameIds));
-        this.temporaryGames = [];
-        this.router.navigate(['/collections']);
-      },
-      error: (err: HttpErrorResponse) => {
-        console.error('Error saving collection:', err);
-        alert('There was an error saving the collection.');
-      }
+    // this.collectionsService.saveCollection(newCollection).subscribe({
+    //   next: () => {
+    //     // console.log('User ID:', Number(this.userId));
+    //     alert('Collection saved successfully!');
+    //     localStorage.removeItem('temporaryGames');
+    //     localStorage.setItem('games', JSON.stringify(newCollection.gameIds));
+    //     this.temporaryGames = [];
+    //     this.router.navigate(['/collections']);
+    //     console.log('nueva colelction guardada: ', newCollection);
+    //   },
+    //   error: (err: HttpErrorResponse) => {
+    //     console.error('Error saving collection:', err);
+    //     alert('There was an error saving the collection.');
+    //   }
+    // });
+
+
+  const newCollection: Collection = {
+    name: collectionName,
+    user_id: Number(this.userId)
+  };
+
+this.collectionsService.saveCollection(newCollection).subscribe({
+  next: (savedCollection) => {
+    alert('Collection saved successfully!');
+
+    // Ahora que tenemos el ID de la colección recién creada, asociamos los juegos
+    const collectionId = savedCollection.id;
+
+    if (collectionId === undefined) {
+      console.error('Error: collection_id is undefined');
+      return; // O manejar el error como prefieras
+    }
+
+    this.temporaryGames.forEach(game => {
+      this.collectionsService.addGameToCollection(collectionId, game.id).subscribe({
+        next: () => console.log(`Game ${game.id} associated to collection ${collectionId}`),
+        error: (err) => console.error(`Error associating game ${game.id}:`, err)
+      });
     });
+
+    localStorage.removeItem('temporaryGames');
+    localStorage.setItem('games', JSON.stringify(this.temporaryGames.map(g => g.id)));
+    this.temporaryGames = [];
+    this.router.navigate(['/collections']);
+  },
+  error: (err: HttpErrorResponse) => {
+    console.error('Error saving collection:', err);
+    alert('There was an error saving the collection.');
+  }
+});
+
   }
 
   formatPlatforms(platforms: any[]): string {
@@ -151,23 +189,51 @@ export class TemporaryCollectionComponent implements OnInit {
       }
 
 
-      const newCollection = {
-        name: collectionName,
-        user_id: Number(userId), // Ajusta esto con el usuario logueado
-        gameIds: this.temporaryGames.map(game => game.id) // solo IDs
-      };
+    //   const newCollection = {
+    //     name: collectionName,
+    //     user_id: Number(userId), // Ajusta esto con el usuario logueado
+    //     gameIds: this.temporaryGames.map(game => game.id) // solo IDs
+    //   };
 
-      this.collectionsService.saveCollection(newCollection).subscribe({
-        next: () => {
-          alert('Collection saved successfully!');
-          localStorage.removeItem('temporaryGames');
-          this.temporaryGames = [];
-          this.router.navigate(['/collections']);
-        },
-        error: (err: HttpErrorResponse) => {
-          console.error('Error saving collection:', err);
-          alert('There was an error saving the collection.');
-        }
+    //   this.collectionsService.saveCollection(newCollection).subscribe({
+    //     next: () => {
+    //       alert('Collection saved successfully!');
+    //       localStorage.removeItem('temporaryGames');
+    //       this.temporaryGames = [];
+    //       this.router.navigate(['/collections']);
+    //     },
+    //     error: (err: HttpErrorResponse) => {
+    //       console.error('Error saving collection:', err);
+    //       alert('There was an error saving the collection.');
+    //     }
+    //   });
+    // });
+
+    // 1. Crear la colección
+const newCollection = {
+  name: collectionName,
+  user_id: Number(userId),
+};
+
+this.collectionsService.saveCollection(newCollection).subscribe({
+  next: (createdCollection) => {
+    const collectionId: any = createdCollection.id;
+    const selectedGameIds = this.temporaryGames.map(game => game.id); // solo IDs
+    let selectedGameId;
+    for(selectedGameId of selectedGameIds) {
+          this.collectionsService.addGameToCollection(collectionId, selectedGameId).subscribe({
+      next: () => {
+        console.log('Juego asociado exitosamente a la colección');
+      },
+      error: (error) => {
+        console.error('Error al asociar el juego a la colección', error);
+      }
+    });
+    }
+  },
+  error: (error) => {
+    console.error('Error al crear la colección', error);
+      }
       });
     });
   }

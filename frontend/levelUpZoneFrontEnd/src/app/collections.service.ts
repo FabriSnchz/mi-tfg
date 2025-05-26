@@ -53,19 +53,15 @@ export class CollectionsService {
       if (token) {
         headers = headers.set('Authorization', `Bearer ${token}`);
       }
-      let gameIds = collection.gameIds;
-
-
-      // // Ensure userId is set correctly in the collection
-      // if (userId) {
-      //   collection.user_id = Number(userId); // Set the user_id to the collection
-      // } else {
-      //   console.error('User ID is not available in localStorage');
-      // }
     }
 
     return this.http.post<Collection>(this.apiUrl, collection, { headers });
   }
+
+  addGameToCollection(collectionId: number, gameId: number): Observable<any> {
+  return this.http.post(`${this.apiUrl}/${collectionId}/games/${gameId}`, {});
+}
+
 
 
   private updateStorage(): void {
@@ -75,9 +71,9 @@ export class CollectionsService {
     this.badgeCountSubject.next(this.temporaryGames.length);
   }
 
-  // Método para obtener todas las colecciones
-  getCollections(): Observable<Collection[]> {
-    return this.http.get<Collection[]>(this.apiUrl);
+  getCollectionById(id: number): Observable<Collection> {
+    const url = `${this.apiUrl}/${id}`;  // Asumiendo que tu backend tiene este endpoint
+    return this.http.get<Collection>(url);
   }
 
   // Método para obtener las colecciones filtradas por el usuario

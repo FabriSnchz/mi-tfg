@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.tfg.levelUpZone.collection.Collection;
 import com.tfg.levelUpZone.platform.Platform;
 
@@ -28,11 +29,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Game {
-    	
-//      @ElementCollection
-//      @CollectionTable(name = "juegos_plataformas", joinColumns = @JoinColumn(name = "id_juego"))
-//      @Column(name = "plataforma")
-//      private List<String> plataformas;
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -41,9 +37,12 @@ public class Game {
 	private String name;
 	private String genre;
     private Date release_date;
-    @ManyToMany(mappedBy = "games")
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
+    @ManyToMany
+    @JoinTable(
+        name = "games_platforms",
+        joinColumns = @JoinColumn(name = "game_id"),
+        inverseJoinColumns = @JoinColumn(name = "platform_id")
+    )
     private List<Platform> platforms;
     private Boolean multiplayer;
     private String photo;
@@ -55,11 +54,11 @@ public class Game {
     private BigDecimal price;
     private String ageRating;
     private String description;
-    @ManyToMany
-    @JoinTable(name = "collections_games", joinColumns = @JoinColumn(name = "game_id"), inverseJoinColumns = @JoinColumn(name = "collection_id"))
-    @ToString.Exclude
+    @ManyToMany(mappedBy = "games")
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @JsonBackReference
     private List<Collection> collections;
-    
+
 
 }

@@ -28,7 +28,7 @@ export class GamesService {
 
     return this.http.get<Game[]>(this.apiUrl, { headers });
   }
-  getGameById(id: string): Observable<Game> {
+  getGameById(id: number): Observable<Game> {
     return this.http.get<Game>(`${this.apiUrl}/${id}`);  // Aquí usamos la URL completa
   }
   emitirGames(): void {

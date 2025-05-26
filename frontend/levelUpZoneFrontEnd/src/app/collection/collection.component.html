@@ -1,53 +1,54 @@
-  @if (isLogged) {
-    @if (role === 'ROLE_ADMIN') {
-      <p>Bienvenido, administrador</p>
-    } @else if (role === 'ROLE_USER') {
-      <h1>Mi inventario</h1>
-      <div class="collection-container">
-      <h2 class="title">Inventario de {{ userName }}</h2>
-      <hr>
-      @if (collections) {
-      <mat-grid-list cols="3" rowHeight="1:1" gutterSize="16px">
-        <mat-grid-tile *ngFor="let collection of collections">
-            <a [routerLink]="['/collection', collection.id]" class="animated-hover">
+@if (isLogged) {
+  @if (role === 'ROLE_ADMIN') {
+    <p>Bienvenido, administrador</p>
+  } @else if (role === 'ROLE_USER') {
+    <h1>Mi inventario</h1>
+    <div class="collection-container">
+    <h2>Inventario de <span class="pixel-font">{{ userName }}</span></h2>
+    <hr>
+    @if (collections) {
+    <mat-grid-list cols="3" rowHeight="1:1" gutterSize="16px">
+      @for (collection of collections; track $index) {
+        <mat-grid-tile>
+          <a [routerLink]="['/collection', collection.id]">
             <mat-card class="collection-card">
               <mat-card-header>
                 <mat-card-title>{{ collection.name }}</mat-card-title>
               </mat-card-header>
               <!-- <img mat-card-image [src]="collection.imageUrl" alt="{{ collection.name }}" /> -->
-              <mat-card-content>
-                <!-- <p>{{ game.length }} games</p> -->
-              </mat-card-content>
-              <!-- <mat-card-actions>
-                <button mat-button color="primary" (click)="viewCollection(collection.id)">View</button>
-              </mat-card-actions> -->
-            </mat-card>
-          </a>
-        </mat-grid-tile>
-      </mat-grid-list>
-    } @else {
-      <div class="warning-container">
-        <img style="width: 9rem; height: auto;" src="images/logo_pixel_art_died.png" alt="LevelUpZoneLogo" />
-        <h2>Acceso denegado</h2>
-        <p>Por el momento no tienes colecciones guardadas.</p>
-      </div>
-    }
-    </div>
+            <mat-card-content>
+              <!-- <p>{{ game.length }} games</p> -->
+            </mat-card-content>
+            <!-- <mat-card-actions>
+              <button mat-button color="primary" (click)="viewCollection(collection.id)">View</button>
+            </mat-card-actions> -->
+          </mat-card>
+        </a>
+      </mat-grid-tile>
+      }
+  </mat-grid-list>
   } @else {
     <div class="warning-container">
-      <!-- <mat-icon>block</mat-icon> -->
       <img style="width: 9rem; height: auto;" src="images/logo_pixel_art_died.png" alt="LevelUpZoneLogo" />
       <h2>Acceso denegado</h2>
-      <p>No puedes acceder a tu inventario si no posees una cuenta registrada.</p>
-      <!-- <button mat-raised-button color="primary" (click)="openDialog('100ms', '100ms')">
-        Crear una cuenta
-      </button>
-      <button mat-raised-button color="warn" (click)="openDialog('100ms', '100ms')">
-        Registrarse
-      </button> -->
+      <p>Por el momento no tienes colecciones guardadas.</p>
     </div>
-    }
   }
+    </div>
+  }
+} @else {
+  <div class="warning-container">
+    <img style="width: 9rem; height: auto;" src="images/logo_pixel_art_died.png" alt="LevelUpZoneLogo" />
+    <h2>Acceso denegado</h2>
+    <p>No puedes acceder a tu inventario si no posees una cuenta registrada.</p>
+    <!-- <button mat-raised-button color="primary" (click)="openDialog('100ms', '100ms')">
+      Crear una cuenta
+    </button>
+    <button mat-raised-button color="warn" (click)="openDialog('100ms', '100ms')">
+      Registrarse
+    </button> -->
+  </div>
+}
 
 
 

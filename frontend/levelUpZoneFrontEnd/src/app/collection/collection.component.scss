@@ -1,26 +1,37 @@
 
 .collection-container {
   padding: 0 5rem;
+
+  a {
+    color: #000;
+    text-decoration: none;
+
+      .collection-card {
+      width: 13rem;
+      height: 13rem;
+      border: 2px solid #000;
+      border-radius: 0.6rem;
+      overflow: hidden;
+      box-shadow:
+      9px 9px 0 1px var(--color-terciario),   /* la capa de "borde" alrededor de la sombra */
+      9px 9px 0 2px #000;  /* la sombra original */
+
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+
+    .collection-card:hover {
+      box-shadow: 0 8px 20px rgb(0 0 0 / 20%);
+      transform: translateY(-5px);
+    }
+  }
+
+  a:hover {
+    color: #969696;
+  }
 }
 
-.collection-card {
-  width: 13rem;
-  height: 13rem;
-  border: 2px solid #000;
-  border-radius: 0.6rem;
-  overflow: hidden;
-  box-shadow:
-  9px 9px 0 1px var(--color-terciario),   /* la capa de "borde" alrededor de la sombra */
-  9px 9px 0 2px #000;  /* la sombra original */
 
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  cursor: pointer;
-}
-
-.collection-card:hover {
-  box-shadow: 0 8px 20px rgb(0 0 0 / 20%);
-  transform: translateY(-5px);
-}
 
 mat-card-title {
   font-size: 1.2rem;
@@ -30,20 +41,6 @@ mat-card-title {
 mat-card-subtitle {
   font-size: 0.9rem;
   color: gray;
-}
-
-a {
-  color: #000;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #969696;
-}
-
-.animated-hover {
-  color: black;
-  transition: color 0.5s ease;
 }
 
 
@@ -57,9 +54,7 @@ a:hover {
   padding: 2rem;
   margin: 5rem auto;
   text-align: center;
-
-  // max-width: 400px;
-
+  max-width: 25rem;
 
   h2 {
     margin: 0.5rem 0;
@@ -67,11 +62,7 @@ a:hover {
     color: #740000;
   }
 
-  // p {
-  //   margin: 0.5rem 0 1.5rem;
-  //   // color: #555;
-  // }
-
+  // TODO: Cambio de contraseña
   button {
     padding: 12px 24px;
     border: none;
@@ -83,11 +74,3 @@ a:hover {
     margin-top: 10px;
   }
 }
-
-.test {
-  display: flex;
-  padding: 10px;
-  color: blue;
-}
-
-

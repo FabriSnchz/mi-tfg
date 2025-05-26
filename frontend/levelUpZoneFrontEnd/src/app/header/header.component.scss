@@ -87,10 +87,6 @@ header {
   justify-content: flex-end;
   align-items: center;
 
-  p {
-    font-family: 'PressStart2P-vaV7';
-  }
-
   .toggle-button {
     position: fixed;
     bottom: 10px;
@@ -325,13 +321,6 @@ input{
 
 .second-dialog-column{
   background-color: aquamarine;
-}
-
-p {
-  color: #fff;
-
-  // border: #000000 2px solid;
-  text-shadow: 2px 2px #000;
 }
 
 .mode-toggle {

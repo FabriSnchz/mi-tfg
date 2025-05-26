@@ -20,18 +20,26 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CollectionDetailComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
-  collection: Collection[] = [];
+  collections: Collection[] = [];
   isLogged: boolean = false;
   role: string = '';
   userName: string = '';
   gameId: any;
   userId: any;
-  gameIds: any;
+  gameIds: number[] = [];
   infoGames: { userId: string, gameId: number }[] = [];
 
-constructor(private readonly collectionService: CollectionsService,  @Inject(PLATFORM_ID) private readonly platformId: Object, private readonly authService: AuthService, private readonly gamesService: GamesService) {}
+  collectionId: any;
+
+constructor(private readonly collectionsService: CollectionsService,  @Inject(PLATFORM_ID) private readonly platformId: Object, private readonly authService: AuthService, private readonly gamesService: GamesService) {}
 
 ngOnInit(): void {
+
+    this.route.paramMap.subscribe(params => {
+      this.collectionId = params.get('id')!;
+      console.log('ID obtenido de la ruta (paramMap):', this.collectionId);
+    });
+
   if (isPlatformBrowser(this.platformId)) {
     // Verificar si el usuario está logueado y obtener su rol
     this.isLogged = this.authService.isLoggedIn();
@@ -42,21 +50,20 @@ ngOnInit(): void {
     // Si está logueado, cargar las colecciones del usuario
     if (this.isLogged) {
       const userId = localStorage.getItem('userId');
+      console.log('userid: ',userId);
       if (userId) {
-        this.collectionService.getCollectionsByUserId(Number(userId)).subscribe(collections => {
-          this.collection = collections;
+        this.collectionsService.getCollectionsByUserId(Number(userId)).subscribe(collections => {
+          this.collections = collections;
+          // this.collectionId = collections.map(collection => collection.id);
         });
-      }
-    } else {
-      // Si no está logueado, cargar todas las colecciones
-      this.collectionService.getCollections().subscribe(collections => {
-        this.collection = collections;
+        this.collectionsService.getCollectionById(this.collectionId).subscribe(collection => {
+          console.log('asdasdas: ', collection);
+          this.gameIds = collection.games?.map(game => game.id) ?? [];
+          console.log('gamesIDSSSS: ', this.gameIds);
       });
+      }
     }
   }
-      this.route.paramMap.subscribe(params => {
-      this.gameId = params.get('id')!;
-      console.log('ID obtenido de la ruta (paramMap):', this.gameId);
-    });
+
 }
 }

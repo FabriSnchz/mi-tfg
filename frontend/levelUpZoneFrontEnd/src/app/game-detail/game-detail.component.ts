@@ -13,7 +13,7 @@ export class GameDetailComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly gameService = inject(GamesService);
 
-  gameId!: string;
+  gameId!: number;
   game!: Game;
   loading = true;
   error = '';
@@ -21,11 +21,22 @@ export class GameDetailComponent implements OnInit {
   ngOnInit() {
     console.log('ngOnInit iniciado');
 
-    // this.gameId = this.route.snapshot.paramMap.get('id')!;
-    this.route.paramMap.subscribe(params => {
-      this.gameId = params.get('id')!;
-      console.log('ID obtenido de la ruta (paramMap):', this.gameId);
-      this.fetchGame();
+    // // this.gameId = this.route.snapshot.paramMap.get('id')!;
+    // this.route.paramMap.subscribe(params => {
+    //   this.gameId = params.get('id')!;
+    //   console.log('ID obtenido de la ruta (paramMap):', this.gameId);
+    //   this.fetchGame();
+    // });
+        this.route.paramMap.subscribe(params => {
+      const idParam = params.get('id');
+      if (idParam) {
+        this.gameId = Number(idParam); // conversión explícita
+        console.log('ID obtenido de la ruta (paramMap):', this.gameId);
+        this.fetchGame();
+      } else {
+        this.error = 'No game ID provided in route.';
+        this.loading = false;
+      }
     });
   }
 

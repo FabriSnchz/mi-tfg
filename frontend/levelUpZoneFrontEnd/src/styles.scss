@@ -193,6 +193,12 @@ body {
   src: url('../public/fonts/Myfont-Regular.ttf');
 }
 
+.pixel-font {
+    font-family: 'PressStart2P-vaV7';
+    color: white;
+    text-shadow: 2px 2px #000;
+    -webkit-text-stroke: 0.5px black;
+}
 
 // * Scrollbar
 ::-webkit-scrollbar {

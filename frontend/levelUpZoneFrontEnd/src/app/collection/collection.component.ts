@@ -40,8 +40,8 @@ export class CollectionComponent implements OnInit {
 
     }
 
-    this.collectionsService.getCollectionsByUserId(this.userId).subscribe( games => {
-      this.collections = games;
+    this.collectionsService.getCollectionsByUserId(this.userId).subscribe( collections => {
+      this.collections = collections;
     });
   }
 }

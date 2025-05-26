@@ -33,13 +33,13 @@ public class Platform {
 
     private String name;
 
-    @ManyToMany
-    @JoinTable(
-        name = "games_platforms",
-        joinColumns = @JoinColumn(name = "platform_id"),
-        inverseJoinColumns = @JoinColumn(name = "game_id")
-    )
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    private List<Game> games;
+//    @ManyToMany
+//    @JoinTable(
+//        name = "games_platforms",
+//        joinColumns = @JoinColumn(name = "platform_id"),
+//        inverseJoinColumns = @JoinColumn(name = "game_id")
+//    )
+//    @ToString.Exclude
+//    @EqualsAndHashCode.Exclude
+//    private List<Game> games;
 }

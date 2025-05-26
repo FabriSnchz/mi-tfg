@@ -1,14 +1,17 @@
 <main>
-
   @if (isLogged) {
     @if (role === 'ROLE_ADMIN') {
       <p>Bienvenido, administrador</p>
     } @else if (role === 'ROLE_USER') {
       <h1>Mi inventario</h1>
-      <h2>Inventario de {{ userName }}</h2>
+      <h2>Inventario de <span class="pixel-font">{{ userName }}</span></h2>
+      <hr>
+      @for (collection of collections; track $index) {
+        <h3>{{ collection.name }}</h3>
+      }
       <article>
         <div>
-          <app-table></app-table>
+          <app-table *ngIf="gameIds?.length" [gameIds]="gameIds"></app-table>
         </div>
       </article>
     }

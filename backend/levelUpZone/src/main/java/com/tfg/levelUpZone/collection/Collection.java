@@ -2,6 +2,7 @@ package com.tfg.levelUpZone.collection;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.tfg.levelUpZone.game.Game;
 
 import jakarta.persistence.Column;
@@ -9,6 +10,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -32,6 +35,8 @@ public class Collection {
     @Column(name = "user_id")
     private Long userId;
 
-    @ManyToMany(mappedBy = "collections")
+    @ManyToMany
+    @JoinTable(name = "collections_games", joinColumns = @JoinColumn(name = "collection_id"), inverseJoinColumns = @JoinColumn(name = "game_id"))
+    @JsonManagedReference
     private List<Game> games;
 }
