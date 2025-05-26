@@ -19,33 +19,21 @@ export class GameDetailComponent implements OnInit {
   error = '';
 
   ngOnInit() {
-    console.log('ngOnInit iniciado');
-
-    // // this.gameId = this.route.snapshot.paramMap.get('id')!;
-    // this.route.paramMap.subscribe(params => {
-    //   this.gameId = params.get('id')!;
-    //   console.log('ID obtenido de la ruta (paramMap):', this.gameId);
-    //   this.fetchGame();
-    // });
         this.route.paramMap.subscribe(params => {
       const idParam = params.get('id');
       if (idParam) {
-        this.gameId = Number(idParam); // conversión explícita
-        console.log('ID obtenido de la ruta (paramMap):', this.gameId);
+        this.gameId = Number(idParam);
         this.fetchGame();
       } else {
-        this.error = 'No game ID provided in route.';
+        this.error = 'No se proporcionó ID del juego en la ruta.';
         this.loading = false;
       }
     });
   }
 
   fetchGame() {
-    console.log('Llamando a fetchGame con ID:', this.gameId);
-
     this.gameService.getGameById(this.gameId).subscribe({
       next: (data) => {
-        console.log('Juego recibido:', data);
         this.game = data;
         this.loading = false;
       },

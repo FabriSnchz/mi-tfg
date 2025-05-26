@@ -175,11 +175,9 @@ export class Dialog {
 
   onRegister(): void {
     if (this.registerForm.valid) {
-      console.log('Formulario de registro válido:', this.registerForm.value);
 
       this.authService.register(this.registerForm.value).subscribe({
         next: (res) => {
-          console.log('Respuesta del backend al registrarse:', res);
           alert(res.message);
           this.toggleRegister(false);
         },

@@ -35,7 +35,9 @@ export class GamesComponent implements OnInit, AfterViewInit {
   isLogged: boolean = false;
   role: string = '';
 
-  constructor(private readonly gamesService: GamesService, @Inject(PLATFORM_ID) private readonly platformId: Object, private readonly authService: AuthService, private readonly snackBar: MatSnackBar) {}
+  constructor(private readonly gamesService: GamesService, @Inject(PLATFORM_ID) private readonly platformId: Object, private readonly authService: AuthService, private readonly snackBar: MatSnackBar) {
+    this.gamesService.emitirGames(); // Dispara la carga inicial de Games
+  }
 
   ngOnInit(): void {
     this.gamesService.emitirGames(); // Dispara la carga inicial de Games
@@ -127,9 +129,7 @@ export class GamesComponent implements OnInit, AfterViewInit {
 
     if (!exists) {
       temporaryGames.push({ userId: storedUserId, gameId: game.id });
-      console.log('temporaryGamesGAMES: ', temporaryGames);
       localStorage.setItem('temporaryGames', JSON.stringify(temporaryGames));
-      console.log('storedGamesGAMES: ', storedGames);
       this.gamesService.incrementBadgeCount();
       alert('Game added to your temporary collection.');
     } else {

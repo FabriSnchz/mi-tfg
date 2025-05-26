@@ -5,7 +5,6 @@ import { GamesComponent } from './games/games.component';
 import { ContactComponent } from './contact/contact.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CardsComponent } from './cards/cards.component';
-import { AsdComponent } from './asd/asd.component';
 import { GameDetailComponent } from './game-detail/game-detail.component';
 import { TemporaryCollectionComponent } from './temporary-collection/temporary-collection.component';
 import { CollectionDetailComponent } from './collection-detail/collection-detail.component';
@@ -16,7 +15,6 @@ export const routes: Routes = [
   // { path: '', component: AppComponent, pathMatch: 'full' }, // Protege la ruta raíz
 
   {path: 'cards', component: CardsComponent, title: 'Inicio'},
-  {path: 'asd', component: AsdComponent, title: 'Asd'},
   {path: 'home', component: HomeComponent, title: 'Inicio'},
   {path: 'collections', component: CollectionComponent, title: 'Mi Inventario'},
   {path: 'collection/:id', component: CollectionDetailComponent, title: 'Detalles de las colecciones'},

@@ -32,24 +32,7 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   @Input() gameIds: any[] = [];
 
-  constructor(private readonly collectionsService: CollectionsService, private readonly gamesService: GamesService) {
-
-
-
-
-    // console.log('gamesIDS QUE NO ES ITERABLE:', this.gameIds);
-
-    // const gamesArray: Game[] = [];
-    // for (const gameId of this.gameIds) {
-    //     this.gamesService.getGameById(gameId).subscribe(game => {
-    //       gamesArray.push(game);
-
-    //       if (gamesArray.length === this.gameIds.length) {
-    //         this.dataSubject.next(gamesArray);
-    //       }
-    //     });
-    // }
-}
+  constructor(private readonly collectionsService: CollectionsService, private readonly gamesService: GamesService) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['gameIds'] && this.gameIds?.length) {
@@ -82,7 +65,6 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    console.log('Filtro aplicado:', filterValue);  // Ver el valor del filtro
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 

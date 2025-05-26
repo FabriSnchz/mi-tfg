@@ -37,7 +37,6 @@ ngOnInit(): void {
 
     this.route.paramMap.subscribe(params => {
       this.collectionId = params.get('id')!;
-      console.log('ID obtenido de la ruta (paramMap):', this.collectionId);
     });
 
   if (isPlatformBrowser(this.platformId)) {
@@ -50,16 +49,13 @@ ngOnInit(): void {
     // Si está logueado, cargar las colecciones del usuario
     if (this.isLogged) {
       const userId = localStorage.getItem('userId');
-      console.log('userid: ',userId);
       if (userId) {
         this.collectionsService.getCollectionsByUserId(Number(userId)).subscribe(collections => {
           this.collections = collections;
           // this.collectionId = collections.map(collection => collection.id);
         });
         this.collectionsService.getCollectionById(this.collectionId).subscribe(collection => {
-          console.log('asdasdas: ', collection);
           this.gameIds = collection.games?.map(game => game.id) ?? [];
-          console.log('gamesIDSSSS: ', this.gameIds);
       });
       }
     }
