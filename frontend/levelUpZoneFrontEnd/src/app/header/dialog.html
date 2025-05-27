@@ -23,7 +23,27 @@
   <!-- Formulario registro -->
   <div class="form-container sign-up-container">
     <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
-      <h2><mat-icon>person</mat-icon> Regístrate</h2>
+      <!-- <h2><mat-icon>person</mat-icon> Regístrate</h2> -->
+
+      <!-- Avatar Selector -->
+      <div class="avatar-selector" (click)="showAvatarPopup = !showAvatarPopup">
+        <img [src]="selectedAvatar || '/images/Avatars/avatar0.png'" alt="Avatar" class="avatar-img">
+      </div>
+
+      <!-- Texto debajo -->
+      <h2>Regístrate</h2>
+
+      <!-- Popup de selección de avatares -->
+      <div class="avatar-popup" *ngIf="showAvatarPopup">
+        <p>Selecciona tu avatar:</p>
+        <div class="avatar-options">
+          <img *ngFor="let avatar of avatarList"
+              [src]="avatar"
+              alt="Avatar opción"
+              class="avatar-option"
+              (click)="selectAvatar(avatar)">
+        </div>
+      </div>
 
       <input formControlName="fullName" placeholder="Nombre completo..." type="text" />
       <input formControlName="userName" placeholder="Nombre de usuario..." type="text" />

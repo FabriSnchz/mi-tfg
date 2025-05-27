@@ -54,13 +54,17 @@ public class User {
     @Column(name = "birth_date")
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthDate;
+    
+    @Column(name = "profile_image")
+    private String profileImage;
 
-    public User(String userName, String password, String fullName, String email, LocalDate birthDate, Role role) {
+    public User(String userName, String password, String fullName, String email, LocalDate birthDate, Role role, String profileImage) {
         this.userName = userName;
         this.password = password;
         this.fullName = fullName;
         this.email = email;
         this.birthDate = birthDate;
         this.role = role;
+        this.profileImage = profileImage;
     }
 }

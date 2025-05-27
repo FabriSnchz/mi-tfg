@@ -65,10 +65,11 @@ public class AuthController {
             String role = user.getRole().getName().name();
             String userName = user.getUserName();
             Long userId = user.getId();
+            String profileImage = user.getProfileImage();
 
-            return ResponseEntity.ok(new JwtResponse(jwt, role, userName, userId));
+            return ResponseEntity.ok(new JwtResponse(jwt, role, userName, userId, profileImage));
         } catch (Exception e){
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new JwtResponse("Credenciales incorrectas", null, null, null));
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new JwtResponse("Credenciales incorrectas", null, null, null, null));
         }
     }
 
@@ -103,7 +104,8 @@ public class AuthController {
             newUserDto.getFullName(),
             newUserDto.getEmail(),
             newUserDto.getBirthDate(),
-            roleGuest  // Asumiendo que ya se tiene el rol y es GUEST
+            roleGuest,  // Asumiendo que ya se tiene el rol y es GUEST
+            newUserDto.getProfileImage()
         );
 
         // Guardar el nuevo usuario en la base de datos
@@ -144,7 +146,7 @@ public class AuthController {
             String newAccessToken = jwtUtil.generateAccessToken(authentication);
 
             // Devolver el nuevo JWT junto con el rol y el ID de usuario
-            JwtResponse jwtResponse = new JwtResponse(newAccessToken, user.getRole().getName().name(), user.getUserName(), user.getId());
+            JwtResponse jwtResponse = new JwtResponse(newAccessToken, user.getRole().getName().name(), user.getUserName(), user.getId(), user.getProfileImage());
             return ResponseEntity.ok(jwtResponse);
 
         } catch (UsernameNotFoundException e) {

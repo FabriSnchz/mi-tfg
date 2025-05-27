@@ -59,6 +59,7 @@ export class HeaderComponent implements OnInit {
   isLogged: boolean = false;
   role: string = '';
   userName: string = '';
+  profileImage: string = '';
   readonly dialog = inject(MatDialog);
   // @Output() themeToggled = new EventEmitter<void>();
 
@@ -87,6 +88,8 @@ export class HeaderComponent implements OnInit {
     this.role = this.authService.getUserRole() ?? '';
     this.isLogged = this.authService.getToken() !== null;
     this.userName = this.authService.getUserName() ?? '';
+
+    this.profileImage = localStorage.getItem('profileImage') || '/images/Avatars/avatar1.png'; // Imagen por defecto si no hay
 
     // 🎮 Juegos temporales
     const storedGames = localStorage.getItem('temporaryGames');
@@ -131,13 +134,30 @@ export class HeaderComponent implements OnInit {
   selector: 'dialog',
   templateUrl: 'dialog.html',
   styleUrl: 'header.component.scss',
-  imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent, MatIconModule, MatFormFieldModule, MatInputModule, MatSelectModule, ReactiveFormsModule],
+  imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent, MatIconModule, MatFormFieldModule, MatInputModule, MatSelectModule, ReactiveFormsModule, CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Dialog {
   isRegisterMode = false;
   loginForm: FormGroup;
   registerForm: FormGroup;
+
+  avatarList: string[] = [
+  '/images/Avatars/avatar1.png',
+  '/images/Avatars/avatar2.png',
+  '/images/Avatars/avatar3.png',
+  '/images/Avatars/avatar4.png',
+  '/images/Avatars/avatar5.png'
+  ];
+
+  selectedAvatar: string = '';
+  showAvatarPopup: boolean = false;
+
+  selectAvatar(avatar: string) {
+    this.selectedAvatar = avatar;
+    this.showAvatarPopup = false;
+    this.registerForm.get('profileImage')?.setValue(avatar);
+  }
 
   constructor(private readonly fb: FormBuilder, private readonly authService: AuthService, private router: Router) {
     this.loginForm = this.fb.group({
@@ -149,7 +169,9 @@ export class Dialog {
       userName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      birthDate: ['', Validators.required]
+      birthDate: ['', Validators.required],
+      profileImage: ['', Validators.required],
+
     });
   }
 
@@ -159,9 +181,9 @@ export class Dialog {
 
       this.authService.login(credentials).subscribe({
         next: (response) => {
-          this.authService.saveToken(response.token, response.role, response.userName, response.userId); // Guarda el token como jwt
-          this.router.navigate(['/']);
-          // window.location.href = '/'; // Úsalo solo si necesitas recargar completamente
+          this.authService.saveToken(response.token, response.role, response.userName, response.userId, response.profileImage); // Guarda el token como jwt
+          // this.router.navigate(['/']);
+          window.location.href = '/'; // Úsalo solo si necesitas recargar completamente
         },
         error: (err) => {
           alert('Credenciales incorrectas');
@@ -180,7 +202,7 @@ export class Dialog {
         next: (res) => {
           alert(res.message);
           this.toggleRegister(false);
-        },
+          },
         error: (err) => {
           console.error('Error al registrarse:', err);
           alert('Error al registrarse');

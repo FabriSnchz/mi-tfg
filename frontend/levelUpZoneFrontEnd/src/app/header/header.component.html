@@ -40,9 +40,10 @@
           }
           </button>
           <p class="pixel-font"> 1P {{ userName }}</p>
-          <button class="account-button" mat-icon-button [matMenuTriggerFor]="menu">
-            <mat-icon mat-raised-button aria-hidden="false" aria-label="Example close icon" fontIcon="account_circle"></mat-icon>
-          </button>
+            <button class="avatar-button" [matMenuTriggerFor]="menu">
+              <img src="{{profileImage}}" alt="Avatar">
+              <div class="badge">{{ userName.charAt(0) }}</div>
+            </button>
           <mat-menu #menu="matMenu">
             <a href="" style="color: inherit; text-decoration: none;"><button mat-menu-item>Ver Perfil</button></a>
             <a href="" style="color: inherit; text-decoration: none;"><button mat-menu-item (click)="onLogout()">Cerrar Sesión</button></a>
@@ -52,8 +53,9 @@
       <button mat-icon-button routerLink="/temporary-collection">
         <mat-icon [matBadge]="" aria-hidden="false" aria-label="Example inventory_2 icon">inventory_2</mat-icon>
       </button>
-      <button class="account-button" mat-icon-button (click)="openDialog('100ms', '100ms')">
-        <mat-icon mat-raised-button aria-hidden="false" aria-label="Example close icon" fontIcon="account_circle"></mat-icon>
+      <button class="avatar-button" (click)="openDialog('100ms', '100ms')">
+        <img src="/images/Avatars/avatar0.png" alt="Avatar">
+        <!-- <div class="badge">V</div> -->
       </button>
 
 

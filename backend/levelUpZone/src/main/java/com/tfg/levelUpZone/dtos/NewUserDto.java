@@ -30,4 +30,7 @@ public class NewUserDto {
 
     @Past(message = "La fecha de nacimiento debe ser una fecha pasada")
     private LocalDate birthDate;
+    
+    @NotBlank(message = "La foto de perfil es obligatorio")
+    private String profileImage;
 }

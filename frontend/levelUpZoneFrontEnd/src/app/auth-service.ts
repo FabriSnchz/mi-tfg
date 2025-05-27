@@ -11,16 +11,11 @@ export class AuthService {
 
   constructor(private readonly http: HttpClient) {}
 
-  // login(credentials: { userName: string; password: string }): Observable<JwtResponse> {
-  //   return this.http.post<JwtResponse>(`${this.apiUrl}/login`, credentials);
-  // }
-
   login(credentials: { userName: string; password: string }): Observable<JwtResponse> {
     return this.http.post<JwtResponse>(`${this.apiUrl}/login`, credentials).pipe(
       tap(response => {
-        console.log('Login response:', response);  // Imprime todo el objeto
         if (response?.token) {
-          this.saveToken(response.token, response.role, response.userName, response.userId); // Guarda el token como jwt
+          this.saveToken(response.token, response.role, response.userName, response.userId, response.profileImage); // Guarda el token como jwt
         } else {
           console.error('No JWT received in response', response);
         }
@@ -32,12 +27,13 @@ export class AuthService {
     return this.http.post<{ message: string }>(`${this.apiUrl}/register`, data);
   }
 
-  saveToken(jwt: string, role: string, userName: string, userId: number): void {
+  saveToken(jwt: string, role: string, userName: string, userId: number, profileImage: string): void {
     console.log('Saving token', jwt);  // Agrega un log aquí para verificar que el token se está guardando
     localStorage.setItem('token', jwt);
     localStorage.setItem('role', role);
     localStorage.setItem('userName', userName);
     localStorage.setItem('userId', String(userId)); // Asegúrate de que el ID del usuario se guarde correctamente
+    localStorage.setItem('profileImage', profileImage); // o donde lo estés guardando
   }
 
   getToken(): string | null {
