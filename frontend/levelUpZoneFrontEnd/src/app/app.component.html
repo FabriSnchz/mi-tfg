@@ -1,8 +1,11 @@
 <!-- TODO: Al cargar la página se pierda la animación del header -->
 @if (!isLoading) {
-    <div class="grid-background">
-      <app-header></app-header>
+  <div class="page-wrapper">
+
+    <app-header></app-header>
+    <main class="main-content">
       <router-outlet></router-outlet>
+    </main>
       <app-footer></app-footer>
-    </div>
+  </div>
 }

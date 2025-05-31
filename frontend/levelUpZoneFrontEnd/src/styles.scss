@@ -24,14 +24,14 @@ Utilizar para responsive:
 
   @include mat.expansion-overrides((
     container-background-color: var(--color-secundario),
-    ));
-    @include mat.progress-spinner-overrides((
-      active-indicator-color: orange,
-    ));
-    @include mat.paginator-overrides((
-      container-text-font: "Roboto",
-      container-text-size: 1rem,
-    ));
+  ));
+  @include mat.progress-spinner-overrides((
+    active-indicator-color: orange,
+  ));
+  @include mat.paginator-overrides((
+    container-text-font: "Roboto",
+    container-text-size: 1rem,
+  ));
   @include mat.theme((
     color:(
       primary: mat.$azure-palette,
@@ -51,6 +51,7 @@ Utilizar para responsive:
 }
 
 body {
+  width: 100%;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background:
     linear-gradient(#0000001a 0.0625rem, transparent 0.0625rem),
@@ -58,7 +59,7 @@ body {
     #87CEEB;
 
   // border-radius: 50px;
-  box-shadow: inset 0 0 0 8px #000;
+  // box-shadow: inset 0 0 0 8px #000;
   transition: background-color 0.4s ease, color 0.4s ease;
   background-size: 3.125rem 3.125rem;
   min-height: 100vh;
@@ -194,6 +195,7 @@ body {
 }
 
 .pixel-font {
+    /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
     font-family: 'PressStart2P-vaV7';
     color: white;
     text-shadow: 2px 2px #000;
@@ -238,3 +240,12 @@ h2 {
 .custom-button:active {
   transform: translateY(2px);
 }
+
+.custom-button2 {
+  padding: 0.5rem 1rem;
+  border: 1px solid #000;
+  border-radius: 0.6rem;
+  font-size: 100%;
+  transition: background-color 0.3s ease;
+}
+
