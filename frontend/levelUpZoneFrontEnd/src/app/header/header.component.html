@@ -21,10 +21,14 @@
     <!-- * Toggle -->
 
     <button class="mode-toggle toggle-button" mat-icon-button (click)="toggleDarkMode()" aria-label="Cambiar tema">
-      <mat-icon
-        [@iconFade]="isDarkMode() ? 'dark' : 'light'">
-        {{ isDarkMode() ? 'dark_mode' : 'light_mode' }}
-      </mat-icon>
+
+      <!-- Imagen para modo oscuro -->
+      <img *ngIf="isDarkMode()" src="/images/dark-ligth-modes/moon.png" alt="Modo oscuro"
+          [@iconFade]="'dark'" width="24" height="24">
+
+      <!-- Imagen para modo claro -->
+      <img *ngIf="!isDarkMode()" src="/images/dark-ligth-modes/sun.png" alt="Modo claro"
+          [@iconFade]="'light'" width="24" height="24">
     </button>
     <!-- * Icono de usuario -->
 
@@ -54,7 +58,7 @@
         <mat-icon [matBadge]="" aria-hidden="false" aria-label="Example inventory_2 icon">inventory_2</mat-icon>
       </button>
       <button class="avatar-button" (click)="openDialog('100ms', '100ms')">
-        <img src="/images/Avatars/avatar0.png" alt="Avatar">
+        <img src="/images/avatars/avatar0.png" alt="Avatar">
         <!-- <div class="badge">V</div> -->
       </button>
 

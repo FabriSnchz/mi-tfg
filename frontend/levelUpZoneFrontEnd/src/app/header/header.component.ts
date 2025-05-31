@@ -23,7 +23,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 @Component({
     selector: 'app-header',
     standalone: true,
-    imports: [RouterLink, RouterLinkActive, MatSlideToggleModule, MatButtonModule, MatMenuModule, MatIconModule, MatBadgeModule],
+    imports: [RouterLink, RouterLinkActive, MatSlideToggleModule, MatButtonModule, MatMenuModule, MatIconModule, MatBadgeModule, CommonModule],
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss',
     animations: [
@@ -40,14 +40,14 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 })
 export class HeaderComponent implements OnInit {
   imageList: string[] = [
-    '/images/logo_pixel_art_loved.png',
-    '/images/logo_pixel_art_happy.png',
-    '/images/logo_pixel_art_died.png',
-    '/images/logo_pixel_art.png'
+    '/images/logos/logo_pixel_art_loved.png',
+    '/images/logos/logo_pixel_art_happy.png',
+    '/images/logos/logo_pixel_art_died.png',
+    '/images/logos/logo_pixel_art.png'
   ];
 
   // Imagen actual
-  currentImage: string = '/images/logo_pixel_art.png';
+  currentImage: string = '/images/logos/logo_pixel_art.png';
 
   // Método para cambiar la imagen a una aleatoria
   changeImage(): void {
@@ -89,7 +89,7 @@ export class HeaderComponent implements OnInit {
     this.isLogged = this.authService.getToken() !== null;
     this.userName = this.authService.getUserName() ?? '';
 
-    this.profileImage = localStorage.getItem('profileImage') || '/images/Avatars/avatar1.png'; // Imagen por defecto si no hay
+    this.profileImage = localStorage.getItem('profileImage') || '/images/avatars/avatar1.png'; // Imagen por defecto si no hay
 
     // 🎮 Juegos temporales
     const storedGames = localStorage.getItem('temporaryGames');
@@ -143,11 +143,11 @@ export class Dialog {
   registerForm: FormGroup;
 
   avatarList: string[] = [
-  '/images/Avatars/avatar1.png',
-  '/images/Avatars/avatar2.png',
-  '/images/Avatars/avatar3.png',
-  '/images/Avatars/avatar4.png',
-  '/images/Avatars/avatar5.png'
+  '/images/avatars/avatar1.png',
+  '/images/avatars/avatar2.png',
+  '/images/avatars/avatar3.png',
+  '/images/avatars/avatar4.png',
+  '/images/avatars/avatar5.png'
   ];
 
   selectedAvatar: string = '';
