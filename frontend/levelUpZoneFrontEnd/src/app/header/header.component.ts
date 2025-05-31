@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input, ChangeDetectionStrategy, inject, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, Output, EventEmitter, Input, ChangeDetectionStrategy, inject, Inject, OnInit, PLATFORM_ID, ChangeDetectorRef } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
@@ -159,7 +159,7 @@ export class Dialog {
     this.registerForm.get('profileImage')?.setValue(avatar);
   }
 
-  constructor(private readonly fb: FormBuilder, private readonly authService: AuthService, private router: Router) {
+  constructor(private readonly fb: FormBuilder, private readonly authService: AuthService, private router: Router, private cdr: ChangeDetectorRef ) {
     this.loginForm = this.fb.group({
       userName: ['', Validators.required],
       password: ['', Validators.required]
@@ -220,6 +220,7 @@ export class Dialog {
   }
   toggleRegister(showRegister: boolean): void {
     this.isRegisterMode = showRegister;
+    this.cdr.markForCheck();
   }
 
   readonly dialogRef = inject(MatDialogRef<Dialog>);

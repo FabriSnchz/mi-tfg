@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { Game } from '../games';
 import { CollectionsService } from '../collections.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
@@ -14,10 +14,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from '../auth-service';
 import { GamesService } from '../games.service';
 import { Collection } from '../collections';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-temporary-collection',
-  imports: [MatIcon, MatTable, MatTableModule],
+  imports: [MatIcon, MatTable, MatTableModule, RouterLink, MatCardModule],
   templateUrl: './temporary-collection.component.html',
   styleUrl: './temporary-collection.component.scss'
 })
@@ -68,6 +69,12 @@ export class TemporaryCollectionComponent implements OnInit {
     this.infoGames = this.infoGames.filter(g => g.gameId !== game.id);
     localStorage.setItem('temporaryGames', JSON.stringify(this.infoGames));
     this.temporaryGames = this.temporaryGames.filter(g => g.id !== game.id);
+  }
+
+  removeAllGames(): void {
+    this.infoGames = [];
+    localStorage.removeItem('temporaryGames');
+    this.temporaryGames = [];
   }
 
   saveTemporaryCollection(): void {
@@ -166,6 +173,15 @@ export class TemporaryCollectionComponent implements OnInit {
         }
       });
     });
+  }
+
+  abrirLogin() {
+    this.collectionsService.openAuthDialog(false);
+    // setTimeout(() => this.collectionsService.toggleRegisterMode(false), 100); // Espera corta para que el componente se inicialice
+  }
+  abrirRegistro() {
+    this.collectionsService.openAuthDialog(true);
+    // setTimeout(() => this.collectionsService.toggleRegisterMode(true), 100);
   }
 }
 

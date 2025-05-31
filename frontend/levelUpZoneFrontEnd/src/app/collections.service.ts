@@ -1,8 +1,11 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Game } from './games';
 import { Collection } from './collections';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Dialog } from './header/header.component';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +16,10 @@ export class CollectionsService {
   private temporaryGames: Game[] = [];
 
   private readonly badgeCountSubject = new BehaviorSubject<number>(0);
+  private readonly dialog = inject(MatDialog);
   badgeCount$ = this.badgeCountSubject.asObservable();
+  private dialogRef: MatDialogRef<Dialog> | null = null;
+
 
   constructor(private readonly http: HttpClient) {
     if (typeof window !== 'undefined' && window.localStorage) {
@@ -80,5 +86,21 @@ export class CollectionsService {
   getCollectionsByUserId(userId: number): Observable<Collection[]> {
     const url = `${this.apiUrl}/user/${userId}`;  // Asumiendo que tu backend tiene este endpoint
     return this.http.get<Collection[]>(url);
+  }
+
+  // TODO: Mover este método a otro lado
+
+  openAuthDialog(showRegister: boolean): void {
+    this.dialogRef = this.dialog.open(Dialog, {
+      width: '90%',
+      height: '75%',
+      enterAnimationDuration: '300ms',
+      exitAnimationDuration: '200ms',
+      backdropClass: 'blur-backdrop'
+    });
+
+      this.dialogRef.afterOpened().subscribe(() => {
+      this.dialogRef?.componentInstance?.toggleRegister(showRegister);
+    });
   }
 }
