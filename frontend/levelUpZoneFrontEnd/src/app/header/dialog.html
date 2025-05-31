@@ -1,5 +1,5 @@
 <mat-dialog-actions>
-  <button mat-icon-button mat-dialog-close>
+  <button class="custom-button dialog close" mat-icon-button mat-dialog-close>
     <mat-icon aria-hidden="false" aria-label="Example close icon" fontIcon="close"></mat-icon>
   </button>
 </mat-dialog-actions>
@@ -14,7 +14,11 @@
       <h2><mat-icon>person</mat-icon> Iniciar sesión</h2>
       <input formControlName="userName" placeholder="Nombre de usuario..." type="text" />
       <input formControlName="password" placeholder="Contraseña..." type="password" />
-      <button class="button" type="submit">Iniciar sesión</button>
+      <button class="custom-button dialog" type="submit">
+        <p style="font-size: 16px; font-family: Arial, Helvetica, sans-serif;">
+          Iniciar sesión
+        </p>
+      </button>
       <br>
       <!-- <a href="#">¿Perdiste tu contraseña?</a> -->
     </form>
@@ -59,7 +63,7 @@
 
       <!-- TODO: Ver si cambiarlo por Angular Material o no -->
 
-      <button class="button" type="submit">Registrarte</button>
+      <button class="custom-button dialog" type="submit">Registrarte</button>
       <br>
       <!-- <a href="#">¿Perdiste tu contraseña?</a> -->
     </form>
@@ -72,12 +76,12 @@
       <div class="overlay-panel overlay-left">
         <h2>¿Ya tienes una cuenta?</h2>
         <p>Inicia sesión para acceder</p>
-        <button class="ghost button" (click)="toggleRegister(false)">Inicia sesión</button>
+        <button class="ghost custom-button" (click)="toggleRegister(false)">Inicia sesión</button>
       </div>
       <div class="overlay-panel overlay-right">
         <h2>¡Hola!</h2>
         <p>¿Aún no tienes cuenta? ¡Crea una!</p>
-        <button class="ghost button" (click)="toggleRegister(true)">Registrarme</button>
+        <button class="ghost custom-button" (click)="toggleRegister(true)">Registrarme</button>
       </div>
     </div>
   </div>

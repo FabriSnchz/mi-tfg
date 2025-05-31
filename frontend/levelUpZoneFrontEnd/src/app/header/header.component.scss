@@ -241,58 +241,51 @@ header {
 }
 
 // Botones
-.button {
-  padding: 12px 24px;
-  border: none;
-  border-radius: 20px;
+// .button {
+//   padding: 12px 24px;
+//   border: 1px solid #000;
+//   border-radius: 20px;
+//   font-size: 14px;
+//   color: white;
+//   background-color: orange;
+//   margin-top: 10px;
+// }
 
-  // cursor: pointer;
-  font-size: 14px;
-  color: white;
-  background-color: orange;
-  margin-top: 10px;
-
-
-}
-
-mat-dialog-actions {
-  button {
-    border: 1px solid #fff;
-    color: #fff;
-    background-color: orange;
-    box-shadow: 0.5px 5px 0 1px #ca5009;
-  }
-
-  button:hover {
-  background-color: #ff9500;
-  }
-
-  button:active {
-  box-shadow: 0 2px 0 1px #ca5009;
-  transform: translateY(2px);
-  }
-}
-
-  .button {
-    // background-color: orange;
-    border: 1px solid #000;
-
-    // box-shadow: 0.5px 5px 0px 1px #ca5009;
-    // -webkit-box-shadow: 0.5px 5px 0px 1px #ca5009;
-  }
-
-.button:hover {
-  background-color: #ff9500;
-}
-
-.button:active {
-  box-shadow: 0 2px 0 1px #ca5009;
-  transform: translateY(2px);
-}
-
-button.ghost {
+.dialog {
+  border: 1px solid #fff;
   color: #333;
   background-color: white;
+  box-shadow: 0.5px 5px 0 1px #d3d3d3;
+}
+
+.dialog:hover {
+  background-color: #9c9c9c;
+  box-shadow: 0.5px 5px 0 1px #d3d3d3;
+  cursor: pointer;
+}
+
+.dialog:active {
+  box-shadow: 0 2px 0 1px #858585;
+  transform: translateY(2px);
+}
+
+
+// .dialog:active {
+//   box-shadow: 0 2px 0 1px #ca5009;
+//   transform: translateY(2px);
+// }
+
+button.ghost {
+  color: #fff;
+  background-color: orange;
+  box-shadow: 0.5px 5px 0 1px #ca5009;
+  cursor: pointer
+  ;
+}
+
+button.ghost:active {
+  box-shadow: 0 2px 0 1px #ca5009;
+  transform: translateY(2px);
 }
 
 input{
@@ -302,6 +295,7 @@ input{
   box-shadow: 2px 3px 0 1px #000;
 }
 
+/* stylelint-disable-next-line selector-pseudo-element-no-unknown */
 ::ng-deep .cdk-overlay-backdrop.blur-backdrop {
   background-color: rgb(0 0 0 / 30%); // opcional: para oscurecer un poco el fondo
   backdrop-filter: blur(6px);
