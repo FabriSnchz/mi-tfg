@@ -1,11 +1,9 @@
-<!-- <h1>Games in Temporary Collection</h1> -->
 <div class="container">
 
   @if (isLogged) {
     @if (role === 'ROLE_ADMIN') {
 
     } @else if (role === 'ROLE_USER') {
-      <!-- <p>{{infoGames.length}}</p> -->
         @if (temporaryGames.length > 0) {
     <table mat-table [dataSource]="temporaryGames" class="mat-elevation-z8 custom-container">
 

@@ -33,7 +33,6 @@ export class TemporaryCollectionComponent implements OnInit {
   gameIds: any;
   infoGames: { userId: string, gameId: number }[] = [];
 
-  // TODO: Alinear el constructor para que sea más legible cuando termine
   constructor(
     private readonly collectionsService: CollectionsService,
     private readonly router: Router,
@@ -74,16 +73,17 @@ export class TemporaryCollectionComponent implements OnInit {
   removeAllGames(): void {
     this.infoGames = [];
     localStorage.removeItem('temporaryGames');
+    this.gamesService.setBadgeCount(0);
     this.temporaryGames = [];
   }
 
   saveTemporaryCollection(): void {
     if (this.temporaryGames.length === 0) return;
 
-    const collectionName = prompt('Enter a name for your collection:');
+    const collectionName = prompt('Nombre de la colección:');
     if (!collectionName) return;
 
-    const userId = localStorage.getItem('userId'); // Get userId from localStorage
+    const userId = localStorage.getItem('userId');
 
     if (userId === null) {
       console.error('User ID is null. Cannot create collection.');
@@ -97,8 +97,7 @@ export class TemporaryCollectionComponent implements OnInit {
 
     this.collectionsService.saveCollection(newCollection).subscribe({
       next: (savedCollection) => {
-        alert('Collection saved successfully!');
-        // TODO: Hacer un pop up de éxito
+        alert('Colección guardada exitosamente!');
 
         const collectionId = savedCollection.id;
 
@@ -116,7 +115,9 @@ export class TemporaryCollectionComponent implements OnInit {
         localStorage.removeItem('temporaryGames');
         localStorage.setItem('games', JSON.stringify(this.temporaryGames.map(g => g.id)));
         this.temporaryGames = [];
+        this.gamesService.setBadgeCount(0);
         this.router.navigate(['/collections']);
+
       },
       error: (err: HttpErrorResponse) => {
         console.error('Error al guardar la colección:', err);
@@ -177,11 +178,9 @@ export class TemporaryCollectionComponent implements OnInit {
 
   abrirLogin() {
     this.collectionsService.openAuthDialog(false);
-    // setTimeout(() => this.collectionsService.toggleRegisterMode(false), 100); // Espera corta para que el componente se inicialice
   }
   abrirRegistro() {
     this.collectionsService.openAuthDialog(true);
-    // setTimeout(() => this.collectionsService.toggleRegisterMode(true), 100);
   }
 }
 

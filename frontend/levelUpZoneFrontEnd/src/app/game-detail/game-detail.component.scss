@@ -1,14 +1,12 @@
 main {
+  height: 100vh;
   margin: 2%;
-
 }
 
 .square {
   padding: 1.5%;
   text-align: center;
   background-color: #864AF9;
-
-  // position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   .square-image {
@@ -22,78 +20,53 @@ main {
 }
 
 .grid {
-  // display: grid;
   display: flex;
   gap: 2%;
-
-  // grid-template-columns: repeat(3, 1fr);
-  // grid-template-rows: 1fr;
-  // grid-column-gap: 0px;
-  // grid-row-gap: 0px;
 }
 
-// .square {
-//   grid-area: 1 / 1 / 6 / 2;
-// }
-
 .info-container {
-  // grid-area: 1 / 2 / 2 / 4;
   width: 100%;
   padding: 20px;
   border: #000 solid 2px;
   border-radius: 0.6rem;
   overflow: hidden;
-  color: #f0f0f0; /* Light text for contrast */
+  color: #f0f0f0;
+  background-color: #462ac3;
   box-shadow: 9px 9px 0 1px rgb(0 0 0 / 100%);
+
 }
 
-
-/* Title styling: larger font, spacing */
-
-/* Estilización del título: fuente más grande, espaciado */
 .info-container h2 {
   font-size: 2rem;
-  color: #ffd700; /* Golden color for title */
+  color: #ffd700;
   margin-bottom: 15px;
 }
 
-/* Paragraph styling: spacing and line height */
-
-/* Estilización de los párrafos: espaciado y altura de línea */
 .info-container p {
   margin: 8px 0;
   line-height: 1.5;
 }
 
-/* Bold text styling inside paragraphs */
-
-/* Estilo del texto en negrita dentro de los párrafos */
 .info-container p b {
-  color: #ff7f50; /* Coral accent color for labels */
+  color: #8dff60;
 }
 
-/* Add a subtle border at the bottom of each paragraph */
-
-/* Añade un borde sutil debajo de cada párrafo */
 .info-container p:not(:last-child) {
   border-bottom: 1px solid rgb(255 255 255 / 10%);
   padding-bottom: 6px;
 }
 
-// * Colores
-// main {
-//   background-color: #aa3f3fa8;
-// }
-// .grid {
-  // background-color: #83aa3fa8;
-// }
-// h2 {
-//   background-color: #2ac339;
-// }
-.info-container {
-  background-color: #462ac3;
+.next-icon {
+  display: block;
+  width: 1.5rem;
+  transition: transform 0.3s ease;
+  filter: brightness(0) invert(1);
+    margin-right: 10px;
+
 }
 
-main {
-  height: 100vh;
+.info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
 }

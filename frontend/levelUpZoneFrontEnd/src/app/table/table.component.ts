@@ -4,7 +4,6 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { BehaviorSubject } from 'rxjs';
-import { Collection } from '../collections';
 import { CollectionsService } from '../collections.service';
 import { GamesService } from '../games.service';
 import { Game } from '../games';
@@ -17,13 +16,8 @@ import { Game } from '../games';
 })
 export class TableComponent implements OnInit, AfterViewInit {
 
-  // TODO: Hacer tabla para Games
-  // TODO: Hacer tabla para admin después. Osea que sea dínamica, dependiendo de que usuario vienen los datos.
-  // TODO: Incluir Sorting, filtro y paginación
-
   displayedColumns: string[] = ['name', 'genre', 'release_date', 'studio', 'multiplayer', 'platforms'];
   dataSubject = new BehaviorSubject<any[]>([]);
-  // idCatalogoGuardado: number = 0;
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>([]);
   @ViewChild(MatSort) sort!: MatSort;
   infoGames: { userId: string, gameId: number }[] = [];

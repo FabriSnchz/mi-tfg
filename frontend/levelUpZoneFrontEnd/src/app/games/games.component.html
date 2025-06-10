@@ -10,7 +10,6 @@
             <mat-label>Buscar por nombre</mat-label>
             <input matInput #filter>
           </mat-form-field>
-          <!-- <button mat-button type="button" (click)="filtrarResultado(filter.value)">Buscar</button> -->
           <button class="search-button" style="margin-left: 10px;" mat-fab type="button" (click)="filtrarResultado(filter.value)">
             <mat-icon>search</mat-icon>
           </button>
@@ -26,10 +25,6 @@
           <p>{{game.name}}</p>
           <div class="button-container">
             @if (isLogged) {
-                <button mat-icon-button mat-dialog-close (click)="showAuthMsg(1)">
-                  <!-- <mat-icon aria-hidden="false" aria-label="Example close icon" fontIcon="star"></mat-icon> -->
-                  <img src="images/star_colorless.png" alt="">
-                </button>
                 <a class="info-button" [routerLink]="['/game-details', game.id]">Saber más</a>
                 <button mat-icon-button (click)="addToTemporaryCollection(game)">
                   <mat-icon aria-hidden="false" aria-label="Icono de agregar" fontIcon="add"></mat-icon>
@@ -40,10 +35,6 @@
                   </button>
                 }
             } @else {
-              <button mat-icon-button mat-dialog-close (click)="showAuthMsg(1)">
-                <!-- <mat-icon aria-hidden="false" aria-label="Example close icon" fontIcon="star"></mat-icon> -->
-                <img src="images/star_colorless.png" alt="">
-              </button>
               <a class="info-button" [routerLink]="['/game-details', game.id]">Saber más</a>
               <button mat-icon-button (click)="showAuthMsg(2)">
                 <mat-icon aria-hidden="false" aria-label="Icono de agregar" fontIcon="add"></mat-icon>
@@ -66,7 +57,5 @@
 
     }
   }
-
-
 
 </main>

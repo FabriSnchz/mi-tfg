@@ -8,26 +8,55 @@
 
 @if (game) {
   <main>
+    <h1>{{game.name}}</h1>
     <div class="grid">
       <div class="square custom-container">
         <img src="{{game.photo}}" alt="{{game.photo}}" class="square-image">
       </div>
 
-
       <div class="info-container">
-        <h2>{{game.name}}</h2>
-        <p><b>Descripción: </b>{{game.description}}</p>
-        <p><b>Fecha de lanzamiento: </b>{{game.release_date}}</p>
-        <p><b>Género: </b>{{game.genre}}</p>
-        <p><b>Multijugador: </b>{{game.multiplayer}}</p>
-        <!-- <p><b>Plataformas: </b>{{game.platforms}}</p> -->
-        <p><b>Lenguajes: </b>{{game.languages}}</p>
-        <p><b>Desarrollador: </b>{{game.studio}}</p>
-        <p><b>Distribuidor: </b>{{game.review_score}}</p>
-        <p><b>Precio: </b>{{game.price}}</p>
-        <p><b>Tags: </b>{{game.tags}}</p>
-        <!-- <p><b>Clasificación: </b>{{game.age_rating}}</p> -->
+
+        <div class="info-item">
+          <img src="/icons/next.svg" alt="icon next" class="next-icon">
+          <p><b>Descripción:</b> {{game.description}}</p>
+        </div>
+
+        <div class="info-item">
+          <img src="/icons/next.svg" alt="icon next" class="next-icon">
+          <p><b>Fecha de lanzamiento:</b> {{game.release_date}}</p>
+        </div>
+
+        <div class="info-item">
+          <img src="/icons/next.svg" alt="icon next" class="next-icon">
+          <p><b>Género:</b> {{game.genre}}</p>
+        </div>
+
+        <div class="info-item">
+          <img src="/icons/next.svg" alt="icon next" class="next-icon">
+          <p><b>Multijugador:</b> {{game.multiplayer}}</p>
+        </div>
+
+        <div class="info-item">
+          <img src="/icons/next.svg" alt="icon next" class="next-icon">
+          <p><b>Lenguajes:</b> {{game.languages}}</p>
+        </div>
+
+        <div class="info-item">
+          <img src="/icons/next.svg" alt="icon next" class="next-icon">
+          <p><b>Desarrollador:</b> {{game.studio}}</p>
+        </div>
+
+        <div class="info-item">
+          <img src="/icons/next.svg" alt="icon next" class="next-icon">
+          <p><b>Precio:</b> {{game.price}}</p>
+        </div>
+
+        <div class="info-item">
+          <img src="/icons/next.svg" alt="icon next" class="next-icon">
+          <p><b>Tags:</b> {{game.tags}}</p>
+        </div>
       </div>
+
     </div>
   </main>
 }

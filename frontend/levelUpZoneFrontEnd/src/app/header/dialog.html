@@ -4,9 +4,6 @@
   </button>
 </mat-dialog-actions>
 
-
-
-
 <div class="container" [class.right-panel-active]="isRegisterMode">
   <!-- Fomulario inicio de sesión -->
   <div class="form-container sign-in-container">
@@ -20,14 +17,12 @@
         </p>
       </button>
       <br>
-      <!-- <a href="#">¿Perdiste tu contraseña?</a> -->
     </form>
   </div>
 
   <!-- Formulario registro -->
   <div class="form-container sign-up-container">
     <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
-      <!-- <h2><mat-icon>person</mat-icon> Regístrate</h2> -->
 
       <!-- Avatar Selector -->
       <div class="avatar-selector" (click)="showAvatarPopup = !showAvatarPopup">
@@ -61,14 +56,10 @@
       <input formControlName="birthDate" placeholder="Fecha de nacimiento..." type="date" />
       <br>
 
-      <!-- TODO: Ver si cambiarlo por Angular Material o no -->
-
       <button class="custom-button dialog" type="submit">Registrarte</button>
       <br>
-      <!-- <a href="#">¿Perdiste tu contraseña?</a> -->
     </form>
   </div>
-
 
   <!-- Panel deslizante -->
   <div class="overlay-container">

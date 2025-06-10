@@ -1,3 +1,8 @@
+<br>
+@if (isLogged) {
+  <p class="pixel-font" style="position: absolute; right: 0; padding-right: 14px;"> 1P {{ userName }}</p>
+}
+
 <header>
   <div class="logo-container">
     <a routerLink="/home" class="logo-button">
@@ -12,7 +17,6 @@
         <li><a routerLink="/collections" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Mi inventario</a></li>
         <li><a routerLink="/games" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Juegos</a></li>
         <li><a routerLink="/contact" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Contacto</a></li>
-        <!-- <li><a routerLink="" routerLinkActive="" ariaCurrentWhenActive="page">Ayuda</a></li> -->
       </ul>
     </nav>
   </div>
@@ -30,8 +34,8 @@
       <img *ngIf="!isDarkMode()" src="/images/dark-ligth-modes/sun.png" alt="Modo claro"
           [@iconFade]="'light'" width="24" height="24">
     </button>
-    <!-- * Icono de usuario -->
 
+    <!-- * Icono de usuario -->
     @if (isLogged) {
         @if (role === 'ROLE_ADMIN') {
           <p>Bienvenido, administrador</p>
@@ -43,13 +47,11 @@
             <mat-icon aria-hidden="false" aria-label="Example inventory_2 icon">inventory_2</mat-icon>
           }
           </button>
-          <p class="pixel-font"> 1P {{ userName }}</p>
             <button class="avatar-button" [matMenuTriggerFor]="menu">
               <img src="{{profileImage}}" alt="Avatar">
               <div class="badge">{{ userName.charAt(0) }}</div>
             </button>
           <mat-menu #menu="matMenu">
-            <a href="" style="color: inherit; text-decoration: none;"><button mat-menu-item>Ver Perfil</button></a>
             <a href="" style="color: inherit; text-decoration: none;"><button mat-menu-item (click)="onLogout()">Cerrar Sesión</button></a>
           </mat-menu>
         }
@@ -59,7 +61,6 @@
       </button>
       <button class="avatar-button" (click)="openDialog('100ms', '100ms')">
         <img src="/images/avatars/avatar0.png" alt="Avatar">
-        <!-- <div class="badge">V</div> -->
       </button>
 
 

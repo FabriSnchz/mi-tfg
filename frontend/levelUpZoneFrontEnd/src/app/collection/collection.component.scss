@@ -16,9 +16,8 @@ main {
       border-radius: 0.6rem;
       overflow: hidden;
       box-shadow:
-      9px 9px 0 1px var(--color-terciario),   /* la capa de "borde" alrededor de la sombra */
-      9px 9px 0 2px #000;  /* la sombra original */
-
+      9px 9px 0 1px var(--color-terciario),
+      9px 9px 0 2px #000;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       cursor: pointer;
     }
@@ -34,8 +33,6 @@ main {
   }
 }
 
-
-
 mat-card-title {
   font-size: 1.2rem;
   font-weight: bold;
@@ -45,8 +42,6 @@ mat-card-subtitle {
   font-size: 0.9rem;
   color: gray;
 }
-
-
 
 .warning-container {
   display: flex;
@@ -65,7 +60,6 @@ mat-card-subtitle {
     color: #740000;
   }
 
-  // TODO: Cambio de contraseña
   button {
     padding: 12px 24px;
     border: none;

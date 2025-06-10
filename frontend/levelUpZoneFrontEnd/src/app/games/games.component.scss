@@ -1,4 +1,3 @@
-// TODO: Saber como ordenarlo con SCSS
 * {
   box-sizing: border-box;
 }
@@ -13,12 +12,6 @@ main {
 
 .container {
   padding: 2%;
-
-  // border-radius: 0.6rem;
-  // background-color: #3ABEF9;
-  // box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
-  // -webkit-box-shadow: 9px 9px 0px 1px rgba(0,0,0,1);
-  // border: #121212 solid 1px;
 }
 
 .filter-section {
@@ -51,7 +44,6 @@ main {
 mat-paginator {
   border: 1px solid #000;
   border-radius: 0.6rem;
-  background-color: var(--color-blanco-general);
 }
 
 .filter-container {
@@ -80,7 +72,6 @@ mat-paginator {
 }
 
 .dropdown {
-  // position: absolute;
   top: 100%;
   left: 0;
   display: none;
@@ -111,29 +102,14 @@ mat-paginator {
 
 .grid {
   display: grid;
-  padding: 2rem;
   gap: 2rem;
   grid-template-columns: repeat(5, 1fr);
   margin-bottom: 1rem;
 
   .square {
-    // background: linear-gradient(to bottom, #4686a6, aquamarine);
-
-
-
-
-    padding: 1.5%;
     text-align: center;
-
-    // width: 14rem;
-    // height: 26rem;
-
-    // background: radial-gradient(circle at center, #229AF4 100%, aquamarine 100%);
-    // background-color: #F8E559;
-    // background: lineal-gradient(to bottom, #864AF9);
+    background: radial-gradient(circle at center, #229AF4 100%, aquamarine 100%);
     background-color: #864AF9;
-
-    // position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 
     .square-image {
@@ -180,6 +156,7 @@ mat-paginator {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  padding-bottom: 1rem;
 }
 
 .mat-mdc-form-field {
@@ -187,24 +164,3 @@ mat-paginator {
   font-size: 14px;
 }
 
-
-
-
-
-// * COLORES
-
-// main {
-//   background-color: #c47b2881;
-// }
-// article {
-//   background-color: #28c44a81;
-// }
-// figure {
-//   background-color: #c4289581;
-// }
-// figure img {
-//   background-color: #6128c481;
-// }
-// p {
-//   background-color: #2838c499;
-// }

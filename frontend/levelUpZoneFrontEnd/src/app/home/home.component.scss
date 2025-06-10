@@ -6,8 +6,6 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  // height: 100%;
   width: 100%;
   height: 100vh;
 
@@ -19,20 +17,16 @@ main {
       align-items: center;
       width: 68rem;
       margin: 2.5%;
-      margin: 2.5% 2.5% 2.5% 12rem;
+      margin: 2.5% 2.5% 2.5% 0;
       gap: 1em;
 
-      // justify-content: center;
       img {
         display: block;
         width: 13em;
-
-        // margin: 2.5% auto;
         max-width: 100%;
       }
 
       h1 {
-        // font-family: 'Flashback', 'Varela Round', 'Roboto', sans-serif;
         font-family: 'Invasion2000';
         font-size: 5em;
         color: #6fff00;
@@ -55,76 +49,11 @@ main {
   margin: 2.5%;
   font-size: 1.3rem;
   text-align: center;
+  max-width: 80rem;
 }
-
-
-// * Carrusel2
-.carousel-container {
-  margin: 0 auto;
-  max-width: 55rem; /* o el tamaño que desees */
-}
-
-.asd {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.slide-wrapper {
-  /* border-radius: 10px; */
-
-  /* overflow: hidden; */
-  // height: 250px;
-  height: 500px;
-  border: #121212 solid 1px;
-  border-radius: 0.6rem;
-  overflow: hidden;
-
-  img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    box-shadow: 9px 9px 0 1px #000;
-    object-fit: cover;
-  }
-
-  .slide-text {
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    width: 100%;
-    padding: 10px;
-    text-align: center;
-    color: white;
-    background: linear-gradient(to top, #000000b3, transparent);
-  }
-}
-
-// * Colores
-// main {
-//   background-color: #c47b2881;
-// }
-// .slides {
-//   background-color:#6fff00;
-// }
-// article {
-//   background-color: #28c44a81;
-// }
-// figure {
-//   background-color: #c4289581;
-// }
-// figure img {
-//   background-color: #6128c481;
-// }
-// p {
-//   background-color: #2838c499;
-// }
-// ---------------------------------------------
 
 .logo {
   display: flex;
-
-  // justify-content: center;
-  // align-items: center;
   width: 7rem;
 }
 

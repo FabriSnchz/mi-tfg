@@ -1,4 +1,3 @@
-<!-- * Voy a hacer un contenedor main y luego separar dentro con subcontenedores que serán los que tienen su sombra -->
 <!-- TODO: Cambiar los cards con CSS puro con cards de Angular Material [] -->
 
 <article class="main-container">
@@ -31,13 +30,13 @@
             <div class="contact-card-background"></div>
 
             <div class="contact-item-title">
-              <mat-icon>fax</mat-icon>
-              <h2>FAX</h2>
+              <mat-icon>chat</mat-icon>
+              <h2>WhatsApp</h2>
             </div>
 
             <div class="contact-item-info-box">
               <span class="contact-item-details">
-                <h3>+34 612 345 678</h3>
+                <h3><a href="https://wa.me/34612345678" target="_blank">+34 612 345 678</a></h3>
               </span>
             </div>
           </div>
@@ -65,27 +64,27 @@
 <mat-accordion>
   <mat-expansion-panel class="custom-container">
     <mat-expansion-panel-header>
-      <mat-panel-title><h2>¿Tienen tienda física?</h2></mat-panel-title>
+      <mat-panel-title><h2 class="faq-title">¿Tienen tienda física?</h2></mat-panel-title>
     </mat-expansion-panel-header>
     <p>De momento no, pero esperamos tenerlo en el futuro 😁.</p>
   </mat-expansion-panel>
   <mat-expansion-panel class="custom-container">
     <mat-expansion-panel-header>
-      <mat-panel-title><h2>¿Puedo tener una colección sin cuenta?</h2></mat-panel-title>
+      <mat-panel-title><h2 class="faq-title">¿Puedo tener una colección sin cuenta?</h2></mat-panel-title>
     </mat-expansion-panel-header>
     <p>Claro que sí, pero si quieres conservarla y guardarla. Te recomendamos crearla.</p>
   </mat-expansion-panel>
   <mat-expansion-panel class="custom-container">
     <mat-expansion-panel-header>
-      <mat-panel-title><h2>¿Cómo elimino una cuenta?</h2></mat-panel-title>
+      <mat-panel-title><h2 class="faq-title">¿Cómo elimino una cuenta?</h2></mat-panel-title>
     </mat-expansion-panel-header>
     <p>De momento no, pero esperamos tenerlo en el futuro.</p>
   </mat-expansion-panel>
   <mat-expansion-panel class="custom-container">
     <mat-expansion-panel-header>
-      <mat-panel-title><h2>¿Tienen tienda física?</h2></mat-panel-title>
+      <mat-panel-title><h2 class="faq-title">¿Puedo vender mis videojuegos a través de la plataforma?</h2></mat-panel-title>
     </mat-expansion-panel-header>
-    <p>De momento no, pero esperamos tenerlo en el futuro.</p>
+    <p>Por el momento no ofrecemos esa opción, pero estamos evaluando implementarla en futuras versiones del sitio.</p>
   </mat-expansion-panel>
 </mat-accordion>
 
@@ -95,8 +94,8 @@
     <!-- Columna1 -->
     <section>
       <figure>
-        <img src="images/logos/logo_pixel_art_happy.png" alt="" class="img-form">
-        <img src="images/kindpng_3224165.png" alt="" class="img-phone">
+        <img src="images/logos/logo_pixel_art_phone.png" alt="" class="img-form">
+        <!-- <img src="images/kindpng_3224165.png" alt="" class="img-phone"> -->
       </figure>
     </section>
 

@@ -11,9 +11,6 @@ import { AuthService } from '../auth-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 
-
-
-
 @Component({
     selector: 'app-games',
     standalone: true,
@@ -26,7 +23,7 @@ export class GamesComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   pageSize = 10;
   pageIndex = 0;
-  pagedGames: Game[] = [];    // los juegos visibles en la página
+  pagedGames: Game[] = []; // juegos visibles en la página
 
   route = inject(ActivatedRoute);
   gameId!: string;
@@ -40,8 +37,7 @@ export class GamesComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.gamesService.emitirGames(); // Dispara la carga inicial de Games
-
+    this.gamesService.emitirGames();
     this.gamesService.Games$.subscribe(Games => {
       this.Games = Games;
       this.FilteredGames = Games;
@@ -72,16 +68,6 @@ export class GamesComponent implements OnInit, AfterViewInit {
     const end = start + this.pageSize;
     this.pagedGames = this.FilteredGames.slice(start, end);
   }
-
-  // filtrarResultado(texto: string) {
-  //   if (!texto) {
-  //     this.FilteredGames = this.Games;
-  //     return;
-  //   }
-  //   this.FilteredGames = this.Games.filter( FilteredGames =>
-  //     FilteredGames?.name.toLowerCase().includes(texto.toLowerCase())
-  //   );
-  // }
   filtrarResultado(texto: string) {
     if (!texto) {
       this.FilteredGames = this.Games;

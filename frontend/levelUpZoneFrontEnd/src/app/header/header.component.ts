@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input, ChangeDetectionStrategy, inject, Inject, OnInit, PLATFORM_ID, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, Inject, OnInit, PLATFORM_ID, ChangeDetectorRef } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,9 +12,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AuthService } from '../auth-service';
 import { Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
-import {MatBadgeModule} from '@angular/material/badge';
+import { MatBadgeModule } from '@angular/material/badge';
 import { GamesService } from '../games.service';
-
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { effect, signal } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
@@ -55,15 +54,12 @@ export class HeaderComponent implements OnInit {
     this.currentImage = this.imageList[randomIndex];
   }
   badgeCount!: number;
-  isLoading = true;
   isLogged: boolean = false;
   role: string = '';
   userName: string = '';
   profileImage: string = '';
   readonly dialog = inject(MatDialog);
-  // @Output() themeToggled = new EventEmitter<void>();
-
-    // * Para el modo oscuro/claro
+  // * Para el modo oscuro/claro
   isDarkMode = signal(false);
   private readonly _document = inject(DOCUMENT);
 
@@ -80,18 +76,15 @@ export class HeaderComponent implements OnInit {
   }
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-    // 🌓 Leer el modo oscuro desde localStorage
     const savedMode = localStorage.getItem('dark-mode');
     this.isDarkMode.set(savedMode === 'enabled');
 
-    // 🔐 Autenticación
     this.role = this.authService.getUserRole() ?? '';
     this.isLogged = this.authService.getToken() !== null;
     this.userName = this.authService.getUserName() ?? '';
 
     this.profileImage = localStorage.getItem('profileImage') || '/images/avatars/avatar1.png'; // Imagen por defecto si no hay
 
-    // 🎮 Juegos temporales
     const storedGames = localStorage.getItem('temporaryGames');
     const games: any[] = storedGames ? JSON.parse(storedGames) : [];
 
@@ -104,7 +97,6 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  // 🔄 Suscripción al contador del badge
   this.gamesService.badgeCount$.subscribe(count => {
     this.badgeCount = count;
   });
@@ -134,7 +126,7 @@ export class HeaderComponent implements OnInit {
   selector: 'dialog',
   templateUrl: 'dialog.html',
   styleUrl: 'header.component.scss',
-  imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent, MatIconModule, MatFormFieldModule, MatInputModule, MatSelectModule, ReactiveFormsModule, CommonModule],
+  imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatIconModule, MatFormFieldModule, MatInputModule, MatSelectModule, ReactiveFormsModule, CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Dialog {
@@ -182,8 +174,7 @@ export class Dialog {
       this.authService.login(credentials).subscribe({
         next: (response) => {
           this.authService.saveToken(response.token, response.role, response.userName, response.userId, response.profileImage); // Guarda el token como jwt
-          // this.router.navigate(['/']);
-          window.location.href = '/'; // Úsalo solo si necesitas recargar completamente
+          window.location.href = '/'; // recargar completamente
         },
         error: (err) => {
           alert('Credenciales incorrectas');

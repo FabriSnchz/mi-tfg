@@ -1,31 +1,18 @@
-// TODO: Añadir media queries para que se adapte a pantallas más pequeñas
-// TODO: Pasar a SCSS []
-// TODO: Si hay muchos hover, los puedo agrupar abajo a todos
-// TODO: Cambiar a medidas relativas
-
 * {
   box-sizing: border-box;
 }
 
-
-
+.img-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .main-container {
   padding: 2rem;
   margin: 0 auto;  // Centrado automático
   margin-top: 2rem;
   max-width: 85%;
-
-  // display: grid;
-  // grid-template-columns: 1fr 1fr;
-
-  // .title{
-  //   font-size: 2.5rem;
-  //   font-weight: 600;
-  //   color: var(--color-letra-negra);
-  //   text-align: center;
-  //   margin-bottom: 2%;
-  // }
 
   .background-container {
     display: flex;
@@ -35,8 +22,6 @@
     border-radius: 0.6rem;
     gap: 2%;
     margin-bottom: 2%;
-
-    // background-color: #0000001a; // TODO: Fijate si esto sirve
   }
 
   .img-form-container {
@@ -56,7 +41,7 @@
         input, textarea {
           width: 100%;
           padding: 0.65rem;
-          border: 0.0625rem solid #000; /* 1px solid #000000 */
+          border: 0.0625rem solid #000;
           border-radius: 0.6rem;
           font-size: 100%;
           margin-bottom: 15px;
@@ -97,6 +82,37 @@
   }
 }
 
+.contact-item-details,
+.contact-item-details h3 a {
+  color: #f9b234;
+  text-decoration: none;
+  transition: color .5s ease
+}
+
+.contact-card-background {
+  position: absolute;
+  top: -75px;
+  right: -75px;
+  z-index: 1;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  background-color: #f9b234;
+  transition: all .5s ease;
+}
+
+.contact-card:nth-child(2n) .contact-card-background {
+  background-color: #3A59D1;
+}
+
+.contact-card:nth-child(3n) .contact-card-background {
+  background-color: #e44002;
+}
+
+.contact-card:nth-child(4n) .contact-card-background {
+  background-color: #952aff;
+}
+
 .contact-grid {
   display: flex;
   justify-content: space-between;
@@ -104,20 +120,14 @@
 
   .contact-card {
     margin: 0 0 3rem;
-
-    // TODO: Hacer que todos los margenes sean iguales
-
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     flex-basis: 14rem;
 
-    // Los colorinchis
+    // colores
     .contact-card-content {
       position: relative;
       display: block;
       padding: 1.875rem 1.25rem;
-
-
-      // TODO: Cambiar color, muy oscuro
       overflow: hidden;
       background-color: #1e1e1e;
     }
@@ -156,54 +166,6 @@
   color: #FFF;
 }
 
-.contact-item-details,
-.contact-item-details h3 a {
-  color: #f9b234;
-  text-decoration: none;
-  transition: color .5s ease
-}
-
-.contact-card-background {
-  position: absolute;
-  top: -75px;
-  right: -75px;
-  z-index: 1;
-  width: 8rem;
-  height: 8rem;
-  border-radius: 50%;
-  background-color: #f9b234;
-  transition: all .5s ease;
-}
-
-.contact-card:nth-child(2n) .contact-card-background {
-  background-color: #3A59D1;
-}
-
-.contact-card:nth-child(3n) .contact-card-background {
-  background-color: #e44002;
-}
-
-.contact-card:nth-child(4n) .contact-card-background {
-  background-color: #952aff;
-}
-
-// Por si quiero añadir más cards
-// .contact-card:nth-child(5n) .contact-card-background {
-//   background-color: #cd3e94;
-// }
-// .contact-card:nth-child(6n) .contact-card-background {
-//   background-color: #4c49ea;
-// }
-
-
-// COLORES
-// .main-container {
-//   background-color: #c22822;
-// }
-
-// .info-container {
-//   background-color: #b1a938;
-// }
 
 
 @media only screen and (width <= 979px) {
@@ -255,22 +217,19 @@ figure {
   align-items: center;
 }
 
-.img-form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .img-form {
   width: 100%;
   height: auto;
-  max-width: 400px; /* Ajusta el tamaño máximo según sea necesario */
+  max-width: 400px;
 }
 
 .img-phone {
   width: 100%;
   height: auto;
-  max-width: 200px; /* Ajusta el tamaño máximo según sea necesario */
+  max-width: 200px;
 }
 
-
+.faq-title {
+  font-size: 1.4rem;
+}

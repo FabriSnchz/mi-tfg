@@ -1,9 +1,4 @@
-// TODO: Añadir media queries para que se adapte a pantallas más pequeñas
-// TODO: Pasar a SCSS [x]
-// TODO: Si hay muchos hover, los puedo agrupar abajo a todos
-// TODOS: Abajo de todo.
 @use 'sass:color';
-
 
 * {
   z-index: 1;
@@ -39,12 +34,8 @@ header {
   }
 
   .nav-header {
-    position: relative;
-    top: -10px;
     display: flex;
     justify-content: center;
-
-    // display: grid;
     align-items: center;
     border-radius: 0.6rem;
     background-color: #000;
@@ -105,7 +96,6 @@ header {
   }
 }
 
-
 // * Botones activos
 .activebutton {
   padding: 0.5rem 1rem;
@@ -114,22 +104,15 @@ header {
   color: var(--color-letra-blanca);
   background-color: var(--color-secundario);
   box-shadow: 0.5px 5px 0 1px #0a4528;
-
-  // font-weight: bold; // TODO: ¿Cúal es mejor, con o sin?
   transition: all 0.3s ease;
-
-  // TODO: Revisar
 }
 
 .activebutton:active {
-  box-shadow: 0 2px 0 1px #0a4528;  // Cambia la sombra para simular presión
-  transform: translateY(2px); // Simula que el botón se presiona hacia abajo
+  box-shadow: 0 2px 0 1px #0a4528;
+  transform: translateY(2px);
 }
 
-
-
 // * Pop up de inicio de sesión y registro
-
 .container {
   z-index: 0;
   display: flex;
@@ -161,7 +144,7 @@ header {
   }
 }
 
-// Activo: Mover registro al frente
+// * Activo: Mover registro al frente
 .container.right-panel-active .sign-in-container {
   z-index: 1;
   transform: translateX(100%);
@@ -175,7 +158,7 @@ header {
 }
 
 
-// Overlay
+// * Overlay
 .overlay-container {
   position: absolute;
   top: 0;
@@ -220,8 +203,6 @@ header {
   transform: translateX(50%);
 }
 
-
-
 .overlay-left {
   left: 0;
   transform: translateX(-20%);
@@ -240,17 +221,6 @@ header {
   transform: translateX(20%);
 }
 
-// Botones
-// .button {
-//   padding: 12px 24px;
-//   border: 1px solid #000;
-//   border-radius: 20px;
-//   font-size: 14px;
-//   color: white;
-//   background-color: orange;
-//   margin-top: 10px;
-// }
-
 .dialog {
   border: 1px solid #fff;
   color: #333;
@@ -268,12 +238,6 @@ header {
   box-shadow: 0 2px 0 1px #858585;
   transform: translateY(2px);
 }
-
-
-// .dialog:active {
-//   box-shadow: 0 2px 0 1px #ca5009;
-//   transform: translateY(2px);
-// }
 
 button.ghost {
   color: #fff;
@@ -324,8 +288,7 @@ input{
   }
 }
 
-
-
+// * AVATAR
 .avatar-button {
       position: relative;
       width: 54px;
@@ -363,7 +326,7 @@ input{
 
 
 
-// ICONO DE USUARIO
+// * Icono de Usuario
 
 .avatar-selector {
   display: flex;

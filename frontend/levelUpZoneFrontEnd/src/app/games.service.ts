@@ -43,6 +43,7 @@ export class GamesService {
   }
   setBadgeCount(count: number): void {
     this.badgeCountSource.next(count);
+    console.log(`Badge count set to: ${count}`);
   }
 
   deleteGame(id: number): Observable<void> {

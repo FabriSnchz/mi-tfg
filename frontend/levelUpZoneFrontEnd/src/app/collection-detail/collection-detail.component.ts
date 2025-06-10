@@ -1,9 +1,5 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Component, inject, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatIcon } from '@angular/material/icon';
 import { TableComponent } from '../table/table.component';
 import { Collection } from '../collections';
 import { CollectionsService } from '../collections.service';
@@ -14,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-collection-detail',
-  imports: [CommonModule, TableComponent, MatIcon],
+  imports: [CommonModule, TableComponent],
   templateUrl: './collection-detail.component.html',
   styleUrl: './collection-detail.component.scss'
 })
@@ -52,7 +48,6 @@ ngOnInit(): void {
       if (userId) {
         this.collectionsService.getCollectionsByUserId(Number(userId)).subscribe(collections => {
           this.collections = collections;
-          // this.collectionId = collections.map(collection => collection.id);
         });
         this.collectionsService.getCollectionById(this.collectionId).subscribe(collection => {
           this.gameIds = collection.games?.map(game => game.id) ?? [];
